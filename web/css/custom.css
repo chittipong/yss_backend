@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 18, 2015, 1:13:54 AM
+    Author     : August
+*/
+
+#myMsg-cn{
+    min-width: 400px;
+    width: 50%;
+    position: fixed;
+    top: 40%;
+    left: 28%;
+    z-index:99999;
+}
