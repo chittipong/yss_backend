@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use \app\models\ProductDetailSearch;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -50,8 +51,13 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
+        $searchModel = new ProductDetailSearch();
+        //$detail = new ProductDetail();
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            //'detail'=> $detail->findAll(['product_id'=>$id])
         ]);
     }
 
@@ -69,8 +75,6 @@ class ProductController extends Controller
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
-            
-            
             if($model->file){
                 //$newName=date("Ymdhis");                                      //Generate filename from Date time
                 $newName=$model->code;                                          //Set image name same Product code
@@ -82,25 +86,20 @@ class ProductController extends Controller
                 $upload=1;
             }
 
-               $title=$_POST['Product']['code'];
-               $code=$_POST['Product']['title'];
+            if($model->save()){
+               $productId=Yii::$app->db->getLastInsertID();                 //Get last insert ID
+               $title=$_POST['Product']['title'];
                $detail=$_POST['Product']['detail'];
                
-            //echo "Code:$code, Title:$title, Detail:$detail";
-              //exit();
-
                $this->insertDetail([
-                    'product_id'=>$code,
+                    'product_id'=>$productId,
                     'title'=>$title,
                     'detail'=>$detail
                 ]);
-            
-            if($model->save()){
+               
                 if($upload){
                     $model->file->saveAs($model->productDir.$model->image);
                 }
-                
-                
                 
                 //SET DISPLAY MESSAGE ----------
                 Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
@@ -131,11 +130,14 @@ class ProductController extends Controller
         }
     }
     
-    public function insertDetail($data=array()){
+    
+    //Function for save product detail------
+    public function insertDetail($data){
         $model=new ProductDetail();
         $model->product_id=$data['product_id'];
         $model->title=$data['title'];
         $model->detail=$data['detail'];
+        $model->lang='TH';
         
         if($model->save()){
             return true;

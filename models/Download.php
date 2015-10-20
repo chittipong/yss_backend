@@ -3,30 +3,35 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "{{%yss_download}}".
+ * This is the model class for table "download".
  *
  * @property integer $id
+ * @property integer $download_cat_id
  * @property integer $product_id
  * @property string $title
  * @property string $detail
- * @property string $file_type
- * @property string $category
+ * @property string $file_folder
+ * @property string $file_name
+ * @property string $file_size
+ * @property string $status
  * @property string $lang
- * @property integer $sort_order
- *
- * @property YssLang $lang0
- * @property YssProduct $product
  */
 class Download extends \yii\db\ActiveRecord
 {
+    public $file;
+    
+    //public $productDir="uploads/products/";                       
+    public $downloadDir="../../downloads/";                         //Set download  floder
+    
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%yss_download}}';
+        return 'download';
     }
 
     /**
@@ -35,12 +40,16 @@ class Download extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'sort_order'], 'integer'],
-            [['category'], 'string'],
-            [['title'], 'string', 'max' => 45],
-            [['detail'], 'string', 'max' => 100],
-            [['file_type'], 'string', 'max' => 20],
-            [['lang'], 'string', 'max' => 10]
+            [['download_cat_id', 'product_id'], 'integer'],
+            [['detail'], 'string'],
+            [['title', 'file_folder', 'file_name', 'file_size'], 'string', 'max' => 50],
+            [['status'], 'string', 'max' => 2],
+            [['lang'], 'string', 'max' => 20],
+            [['author'], 'string'],
+            
+            //FOR UPLOAD FILE--------------
+            [['file'],'safe'],
+            [['file'],'file','extensions'=>'pdf,doc,docx,xls,xlsx']
         ];
     }
 
@@ -50,30 +59,38 @@ class Download extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'รหัส'),
-            'product_id' => Yii::t('app', 'รหัสสินค้า'),
-            'title' => Yii::t('app', 'คำบรรยาย'),
-            'detail' => Yii::t('app', 'รายละเอียด'),
-            'file_type' => Yii::t('app', 'doc,pdf,zip,image'),
-            'category' => Yii::t('app', 'ประเภท'),
+            'id' => Yii::t('app', 'ID'),
+            'download_cat_id' => Yii::t('app', 'Category'),
+            'product_id' => Yii::t('app', 'Product ID'),
+            'title' => Yii::t('app', 'Title'),
+            'detail' => Yii::t('app', 'Detail'),
+            'file_folder' => Yii::t('app', 'File Folder'),
+            'file' => Yii::t('app', 'File'),
+            'file_size' => Yii::t('app', 'File Size'),
+            'status' => Yii::t('app', 'Status'),
             'lang' => Yii::t('app', 'ภาษา'),
-            'sort_order' => Yii::t('app', 'Sort Order'),
+            'author'=>Yii::t('app', 'Author'),
+            'date_create' => 'Date Create',
+            'date_update' => 'Date Update'
         ];
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLang0()
-    {
-        return $this->hasOne(YssLang::className(), ['abb' => 'lang']);
+    
+    
+    public function getCat(){
+        return $this->hasOne(DownloadCategory::className(),['id'=>'download_cat_id'] );
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProduct()
-    {
-        return $this->hasOne(YssProduct::className(), ['product_id' => 'product_id']);
+    
+    public function getLang(){
+        return $this->hasOne(Lang::className(),['abb'=>'lang_name']);
+    }
+    
+    public function getCatList(){
+        $list=  DownloadCategory::find()->orderBy('id')->all();
+        return ArrayHelper::map($list, 'id', 'name');
+    }
+    
+    public function getLangList(){
+        $list=Lang::find()->orderBy('sort_order')->all();
+        return ArrayHelper::map($list, 'abb', 'lang_name');
     }
 }

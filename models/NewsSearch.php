@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Download;
+use app\models\News;
 
 /**
- * DownloadSearch represents the model behind the search form about `app\models\Download`.
+ * NewsSearch represents the model behind the search form about `app\models\News`.
  */
-class DownloadSearch extends Download
+class NewsSearch extends News
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DownloadSearch extends Download
     public function rules()
     {
         return [
-            [['id', 'download_cat_id', 'product_id'], 'integer'],
-            [['title', 'detail', 'file_folder', 'file_name', 'file_size', 'status', 'lang'], 'safe'],
+            [['id', 'sort_order'], 'integer'],
+            [['pic', 'author', 'date_create', 'date_update', 'type'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DownloadSearch extends Download
      */
     public function search($params)
     {
-        $query = Download::find();
+        $query = News::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,17 +57,14 @@ class DownloadSearch extends Download
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'download_cat_id' => $this->download_cat_id,
-            'product_id' => $this->product_id,
+            'sort_order' => $this->sort_order,
+            'date_create' => $this->date_create,
+            'date_update' => $this->date_update,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'detail', $this->detail])
-            ->andFilterWhere(['like', 'file_folder', $this->file_folder])
-            ->andFilterWhere(['like', 'file_name', $this->file_name])
-            ->andFilterWhere(['like', 'file_size', $this->file_size])
-            ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'lang', $this->lang]);
+        $query->andFilterWhere(['like', 'pic', $this->pic])
+            ->andFilterWhere(['like', 'author', $this->author])
+            ->andFilterWhere(['like', 'type', $this->type]);
 
         return $dataProvider;
     }

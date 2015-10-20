@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 /**
  * This is the model class for table "{{%yss_brand}}".
  *
@@ -13,6 +14,8 @@ use yii\helpers\ArrayHelper;
  */
 class Brand extends \yii\db\ActiveRecord
 {
+    public $file;
+    public $brandDir="../../images/brand_logo/";               //Set brand images floder
     /**
      * @inheritdoc
      */
@@ -28,7 +31,11 @@ class Brand extends \yii\db\ActiveRecord
     {
         return [
             [['brand', 'logo'], 'required'],
-            [['brand', 'logo'], 'string', 'max' => 50]
+            [['brand', 'logo'], 'string', 'max' => 50],
+            
+            //Upload image------------
+            [['file'],'safe'],
+            [['file'],'file','extensions'=>'jpg,png,gif']
         ];
     }
 
@@ -40,7 +47,14 @@ class Brand extends \yii\db\ActiveRecord
         return [
             'brand_id' => Yii::t('app', 'รหัส'),
             'brand' => Yii::t('app', 'ชื่อแบรนด์'),
-            'logo' => Yii::t('app', 'โลโก้'),
+            'file' => Yii::t('app', 'โลโก้'),
         ];
+    }
+    
+    //Product image Path---------------
+    public function getImageUrl(){
+        return Url::to($this->brandDir.$this->logo);        //Output: yss_new2/web/
+        //return Url::to('../images/products/'.$this->image);                     //Output: ../images/product/
+        
     }
 }

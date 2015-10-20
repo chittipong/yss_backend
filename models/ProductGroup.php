@@ -41,8 +41,8 @@ class ProductGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'รหัส'),
-            'group' => Yii::t('app', 'Product Group'),
-            'detail' => Yii::t('app', 'Product Group'),
+            'group' => Yii::t('app', 'Group Abb.(ตัวย่อ)'),
+            'detail' => Yii::t('app', 'Group Name'),
             'remark' => Yii::t('app', 'หมายเหตุ'),
         ];
     }

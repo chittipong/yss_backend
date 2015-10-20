@@ -7,25 +7,29 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\ProductDetail */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="col-lg-8">
+<div class="panel panel-default">
+    <div class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></div>
+  <div class="panel-body">
+            <div class="product-detail-form">
+                <?php $form = ActiveForm::begin(); ?>
+                <?php // $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'lang')->dropDownList($model->getLangList())?>
 
-<div class="product-detail-form">
+                <?= $form->field($model, 'product_id')->textInput() ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+                <?= $form->field($model, 'detail')->textarea(['rows' => 5]) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'keyword')->textInput() ?>
 
-    <?= $form->field($model, 'detail')->textInput(['maxlength' => true]) ?>
+                <div class="form-group">
+                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                </div>
 
-    <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'keyword')->textarea(['rows' => 6]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
+                <?php ActiveForm::end(); ?>
+            </div>
+      </div>
+</div>
 </div>

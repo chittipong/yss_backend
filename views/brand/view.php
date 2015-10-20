@@ -28,6 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            [
+              'attribute'=>'logo',
+              'value'=>$model->brandDir.$model->logo,
+              'format'=>['image',['width'=>'400','title'=>$model->brand]]                              //Set Image Width
+            ],
             'brand_id',
             'brand',
             'logo',

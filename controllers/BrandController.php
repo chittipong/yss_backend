@@ -8,6 +8,7 @@ use app\models\BrandSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BrandController implements the CRUD actions for Brand model.
@@ -58,13 +59,36 @@ class BrandController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    
+    public function actionCreate(){
         $model = new Brand();
+        $dateNow= date("Y-m-d h:i:s");                           //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=$model->brand;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->brandDir;
+                $model->logo=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->brand_id]);
-        } else {
+            if($model->save()){ 
+                if($upload){
+                    $model->file->saveAs($model->brandDir.$model->logo);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->brand_id]);
+            }
+        }else{
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -80,15 +104,62 @@ class BrandController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dateNow= date("Y-m-d h:i:s");                           //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=$model->brand;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->brandDir;
+                $model->logo=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->brand_id]);
-        } else {
+            if($model->save()){ 
+                if($upload){
+                    $model->file->saveAs($model->brandDir.$model->logo);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->brand_id]);
+            }
+        }else{
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
-    }
+    }//**End update
+    
+    
+    //FUNCTION FOR DELETE IMAGE------------------
+    public function actionDeleteimage($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }
+        }
+        
+        $img=$this->findModel($id);
+        $img->$field=null;
+        $img->update();
+        
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+        //REDIRECT PAGE-----------------
+        return $this->redirect(['update','id'=>$id]);
+    }//end
+    
+    
 
     /**
      * Deletes an existing Brand model.
@@ -98,8 +169,18 @@ class BrandController extends Controller
      */
     public function actionDelete($id)
     {
+        $model=new Brand();
+        $dir=$model->brandDir;                              //Get Directory image
+        
+        $this->actionDeleteimage($id,$dir,'logo');         //Delete image
+        
+        //DELETE DATA IN TABLE----------
         $this->findModel($id)->delete();
 
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        //REDIRECT PAGE-----------------
         return $this->redirect(['index']);
     }
 

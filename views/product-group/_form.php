@@ -7,14 +7,17 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\ProductGroup */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="product-group-form">
+<div class="col-lg-8">
+<div class="panel panel-default">
+ <div class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></div>
+  <div class="panel-body">
+    <div class="product-group-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'group')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'group')->textInput(['maxlength' => true,'placeholder'=>'อักษรย่อเพียงตัวเดียว เช่น T,G,A เป็นต้น']) ?>
 
-    <?= $form->field($model, 'detail')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'detail')->textInput(['maxlength' => true,'placeholder'=>'เช่น FRONT MONO SHOCK']) ?>
 
     <?= $form->field($model, 'remark')->textarea(['rows' => 6]) ?>
 
@@ -23,5 +26,7 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
+</div>
+</div>
 </div>

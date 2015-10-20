@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Download */
+/* @var $model app\models\News */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Downloads'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="download-view">
+<div class="news-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,15 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'cat.name',
-            'product_id',
-            'title',
-            'detail:ntext',
-            'file_folder',
-            'file_name',
-            'file_size',
-            'status',
-            'lang',
+            [
+              'attribute'=>'photo',
+              'value'=>$model->newsDir.$model->pic,
+              'format'=>['image',['width'=>'400','title'=>$model->pic]]                              //Set Image Width
+            ],
+            'type',
+            //'pic',
+            'author',
+            'sort_order',
+            'date_create',
+            'date_update',
         ],
     ]) ?>
 

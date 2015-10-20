@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
@@ -75,4 +76,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+ <?php
+ /*  GridView::widget([
+        'dataProvider' => $detail,
+        'filterModel' => $searchModel,
+        'columns' => [
+            'product_id',
+            'title',
+            'detail',
+             'lang',
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]);*/
+?>
 </div>

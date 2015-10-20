@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProductReview */
+/* @var $model app\models\News */
 
-$this->title = Yii::t('app', 'Create Product Review');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Product Reviews'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create News');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-review-create">
+<div class="news-create">
 
 <!--    <h1><?= Html::encode($this->title) ?></h1>-->
 

@@ -138,6 +138,7 @@ use yii\helpers\Url;
     
                 <!-- ตรวจสอบว่ามีรูปภาพหรือไม่ถ้ามีให้ดึงออกมาโชว์และมีปุ่ม delete -->
                 <?php if($model->image): ?>
+                <div class="well">
                 <?= Html::img(Url::to($model->productDir.$model->image),['class'=>'thumbnail','width'=>'300']) //แสดงรูปภาพ ?>
                 <?= Html::a(
                         '<i class="glyphicon glyphicon-trash"></i>',
@@ -145,6 +146,7 @@ use yii\helpers\Url;
                         ['class'=>'btn btn-danger']
                     )//แสดงปุ่ม delete
                 ?>
+                </div>
                 <?php endif; ?>
                 
                 <div class="form-group">

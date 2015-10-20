@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\BrandSearch */
+/* @var $searchModel app\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Brands';
+$this->title = Yii::t('app', 'News');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="brand-index">
+<div class="news-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Brand', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,16 +24,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'brand_id',
+
+            'id',
             [
                 'attribute'=>'รูปภาพ',                                           //title
-                'format' => ['image',['width'=>'100','height'=>'100']],         //Set width,height
+                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
                 'value' => function($model){
                     return $model->getImageUrl();                               //Get function in product model
                 }
             ],
-            'brand',
-            'logo',
+            //'pic',
+            'author',
+            'sort_order',
+            'date_create',
+            // 'date_update',
+            'type',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

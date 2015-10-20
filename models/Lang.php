@@ -59,7 +59,7 @@ class Lang extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getYssDownloads()
+    public function getDownloads()
     {
         return $this->hasMany(YssDownload::className(), ['lang' => 'abb']);
     }
@@ -67,7 +67,7 @@ class Lang extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getYssProductDetails()
+    public function getProductDetails()
     {
         return $this->hasMany(YssProductDetail::className(), ['lang' => 'abb']);
     }

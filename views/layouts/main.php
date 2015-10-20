@@ -52,8 +52,8 @@ AppAsset::register($this);
                      ['label' => 'Product Review', 'url' => ['/product-review/index']],
                 ],
             ],
-
-			['label' => 'Language', 'url' => ['/lang/index']],
+            ['label' => 'News', 'url' => ['/news/index']],
+            ['label' => 'Language', 'url' => ['/lang/index']],
             ['label' => 'Download', 'url' => ['/download/index']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ?

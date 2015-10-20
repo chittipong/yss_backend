@@ -8,40 +8,48 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="yss-model-form">
+<div class="col-lg-8">
+<div class="panel panel-default">
+ <div class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></div>
+  <div class="panel-body">
+       
+        <div class="yss-model-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'model_id')->textInput() ?>
+            <?= $form->field($model, 'model_id')->textInput() ?>
 
-    <?= $form->field($model, 'brand_id')->textInput() ?>
+            <?= $form->field($model, 'brand_id')->textInput() ?>
 
-    <?= $form->field($model, 'model')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'model')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'abeflag')->textInput() ?>
+            <?= $form->field($model, 'abeflag')->textInput() ?>
 
-    <?= $form->field($model, 'year')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'year')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'start')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'start')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'end')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'end')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'len')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'len')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cc')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'cc')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Manafacturer_Code')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'Manafacturer_Code')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'abe')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'abe')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'closeflag')->textInput() ?>
+            <?= $form->field($model, 'closeflag')->textInput() ?>
 
-    <?= $form->field($model, 'imgpath')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'imgpath')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+            <div class="form-group">
+                <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            </div>
 
-    <?php ActiveForm::end(); ?>
+            <?php ActiveForm::end(); ?>
 
+        </div>
+  </div>
+</div>
 </div>

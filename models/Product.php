@@ -58,8 +58,8 @@ class Product extends ActiveRecord
 {
     public $file;
     
-    //public $productDir="uploads/products/";                //Set product images floder
-    public $productDir="../../images/products/";             //Set product images floder
+    //public $productDir="uploads/products/";                       //Set product images floder
+    public $productDir="../../images/products/large/";               //Set product images floder
     
     public $title;
     public $detail;

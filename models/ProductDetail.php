@@ -58,7 +58,7 @@ class ProductDetail extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLang0()
+    public function getLang()
     {
         return $this->hasOne(YssLang::className(), ['abb' => 'lang']);
     }
@@ -69,5 +69,10 @@ class ProductDetail extends \yii\db\ActiveRecord
     public function getProduct()
     {
         return $this->hasOne(YssProduct::className(), ['product_id' => 'product_id']);
+    }
+    
+    public function getLangList(){
+        $list=  Lang::find()->orderBy('id')->all();
+        return \yii\helpers\ArrayHelper::map($list, 'abb', 'lang_name');
     }
 }

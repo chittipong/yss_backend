@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\DownloadSearch */
+/* @var $model app\models\NewsSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="download-search">
+<div class="news-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,23 +17,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'download_cat_id') ?>
+    <?= $form->field($model, 'pic') ?>
 
-    <?= $form->field($model, 'product_id') ?>
+    <?= $form->field($model, 'author') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'sort_order') ?>
 
-    <?= $form->field($model, 'detail') ?>
+    <?= $form->field($model, 'date_create') ?>
 
-    <?php // echo $form->field($model, 'file_folder') ?>
+    <?php // echo $form->field($model, 'date_update') ?>
 
-    <?php // echo $form->field($model, 'file_name') ?>
-
-    <?php // echo $form->field($model, 'file_size') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'lang') ?>
+    <?php // echo $form->field($model, 'type') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
