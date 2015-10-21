@@ -51,7 +51,7 @@ AppAsset::register($this);
             ['label' => 'News', 'url' => ['/news/index']],
             ['label' => 'Download', 'url' => ['/download/index']],
             ['label' => 'Importers', 'url' => ['/importers/index']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            //['label' => 'Contact', 'url' => ['/site/contact']],
             [
                 'label' => 'Config',
                 'items' => [

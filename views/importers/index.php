@@ -26,10 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'import_cat_id',
+            //'import_cat_id',
+            [
+                'label'=>'Importer Zone',
+                'value'=>'importersCat.title'
+            ],
             'title',
             'pic',
-            'detil:ntext',
+            'detil:html',
             // 'status',
             // 'sort_order',
             // 'lang',

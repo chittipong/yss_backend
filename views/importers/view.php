@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'import_cat_id',
             'title',
             'pic',
-            'detil:ntext',
+            'detil:html',  //ntext
             'status',
             'sort_order',
             'lang',

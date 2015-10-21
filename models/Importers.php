@@ -58,8 +58,12 @@ class Importers extends \yii\db\ActiveRecord
         ];
     }
     
-    public function getImportersCat(){
+   /* public function getImportersCat(){
         return $this->hasOne(ImporterCat::className(),['id','title']);
+    }*/
+    
+    public function getImportersCat(){
+        return $this->hasOne(ImporterCat::className(),['id'=>'import_cat_id']);
     }
     
     public function getImportCatList(){

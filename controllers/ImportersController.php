@@ -8,6 +8,7 @@ use app\models\ImportersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * ImportersController implements the CRUD actions for Importers model.
@@ -33,7 +34,14 @@ class ImportersController extends Controller
     public function actionIndex()
     {
         $searchModel = new ImportersSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => Importers::find(),
+            'pagination' => [
+                'pageSize' => 10,       //Set page size
+            ],
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
