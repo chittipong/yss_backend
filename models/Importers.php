@@ -48,7 +48,7 @@ class Importers extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'import_cat_id' => Yii::t('app', 'Import Cat ID'),
+            'import_cat_id' => Yii::t('app', 'Importer Zone'),
             'title' => Yii::t('app', 'Title'),
             'pic' => Yii::t('app', 'Pic'),
             'detil' => Yii::t('app', 'Detil'),
