@@ -35,7 +35,7 @@ class Brand extends \yii\db\ActiveRecord
             
             //Upload image------------
             [['file'],'safe'],
-            [['file'],'file','extensions'=>'jpg,png,gif']
+            [['file'],'file','extensions'=>'jpg,png,gif']  //file type
         ];
     }
 

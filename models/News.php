@@ -72,7 +72,7 @@ class News extends \yii\db\ActiveRecord
      */
     public function getNewsDetails()
     {
-        return $this->hasMany(YssNewsDetail::className(), ['news_id' => 'id']);
+        return $this->hasMany(NewsDetail::className(), ['news_id' => 'id']);
     }
     
     //Product image Path---------------

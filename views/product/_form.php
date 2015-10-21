@@ -13,7 +13,7 @@ use yii\helpers\Url;
 <div class="product-form">
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
     <div class="col-lg-4">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <div class="panel-heading">DETAIL</div>
                 <div class="panel-body">
                   <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
@@ -53,7 +53,7 @@ use yii\helpers\Url;
     
     
     <div class="col-lg-4">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">FEATURE & OPTION</div>
                 <div class="panel-body">
                     
@@ -122,7 +122,7 @@ use yii\helpers\Url;
     
     
     <div class="col-lg-4">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">DETAIL</div>
             <div class="panel-body">
                 <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>

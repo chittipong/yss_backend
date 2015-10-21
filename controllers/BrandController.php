@@ -104,6 +104,7 @@ class BrandController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         $dateNow= date("Y-m-d h:i:s");                           //Set date create
        
         if ($model->load(Yii::$app->request->post())) {
@@ -111,7 +112,8 @@ class BrandController extends Controller
             $upload='';
             
             if($model->file){
-                $newName=$model->brand;                                          //Set image name same Product code
+               // $newName=date("Ymdhis");                                      //Generate filename from Date time
+                $newName=$model->brand;                                         //Set image name
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
                 $imgPath=$model->brandDir;
@@ -119,7 +121,7 @@ class BrandController extends Controller
                 $upload=1;
             }
 
-            if($model->save()){ 
+            if($model->save()){
                 if($upload){
                     $model->file->saveAs($model->brandDir.$model->logo);
                 }
@@ -141,13 +143,13 @@ class BrandController extends Controller
     //FUNCTION FOR DELETE IMAGE------------------
     public function actionDeleteimage($id,$dir,$field){
         $img=$this->findModel($id)->$field;
-
+        //Delete file when file exist-----
         if($img){
             if(!unlink($dir.$img)){
                 return false;
             }
         }
-        
+        //Set null to image field------
         $img=$this->findModel($id);
         $img->$field=null;
         $img->update();
@@ -158,8 +160,6 @@ class BrandController extends Controller
         //REDIRECT PAGE-----------------
         return $this->redirect(['update','id'=>$id]);
     }//end
-    
-    
 
     /**
      * Deletes an existing Brand model.

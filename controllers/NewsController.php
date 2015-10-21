@@ -1,15 +1,16 @@
 <?php
-
 namespace app\controllers;
 
 use Yii;
 use app\models\News;
 use app\models\NewsDetail;
+use app\models\NewsDetailSearch;
 use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\data\ActiveDataProvider;
 /**
  * NewsController implements the CRUD actions for News model.
  */
@@ -47,35 +48,47 @@ class NewsController extends Controller
      * @param integer $id
      * @return mixed
      */
+//    public function actionView($id)
+//    {
+//        return $this->render('view', [
+//            'model' => $this->findModel($id),
+//        ]);
+//    }
+
+    
     public function actionView($id)
     {
+        $model=$this->findModel($id);
+        
+        $detail= NewsDetail::find()->where(['news_id'=>$id,'lang'=>'TH'])->one();       //find News detail
+        if($detail){
+            $model->title=$detail->title;
+            $model->detail=$detail->detail;
+        }
+        
+        //Get News Detail---------------------
+        $newsDetail=NewsDetail::find()->where(['news_id'=>$id])->all();                 //find News detail
+        $query=  NewsDetail::find()->where(['news_id' => $id]);
+        
+        $dataProvider = new ActiveDataProvider([
+           'query' => $query,
+        ]);
+        
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' =>$model,
+            'newsDetail' => $dataProvider,
         ]);
     }
-
+    
     /**
      * Creates a new News model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     
-//    public function actionCreate()
-//    {
-//        $model = new News();
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        } else {
-//            return $this->render('create', [
-//                'model' => $model,
-//            ]);
-//        }
-//    }
-    
     public function actionCreate(){
         $model=new News();
-        
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
         if ($model->load(Yii::$app->request->post())) {
@@ -93,15 +106,18 @@ class NewsController extends Controller
             }
 
             if($model->save()){
-               $newsId=Yii::$app->db->getLastInsertID();                 //Get last insert ID
+               $newsId=Yii::$app->db->getLastInsertID();                    //Get last insert ID
                $title=$_POST['News']['title'];
                $detail=$_POST['News']['detail'];
+               
+               //echo "NewsId: $newsId Title: $title Detail: $detail";  exit();
                
                $this->insertNewsDetail([
                     'news_id'=>$newsId,
                     'title'=>$title,
                     'detail'=>$detail
                 ]);
+               
                
                 if($upload){
                     $model->file->saveAs($model->newsDir.$model->pic);
@@ -129,16 +145,15 @@ class NewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        $model->date_update= date("Y-m-d h:i:s");                           //Set date create
+        $model->date_update= date("Y-m-d h:i:s");                               //Set date create
        
         if ($model->load(Yii::$app->request->post())) {
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
             if($model->file){
-                $newName=date("Ymdhis");                                      //Generate filename from Date time
-                //$newName=$model->code;                                          //Set image name same Product code
+                $newName=date("Ymdhis");                                        //Generate filename from Date time
+                //$newName=$model->code;                                        //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
                 $imgPath=$model->newsDir;
@@ -147,16 +162,25 @@ class NewsController extends Controller
             }
 
             if($model->save()){
-               $newsId=Yii::$app->db->getLastInsertID();                 //Get last insert ID
-               $title=$_POST['News']['title'];
-               $detail=$_POST['News']['detail'];
+               //UPDATE NEWS DETAIL----------------
+               $detail= NewsDetail::find()->where(['news_id'=>$id,'lang'=>'TH'])->one();
+               if($detail){
+                   //Call function for update------
+                    $this->updateNewsDetail([
+                        'news_id'=>$id,
+                        'title'=>$_POST['News']['title'],
+                        'detail'=>$_POST['News']['detail']
+                    ]);
+               }else{
+               //CREATE NEWS DETAIL WHEN THERE IS NO NEWS DETAIL--------
+                    $this->insertNewsDetail([
+                        'news_id'=>$id,
+                        'title'=>$_POST['News']['title'],
+                        'detail'=>$_POST['News']['detail']
+                    ]);
+               }//end***
                
-               $this->insertNewsDetail([
-                    'news_id'=>$newsId,
-                    'title'=>$title,
-                    'detail'=>$detail
-                ]);
-               
+               //UPLOAD PIC------------------
                 if($upload){
                     $model->file->saveAs($model->newsDir.$model->pic);
                 }
@@ -168,6 +192,13 @@ class NewsController extends Controller
                 return $this->redirect(['view','id'=>$model->id]);
             }
         }else{
+            //GET NEWS DETAIL AND SET VALUE-------------------
+            $detail=  NewsDetail::find()->where(['news_id'=>$id])->one();
+            if($detail){
+                $model->title=$detail->title;
+                $model->detail=$detail->detail;
+            }
+            
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -175,18 +206,37 @@ class NewsController extends Controller
     }
     
     
-   //Function for save product detail------
+   //INSERT NEWS DETAIL----------------
     public function insertNewsDetail($data){
         $model=new NewsDetail();
-        $model->id=$data['news_id'];
+        $model->news_id=$data['news_id'];
         $model->title=$data['title'];
         $model->detail=$data['detail'];
-        $model->lang='TH';          //Set default language
+        
+        //Set default language----------
+        if(empty($model->lang)){
+            $model->lang='TH';                  
+        }
         
         if($model->save()){
             return true;
         }else{
             return false;
+        }
+    }//end**
+    
+    //UPDATE NEWS DETAIL---------------
+    public function updateNewsDetail($data){
+        $model= NewsDetail::find()->where(['news_id'=>$data['news_id'],'lang'=>'TH'])->one();
+        if($model){
+             $model->title=$data['title'];
+             $model->detail=$data['detail'];
+        
+            if($model->save()){
+                return true;
+            }else{
+                return false;
+            }
         }
     }//end**
     

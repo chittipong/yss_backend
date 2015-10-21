@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%yss_news_detail}}".
@@ -34,7 +35,7 @@ class NewsDetail extends \yii\db\ActiveRecord
         return [
             [['news_id'], 'required'],
             [['news_id', 'sort_order'], 'integer'],
-            [['title', 'detail'], 'string', 'max' => 45],
+            [['title', 'detail'], 'string', 'max' => 100],
             [['lang'], 'string', 'max' => 5]
         ];
     }
@@ -50,7 +51,7 @@ class NewsDetail extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'หัวข้อ'),
             'detail' => Yii::t('app', 'รายละเอียด'),
             'sort_order' => Yii::t('app', 'ลำดับ'),
-            'lang' => Yii::t('app', 'ลำดับ'),
+            'lang' => Yii::t('app', 'ภาษา'),
         ];
     }
 
@@ -59,6 +60,15 @@ class NewsDetail extends \yii\db\ActiveRecord
      */
     public function getNews()
     {
-        return $this->hasOne(YssNews::className(), ['id' => 'news_id']);
+        return $this->hasOne(News::className(), ['id' => 'news_id']);
+    }
+    
+    public function getNewsDetail(){
+        return $this->hasMany(NewsDetail::className(),['news_id'=>'news_id']);
+    }
+    
+    public function getLangList(){
+        $list=Lang::find()->orderBy('sort_order')->all();
+        return ArrayHelper::map($list, 'abb', 'lang_name');
     }
 }

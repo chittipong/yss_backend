@@ -137,7 +137,11 @@ class ProductController extends Controller
         $model->product_id=$data['product_id'];
         $model->title=$data['title'];
         $model->detail=$data['detail'];
-        $model->lang='TH';
+       
+        //Set default language----------
+        if(empty($model->lang)){
+            $model->lang='TH';                  
+        }
         
         if($model->save()){
             return true;

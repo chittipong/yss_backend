@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -23,8 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a(Yii::t('app', 'Insert Detail'),['news-detail/create','id'=>$model->id],['class'=>'btn btn-success'])?>
     </p>
-
+    
+<div class="panel panel-primary">
+  <div class="panel-heading">News Detail</div>
+  <div class="panel-body">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -38,9 +43,36 @@ $this->params['breadcrumbs'][] = $this->title;
             //'pic',
             'author',
             'sort_order',
-            'date_create',
-            'date_update',
+            'title',
+            'detail',
+            [
+                'attribute' => 'date_create',
+                'format' => ['date', 'php:d-M-Y h:i:s']
+            ],
+            [
+                'attribute' => 'date_update',
+                'format' => ['date', 'php:d-M-Y h:i:s']
+            ],
         ],
     ]) ?>
+  </div>
+</div>
+</div>
 
+<div class="panel panel-primary">
+  <div class="panel-heading">News Detail</div>
+  <div class="panel-body">
+     <?= GridView::widget([
+        'dataProvider' => $newsDetail,
+        'columns' => [
+            'id',
+            'news_id',
+            'title',
+            'detail',
+            'sort_order',
+            'lang',
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+</div>
 </div>

@@ -44,18 +44,28 @@ AppAsset::register($this);
                 'items' => [
                      ['label' => 'Product', 'url' => ['/product/index']],
                      ['label' => 'Product Detail', 'url' => ['/product-detail/index']],
-                     ['label' => 'Product Group', 'url' => ['/product-group/index']],
-                     ['label' => 'Product Type', 'url' => ['/product-type/index']],
-                     ['label' => 'Brand', 'url' => ['/brand/index']],
-                     ['label' => 'Model', 'url' => ['/yss-model/index']],
                      ['label' => 'Product Gallery', 'url' => ['/product-gallery/index']],
                      ['label' => 'Product Review', 'url' => ['/product-review/index']],
                 ],
             ],
             ['label' => 'News', 'url' => ['/news/index']],
-            ['label' => 'Language', 'url' => ['/lang/index']],
             ['label' => 'Download', 'url' => ['/download/index']],
+            ['label' => 'Importers', 'url' => ['/importers/index']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+            [
+                'label' => 'Config',
+                'items' => [
+                    ['label' => 'Language', 'url' => ['/lang/index']],
+                    ['label' => 'Product Group', 'url' => ['/product-group/index']],
+                    ['label' => 'Product Type', 'url' => ['/product-type/index']],
+                    ['label' => 'Brand', 'url' => ['/brand/index']],
+                    ['label' => 'Model', 'url' => ['/yss-model/index']],
+                    ['label' => 'Piston', 'url' => ['/piston/index']],
+                    ['label' => 'Shaft', 'url' => ['/shaft/index']],
+                    ['label' => 'Preload Option', 'url' => ['/preload-option/index']],
+                    ['label' => 'Importers Category', 'url' => ['/importer-cat/index']],
+                ],
+            ],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [

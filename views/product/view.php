@@ -71,8 +71,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'dtg',
             'create_by',
             'update_by',
-            'date_create',
-            'date_update',
+            //'date_create',
+            //'date_update',
+            [
+                'attribute' => 'date_create',
+                'format' => ['date', 'php:d-M-Y h:i:s']
+            ],
+            [
+                'attribute' => 'date_update',
+                'format' => ['date', 'php:d-M-Y h:i:s']
+            ],
         ],
     ]) ?>
 
