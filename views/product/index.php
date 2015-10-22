@@ -19,59 +19,70 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute'=>'รูปภาพ',                                           //title
-                'format' => ['image',['width'=>'60','height'=>'60']],           //Set width,height
-                'value' => function($model){
+                'attribute' => 'รูปภาพ', //title
+                'format' => ['image', ['width' => '60', 'height' => '60']], //Set width,height
+                'value' => function($model) {
                     return $model->getImageUrl();                               //Get function in product model
                 }
             ],
-            'product_id',
-            'code',
-            'brand.brand',
-            'model.model',
-            'pgroup.group',
-            'ptype.type',
-            // 'abeflag',
-            // 'hyd',
-            // 'emu',
-            // 'res',
-            // 'type',
-            // 'top',
-            // 'bot',
-            // 'image',
-            // 'contenttype',
-            // 'image_name',
-            // 'Thumbnails',
-            // 'closeflag',
-            // 'spring',
-            // 'length',
-            // 'piston',
-            // 'shaft',
-            // 'preload',
-            // 'rebound',
-            // 'compression',
-            // 'length_adjuster',
-            // 'hydraulic',
-            // 'emulsion',
-            // 'piggy_back',
-            // 'on_hose',
-            // 'free_piston',
-            // 'dtg',
-            // 'create_by',
-            // 'update_by',
-            // 'date_create',
-            // 'date_update',
-            // 'price',
-            // 'discount',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            
+                    'product_id',
+                    //Custom Lik-------------
+                          /*  [
+                                'label'=>'Custom Link',
+                                'format'=>'raw',
+                                'value' => function($dataProvider){
+                                    $url = ['product/view','id'=>$dataProvider->product_id];
+                                    return Html::a('Detail', $url, ['title' => 'Go']);
+                                }
+                            ],*/
+                    'code',
+                    'model.model',
+                    'brand.brand',
+                    'pgroup.group',
+                    'ptype.type',
+                    // 'abeflag',
+                    // 'hyd',
+                    // 'emu',
+                    // 'res',
+                    // 'type',
+                    // 'top',
+                    // 'bot',
+                    // 'image',
+                    // 'contenttype',
+                    // 'image_name',
+                    // 'Thumbnails',
+                    // 'closeflag',
+                    // 'spring',
+                    // 'length',
+                    // 'piston',
+                    // 'shaft',
+                    // 'preload',
+                    // 'rebound',
+                    // 'compression',
+                    // 'length_adjuster',
+                    // 'hydraulic',
+                    // 'emulsion',
+                    // 'piggy_back',
+                    // 'on_hose',
+                    // 'free_piston',
+                    // 'dtg',
+                    // 'create_by',
+                    // 'update_by',
+                    // 'date_create',
+                    // 'date_update',
+                    // 'price',
+                    // 'discount',
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]);
+            ?>
 
 </div>

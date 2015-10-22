@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use \app\models\ProductDetailSearch;
+use yii\data\ActiveDataProvider;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -49,15 +50,29 @@ class ProductController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
-        $searchModel = new ProductDetailSearch();
-        //$detail = new ProductDetail();
+    
+    public function actionView($id){
+        $model=$this->findModel($id);
+        
+        $detail= ProductDetail::find()->where(['product_id'=>$id,'main'=>'Y'])->one();       //find News detail
+        if($detail){
+            $model->title=$detail->title;
+            $model->detail=$detail->detail;
+            $model->lang=$detail->lang;
+        }
+        
+        //Get All Product Detail---------------------
+        $productDetail=  ProductDetail::find()->where(['product_id'=>$id])->all();                 //find News detail
+        $query= ProductDetail::find()->where(['product_id' => $id]);
+        
+        $dataProvider = new ActiveDataProvider([
+           'query' => $query,
+        ]);
+        
         
         return $this->render('view', [
-            'model' => $this->findModel($id),
-            'searchModel' => $searchModel,
-            //'detail'=> $detail->findAll(['product_id'=>$id])
+            'model' =>$model,
+            'prodDetail' => $dataProvider,
         ]);
     }
 
@@ -94,7 +109,8 @@ class ProductController extends Controller
                $this->insertDetail([
                     'product_id'=>$productId,
                     'title'=>$title,
-                    'detail'=>$detail
+                    'detail'=>$detail,
+                    'main'=>'Y'
                 ]);
                
                 if($upload){
@@ -132,23 +148,24 @@ class ProductController extends Controller
     
     
     //Function for save product detail------
-    public function insertDetail($data){
-        $model=new ProductDetail();
-        $model->product_id=$data['product_id'];
-        $model->title=$data['title'];
-        $model->detail=$data['detail'];
-       
-        //Set default language----------
-        if(empty($model->lang)){
-            $model->lang='TH';                  
-        }
-        
-        if($model->save()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+        public function insertDetail($data){
+            $model=new ProductDetail();
+            $model->product_id=$data['product_id'];
+            $model->title=$data['title'];
+            $model->detail=$data['detail'];
+            $model->main=$data['main'];
+
+            //Set default language----------
+            if(empty($model->lang)){
+                $model->lang='TH';                  
+            }
+
+            if($model->save()){
+                return true;
+            }else{
+                return false;
+            }
+        }//end***
 
     /**
      * Updates an existing Product model.
@@ -175,6 +192,26 @@ class ProductController extends Controller
             }
             
             if($model->save()){
+                //UPDATE PRODUCT DETAIL----------------
+               $detail= ProductDetail::find()->where(['product_id'=>$id,'main'=>'Y'])->one();
+               if($detail){
+                   //Call function for update------
+                    $this->updateDetail([
+                        'product_id'=>$id,
+                        'title'=>$_POST['Product']['title'],
+                        'detail'=>$_POST['Product']['detail'],
+                    ]);
+               }else{
+               //CREATE PRODUCT DETAIL WHEN THERE IS NO PRODUCT DETAIL--------
+                    $this->insertDetail([
+                        'product_id'=>$id,
+                        'title'=>$_POST['Product']['title'],
+                        'detail'=>$_POST['Product']['detail'],
+                        'main'=>'Y'
+                    ]);
+               }//end***
+               
+                //UPLOAD FILE--------------------
                 if($upload){
                     $model->file->saveAs($model->productDir.$model->image);
                 }
@@ -186,6 +223,13 @@ class ProductController extends Controller
                 return $this->redirect(['view','id'=>$model->product_id]);
             }
         } else {
+            //GET PRODUCT DETAIL AND SET VALUE-------------------
+            $detail= ProductDetail::find()->where(['product_id'=>$id,'main'=>'Y'])->one();
+            if($detail){
+                $model->title=$detail->title;
+                $model->detail=$detail->detail;
+            }
+            
             //SET DEFAULT VALUE FOR RADIO BUTTON ELEMENT
                  $model->abeflag=0;    
                  $model->hyd=0; 
@@ -208,6 +252,21 @@ class ProductController extends Controller
         }
     }
     
+    
+     //Function for save product detail------
+    public function updateDetail($data){
+        $model= ProductDetail::find()->where(['product_id'=>$data['product_id'],'main'=>'Y'])->one();
+        if($model){
+             $model->title=$data['title'];
+             $model->detail=$data['detail'];
+        
+            if($model->save()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
     
     //FUNCTION FOR DELETE IMAGE------------------
     public function actionDeleteimage($id,$dir,$field){

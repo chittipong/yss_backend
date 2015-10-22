@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             [
                 'attribute'=>'รูปภาพ',                                           //title
                 'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
@@ -34,11 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             //'pic',
+            'type',
             'author',
             'sort_order',
-            'date_create',
             // 'date_update',
-            'type',
+            'date_create',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

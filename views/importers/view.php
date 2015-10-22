@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'import_cat_id',
+            [
+              'attribute'=>'pic',
+              'value'=>$model->importerDir.$model->pic,
+              'format'=>['image',['width'=>'200','title'=>$model->pic]]                              //Set Image Width
+            ],
+            'importersCat.title',
             'title',
             'pic',
             'detil:html',  //ntext

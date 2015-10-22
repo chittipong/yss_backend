@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use app\models\Lang;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%yss_product_detail}}".
@@ -19,6 +21,9 @@ use Yii;
  */
 class ProductDetail extends \yii\db\ActiveRecord
 {
+    
+    public $file;
+    public $detailDir="../../images/products/large/";
     /**
      * @inheritdoc
      */
@@ -33,10 +38,15 @@ class ProductDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id'], 'integer'],
-            [['keyword'], 'string'],
+            [['product_id','sort_order'], 'integer'],
+            [['keyword','main'], 'string'],
             [['title', 'detail'], 'string', 'max' => 100],
-            [['lang'], 'string', 'max' => 5]
+            [['lang'], 'string', 'max' => 5],
+            [['pic'], 'string', 'max' => 60],
+            
+            //For upload pic
+            [['file'],'safe'],
+            [['file'],'file','extensions'=>'jpg,png,gif']
         ];
     }
 
@@ -52,6 +62,9 @@ class ProductDetail extends \yii\db\ActiveRecord
             'detail' => Yii::t('app', 'รายละเอียด'),
             'lang' => Yii::t('app', 'ภาษา'),
             'keyword' => Yii::t('app', 'คีย์เวิร์ด'),
+            'main'=>Yii::t('app','Default'),
+            'sort_order'=>Yii::t('app','ลำดับ'),
+            'file'=>Yii::t('app','รูปภาพ')
         ];
     }
 
@@ -60,7 +73,7 @@ class ProductDetail extends \yii\db\ActiveRecord
      */
     public function getLang()
     {
-        return $this->hasOne(YssLang::className(), ['abb' => 'lang']);
+        return $this->hasOne(Lang::className(), ['abb' => 'lang']);
     }
 
     /**
@@ -68,11 +81,16 @@ class ProductDetail extends \yii\db\ActiveRecord
      */
     public function getProduct()
     {
-        return $this->hasOne(YssProduct::className(), ['product_id' => 'product_id']);
+        return $this->hasOne(Product::className(), ['product_id' => 'product_id']);
     }
     
     public function getLangList(){
         $list=  Lang::find()->orderBy('id')->all();
         return \yii\helpers\ArrayHelper::map($list, 'abb', 'lang_name');
+    }
+    
+    //Product Detail image Path---------------
+    public function getImageUrl(){
+        return Url::to($this->detailDir.$this->pic);       
     }
 }

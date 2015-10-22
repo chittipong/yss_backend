@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%importers}}".
@@ -19,6 +20,8 @@ use yii\helpers\ArrayHelper;
  */
 class Importers extends \yii\db\ActiveRecord
 {
+    public $file;
+    public $importerDir="../../images/distributor/";
     /**
      * @inheritdoc
      */
@@ -37,7 +40,10 @@ class Importers extends \yii\db\ActiveRecord
             [['detil'], 'string'],
             [['title'], 'string', 'max' => 250],
             [['pic', 'lang'], 'string', 'max' => 50],
-            [['status'], 'string', 'max' => 2]
+            [['status'], 'string', 'max' => 2],
+            
+            [['file'],'safe'],
+            [['file'],'file','extensions'=>'jpg,png,gif']
         ];
     }
 
@@ -50,7 +56,7 @@ class Importers extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'import_cat_id' => Yii::t('app', 'Importer Zone'),
             'title' => Yii::t('app', 'Title'),
-            'pic' => Yii::t('app', 'Pic'),
+            'file' => Yii::t('app', 'Pic'),
             'detil' => Yii::t('app', 'Detil'),
             'status' => Yii::t('app', 'Status'),
             'sort_order' => Yii::t('app', 'Sort Order'),
@@ -74,5 +80,10 @@ class Importers extends \yii\db\ActiveRecord
     public function getLangList(){
         $list=Lang::find()->orderBy('sort_order')->all();
         return ArrayHelper::map($list, 'abb', 'lang_name');
+    }
+    
+    //Product image Path---------------
+    public function getImageUrl(){
+        return Url::to($this->importerDir.$this->pic);     
     }
 }

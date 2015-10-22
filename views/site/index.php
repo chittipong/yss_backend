@@ -1,6 +1,6 @@
 <?php
-
 /* @var $this yii\web\View */
+
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\base\Widget;
@@ -14,44 +14,63 @@ $this->title = 'YSS ADMINISTRATOR';
             <div class="col-lg-12">
                 <div class="panel panel-info">
                     <div class="panel-heading"><h4>Products</h4></div>
-                     <div class="panel-body">
-                            <?= GridView::widget([
-                                'dataProvider' => $dataProvider,
-                                'filterModel' => $searchModel,
-                                'columns' => [
-                                    //['class' => 'yii\grid\SerialColumn'],
-                                    //'product_id',
-                                    /*[
-                                        'attribute'=>'รูปภาพ',                                           //title
-                                        'format' => ['image',['width'=>'60','height'=>'60']],           //Set width,height
-                                        'value' => function($model){
-                                            return $model->getImageUrl();                               //Get function in product model
-                                        }
-                                    ],*/
-                                    'code',
-                                    'brand.brand',
-                                    'model.model',
-                                    'pgroup.group',
-                                    'ptype.type',
-                                    // 'abeflag',
-                                    // 'hyd',
-                                    // 'emu',
-                                    // 'res',
-                                    // 'type',
-                                    // 'top',
-                                    // 'bot',
-                                    // 'image',
-                                    // 'contenttype',
-                                    // 'image_name',
-                                    // 'Thumbnails',
-                                    // 'closeflag',
-                                    // 'spring',
-                                    // 'length',
-                                    // 'piston',
-                                    // 'shaft',
-                                     'preload',
-                                     'rebound',
-                                     'compression',
+                    <div class="panel-body">
+                        <?=
+                        GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            'filterModel' => $searchModel,
+                            'columns' => [
+                                //['class' => 'yii\grid\SerialColumn'],
+                                //'product_id',
+                                 [
+                                  'attribute'=>'รูปภาพ',                                           //title
+                                  'format' => ['image',['width'=>'60','height'=>'60']],           //Set width,height
+                                  'value' => function($model){
+                                        return $model->getImageUrl();                               //Get function in product model
+                                  }
+                                  ], 
+
+                                //Custom Lik-------------
+                                        [
+                                            'label' => 'Custom Link',
+                                            'format' => 'raw',
+                                            'value' => function($dataProvider) {
+                                                $url = ['product/view', 'id' => $dataProvider->product_id];
+                                                return Html::a('<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Detail</button>', $url, ['title' => 'Go']);
+                                            }
+                                        ],
+                                         [
+                                            'label' => 'Custom Link',
+                                            'format' => 'raw',
+                                            'value' => function($dataProvider) {
+                                                $url = ['product/view', 'id' => $dataProvider->product_id];
+                                                return Html::a('<button type="button" class="btn btn-default">'.$dataProvider->code.'</button>', $url, ['title' => 'Go']);
+                                            }
+                                        ],
+                                        'code',
+                                        'brand.brand',
+                                        'model.model',
+                                        'pgroup.group',
+                                        'ptype.type',
+                                        // 'abeflag',
+                                        // 'hyd',
+                                        // 'emu',
+                                        // 'res',
+                                        // 'type',
+                                        // 'top',
+                                        // 'bot',
+                                        // 'image',
+                                        // 'contenttype',
+                                        // 'image_name',
+                                        // 'Thumbnails',
+                                        // 'closeflag',
+                                        // 'spring',
+                                        // 'length',
+                                        // 'piston',
+                                        // 'shaft',
+                                        'preload',
+                                        'rebound',
+                                        'compression',
                                     // 'length_adjuster',
                                     // 'hydraulic',
                                     // 'emulsion',
@@ -65,11 +84,11 @@ $this->title = 'YSS ADMINISTRATOR';
                                     // 'date_update',
                                     // 'price',
                                     // 'discount',
-
                                     //['class' => 'yii\grid\ActionColumn'],
-                                ],
-                            ]); ?>
-                     </div></div>
+                                    ],
+                                ]);
+                                ?>
+                    </div></div>
             </div>
         </div>
     </div>

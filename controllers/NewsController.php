@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 /**
  * NewsController implements the CRUD actions for News model.
  */
@@ -260,6 +261,20 @@ class NewsController extends Controller
         //REDIRECT PAGE-----------------
         return $this->redirect(['update','id'=>$id]);
     }//end**
+    
+    
+     //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
+    public function deleteImageNoMsg($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }
+        }
+        $img=$this->findModel($id);
+        $img->$field=null;
+        $img->update();
+    }//end**
 
     /**
      * Deletes an existing News model.
@@ -267,10 +282,22 @@ class NewsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    public function actionDelete($id=null)
+    {        
+        $model=new News();
+        $dir=$model->newsDir;                           
+        
+        //DELETE PIC IN FLODER------
+        $this->deleteImageNoMsg($id,$dir,'pic');                            //Delete pic in floder
+        
+        //DELETE DATA IN news_detail AND news TABLE------
+        NewsDetail::deleteAll('news_id = :news_id',['news_id'=>$id]);       //Delete news detail  **ถ้าไม่ลบจะ error เพราะมีการอ้างอิง id ไปใช้
+        $this->findModel($id)->delete();                                    //Delete news
 
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        //REDIRECT PAGE-----------------
         return $this->redirect(['index']);
     }
 

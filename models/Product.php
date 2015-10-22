@@ -63,6 +63,7 @@ class Product extends ActiveRecord
     
     public $title;
     public $detail;
+    public $lang;
 
 
     /**

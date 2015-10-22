@@ -8,6 +8,7 @@ use app\models\ProductDetailSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductDetailController implements the CRUD actions for ProductDetail model.
@@ -58,18 +59,46 @@ class ProductDetailController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    
+    public function actionCreate($id=null){
         $model = new ProductDetail();
+        $dateNow= date("Y-m-d h:i:s");                              
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->detailDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+            if($model->save()){
+                //UPLOAD PICTURE----------------
+                if($upload){
+                    $model->file->saveAs($model->detailDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
+            if(!empty($id)){
+                $model->product_id=$id;
+            }
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
-    }
+    }//end***
 
     /**
      * Updates an existing ProductDetail model.
@@ -77,29 +106,105 @@ class ProductDetailController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+
+    
+     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
+        $dateNow= date("Y-m-d h:i:s");                              
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->detailDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+            //UPDATE MAIN DEFAULT BEFORE UPDATE----------
+            if($model->main='Y'){
+                ProductDetail::updateAll(['main'=>'N'],"product_id=$model->product_id");                //ถ้ามีการกำหนด main default ใหม่จะทำการอัพเดตให้ทุก Record เป็น N ก่อน แล้วค่อนอัพเดต Reccord ที่ถูกเซตเป็น Y
+            }
+            
+            //UPDATE DATABASE------------------
+            if($model->save()){
+                //UPLOAD PICTURE---------------
+                if($upload){
+                    $model->file->saveAs($model->detailDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
-    }
-
+    }//end***
+    
+    
+    
+    //FUNCTION FOR DELETE IMAGE------------------
+    public function actionDeleteimage($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }
+        }
+        
+        $img=$this->findModel($id);
+        $img->$field=null;
+        $img->update();
+        
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+        //REDIRECT PAGE-----------------
+        return $this->redirect(['update','id'=>$id]);
+    }//end**
+    
+    
     /**
      * Deletes an existing ProductDetail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+//    public function actionDelete($id=null)
+//    {
+//        $this->findModel($id)->delete();
+//
+//        return $this->redirect(['index']);
+//    }
+    
+    
+    public function actionDelete($id=null){
         $this->findModel($id)->delete();
 
+        return $this->redirect(['index']);
+        
+        $model=new News();
+        $dir=$model->newsDir;                            //Get Director image
+        
+        $this->actionDeleteimage($id,$dir,'pic');         //Delete product image
+        $this->findModel($id)->delete();
+
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        //REDIRECT PAGE-----------------
         return $this->redirect(['index']);
     }
 

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
 
 /**
  * ImportersController implements the CRUD actions for Importers model.
@@ -68,11 +69,35 @@ class ImportersController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Importers();
+        $model=new Importers();
+        $dateNow= date("Y-m-d h:i:s");                           //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->importerDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+            if($model->save()){
+                if($upload){
+                    $model->file->saveAs($model->importerDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -89,14 +114,58 @@ class ImportersController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->importerDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
+
+            if($model->save()){
+                if($upload){
+                    $model->file->saveAs($model->importerDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
     }
+    
+    
+    //FUNCTION FOR DELETE IMAGE------------------
+    public function actionDeleteimage($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }
+        }
+        
+        $img=$this->findModel($id);
+        $img->$field=null;
+        $img->update();
+        
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+        //REDIRECT PAGE-----------------
+        return $this->redirect(['update','id'=>$id]);
+    }//end**
 
     /**
      * Deletes an existing Importers model.
@@ -106,9 +175,7 @@ class ImportersController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+   
     }
 
     /**

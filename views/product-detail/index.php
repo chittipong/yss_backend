@@ -19,21 +19,40 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create Product Detail'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            //'id',
+            [
+                'attribute'=>'รูปภาพ',                                           //title
+                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
+                'value' => function($model){
+                    return $model->getImageUrl();                               //Get function in product model
+                }
+            ],
             'product_id',
             'title',
             'detail',
             'lang',
+            [
+                //ดึงค่ามาตรวจสอบแล้วแสดงในแบบที่ต้องการ-------
+                'label' => 'Default',
+                'format' => 'text',
+                'value' => function($prodDetail) {
+                    if ($prodDetail->main == 'Y') {
+                        return 'Yes';
+                    } else {
+                        return '';
+                    }
+                }
+            ],
             // 'keyword:ntext',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 
 </div>

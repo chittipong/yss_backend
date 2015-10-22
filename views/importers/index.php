@@ -26,13 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            [
+                'attribute'=>'รูปภาพ',                                           //title
+                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
+                'value' => function($model){
+                    return $model->getImageUrl();                               //Get function in product model
+                }
+            ],
             //'import_cat_id',
             [
                 'label'=>'Importer Zone',
                 'value'=>'importersCat.title'
             ],
             'title',
-            'pic',
+            //'pic',
             'detil:html',
             // 'status',
             // 'sort_order',

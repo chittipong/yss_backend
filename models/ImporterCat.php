@@ -43,7 +43,7 @@ class ImporterCat extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
+            'title' => Yii::t('app', 'Zone'),
             'sort_order' => Yii::t('app', 'Sort Order'),
             'status' => Yii::t('app', 'Status'),
             'lang' => Yii::t('app', 'Lang'),
