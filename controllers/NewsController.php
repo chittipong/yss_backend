@@ -49,19 +49,12 @@ class NewsController extends Controller
      * @param integer $id
      * @return mixed
      */
-//    public function actionView($id)
-//    {
-//        return $this->render('view', [
-//            'model' => $this->findModel($id),
-//        ]);
-//    }
-
     
     public function actionView($id)
     {
         $model=$this->findModel($id);
         
-        $detail= NewsDetail::find()->where(['news_id'=>$id,'lang'=>'TH'])->one();       //find News detail
+        $detail= NewsDetail::find()->where(['news_id'=>$id,'main'=>'Y'])->one();       //find News detail
         if($detail){
             $model->title=$detail->title;
             $model->detail=$detail->detail;
@@ -96,6 +89,7 @@ class NewsController extends Controller
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
+            //UPLOAD SETUP-----------------
             if($model->file){
                 $newName=date("Ymdhis");                                      //Generate filename from Date time
                 //$newName=$model->code;                                          //Set image name same Product code
@@ -107,19 +101,22 @@ class NewsController extends Controller
             }
 
             if($model->save()){
+               //NEWS DETAIL SETUP--------------------
                $newsId=Yii::$app->db->getLastInsertID();                    //Get last insert ID
                $title=$_POST['News']['title'];
                $detail=$_POST['News']['detail'];
                
                //echo "NewsId: $newsId Title: $title Detail: $detail";  exit();
-               
+              
+               //INSERT NEWS DETAIL---------------
                $this->insertNewsDetail([
                     'news_id'=>$newsId,
                     'title'=>$title,
-                    'detail'=>$detail
+                    'detail'=>$detail,
+                    'main'=>'Y'
                 ]);
                
-               
+               //START UPLOAD IMAGE--------------
                 if($upload){
                     $model->file->saveAs($model->newsDir.$model->pic);
                 }
@@ -164,7 +161,7 @@ class NewsController extends Controller
 
             if($model->save()){
                //UPDATE NEWS DETAIL----------------
-               $detail= NewsDetail::find()->where(['news_id'=>$id,'lang'=>'TH'])->one();
+               $detail= NewsDetail::find()->where(['news_id'=>$id,'main'=>'Y'])->one();
                if($detail){
                    //Call function for update------
                     $this->updateNewsDetail([
@@ -177,13 +174,15 @@ class NewsController extends Controller
                     $this->insertNewsDetail([
                         'news_id'=>$id,
                         'title'=>$_POST['News']['title'],
-                        'detail'=>$_POST['News']['detail']
+                        'detail'=>$_POST['News']['detail'],
+                        'main'=>'Y'
                     ]);
                }//end***
                
                //UPLOAD PIC------------------
                 if($upload){
                     $model->file->saveAs($model->newsDir.$model->pic);
+                    
                 }
                 
                 //SET DISPLAY MESSAGE ----------
@@ -213,11 +212,7 @@ class NewsController extends Controller
         $model->news_id=$data['news_id'];
         $model->title=$data['title'];
         $model->detail=$data['detail'];
-        
-        //Set default language----------
-        if(empty($model->lang)){
-            $model->lang='TH';                  
-        }
+        $model->main=$data['main'];
         
         if($model->save()){
             return true;
@@ -228,7 +223,7 @@ class NewsController extends Controller
     
     //UPDATE NEWS DETAIL---------------
     public function updateNewsDetail($data){
-        $model= NewsDetail::find()->where(['news_id'=>$data['news_id'],'lang'=>'TH'])->one();
+        $model= NewsDetail::find()->where(['news_id'=>$data['news_id'],'main'=>'Y'])->one();
         if($model){
              $model->title=$data['title'];
              $model->detail=$data['detail'];
@@ -247,19 +242,23 @@ class NewsController extends Controller
         $img=$this->findModel($id)->$field;
         if($img){
             if(!unlink($dir.$img)){
-                return false;
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบภาพได้','options'=>['class'=>'alert-warning']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
+            }else{ //WHEN DELETE FILE SUCCESS-------
+                $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();             //Update field
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
             }
         }
-        
-        $img=$this->findModel($id);
-        $img->$field=null;
-        $img->update();
-        
-        //SET DISPLAY MESSAGE ----------
-        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-                
-        //REDIRECT PAGE-----------------
-        return $this->redirect(['update','id'=>$id]);
     }//end**
     
     
@@ -269,11 +268,13 @@ class NewsController extends Controller
         if($img){
             if(!unlink($dir.$img)){
                 return false;
+            }else{
+                /*$img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();*/
+                return true;
             }
         }
-        $img=$this->findModel($id);
-        $img->$field=null;
-        $img->update();
     }//end**
 
     /**

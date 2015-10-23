@@ -90,12 +90,13 @@ class ProductController extends Controller
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
+            //CHECK FILE UPLOAD-----------
             if($model->file){
                 //$newName=date("Ymdhis");                                      //Generate filename from Date time
                 $newName=$model->code;                                          //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
-                //$imgPath='uploads/products/';                               //Image Path
+                //SET UP FOR UPLOAD---------
                 $imgPath=$model->productDir;
                 $model->image=$model->file->name;                  
                 $upload=1;
@@ -105,7 +106,7 @@ class ProductController extends Controller
                $productId=Yii::$app->db->getLastInsertID();                 //Get last insert ID
                $title=$_POST['Product']['title'];
                $detail=$_POST['Product']['detail'];
-               
+               //INSERT DETAIL----------
                $this->insertDetail([
                     'product_id'=>$productId,
                     'title'=>$title,
@@ -155,11 +156,6 @@ class ProductController extends Controller
             $model->detail=$data['detail'];
             $model->main=$data['main'];
 
-            //Set default language----------
-            if(empty($model->lang)){
-                $model->lang='TH';                  
-            }
-
             if($model->save()){
                 return true;
             }else{
@@ -182,14 +178,21 @@ class ProductController extends Controller
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
+            //CHECK FIEL UPLOAD 
             if($model->file){
                 //$newName=date("Ymdhis");                                      //Generate filename from Date time
                 $newName=$model->code;                                          //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set file name
                 
-                $model->image=$model->file->name;                  
+                $model->image=$model->file->name;                               //Set file name to image field
                 $upload=1;
+                                
+                //DELETE OLD PICTURE***
+                $this->deleteImageNoMsg($model->product_id,$model->productDir,'image');
+                
             }
+            
+            //echo $model->image; exit();
             
             if($model->save()){
                 //UPDATE PRODUCT DETAIL----------------
@@ -216,6 +219,7 @@ class ProductController extends Controller
                     $model->file->saveAs($model->productDir.$model->image);
                 }
                 
+                //echo $model->image; exit();
                 //SET DISPLAY MESSAGE ----------
                 Yii::$app->getSession()->setFlash('alert',['body'=>'แก้ไขข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
                 
@@ -273,21 +277,40 @@ class ProductController extends Controller
         $img=$this->findModel($id)->$field;
         if($img){
             if(!unlink($dir.$img)){
-                return false;
+                 //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
+            }else{
+                $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();
+
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
             }
         }
-        
-        $img=$this->findModel($id);
-        $img->$field=null;
-        $img->update();
-        
-        //SET DISPLAY MESSAGE ----------
-        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-                
-        //REDIRECT PAGE-----------------
-        return $this->redirect(['update','id'=>$id]);
     }//end
     
+    
+    //FUNCTION FOR DELETE IMAGE NO SHOW MESSAGE------------------
+    public function deleteImageNoMsg($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }else{
+               /* $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();*/
+              return true;
+            }
+        }
+    }//end
 
     /**
      * Deletes an existing Product model.
@@ -300,7 +323,10 @@ class ProductController extends Controller
         $model=new Product();
         $dir=$model->productDir;                            //Get Director image
         
-        $this->actionDeleteimage($id,$dir,'image');         //Delete product image
+        //DELETE IMAGE--------------
+        $this->deleteImageNoMsg($id,$dir,'image');        
+        
+        //DELETE DATA IN TABLE
         $this->findModel($id)->delete();
 
         //SET DISPLAY MESSAGE ----------

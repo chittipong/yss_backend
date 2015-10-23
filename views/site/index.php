@@ -29,24 +29,14 @@ $this->title = 'YSS ADMINISTRATOR';
                                         return $model->getImageUrl();                               //Get function in product model
                                   }
                                   ], 
-
-                                //Custom Lik-------------
-                                        [
+                                         /*[
                                             'label' => 'Custom Link',
                                             'format' => 'raw',
                                             'value' => function($dataProvider) {
                                                 $url = ['product/view', 'id' => $dataProvider->product_id];
-                                                return Html::a('<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Detail</button>', $url, ['title' => 'Go']);
+                                                return Html::a('<button type="button" class="btn btn-i">'.$dataProvider->code.'</button>', $url, ['title' => 'Go']);
                                             }
-                                        ],
-                                         [
-                                            'label' => 'Custom Link',
-                                            'format' => 'raw',
-                                            'value' => function($dataProvider) {
-                                                $url = ['product/view', 'id' => $dataProvider->product_id];
-                                                return Html::a('<button type="button" class="btn btn-default">'.$dataProvider->code.'</button>', $url, ['title' => 'Go']);
-                                            }
-                                        ],
+                                        ],*/
                                         'code',
                                         'brand.brand',
                                         'model.model',
@@ -71,6 +61,15 @@ $this->title = 'YSS ADMINISTRATOR';
                                         'preload',
                                         'rebound',
                                         'compression',
+                                      //Custom Lik-------------
+                                        [
+                                            'label' => 'Detail',
+                                            'format' => 'raw',
+                                            'value' => function($dataProvider) {
+                                                $url = ['product/view', 'id' => $dataProvider->product_id];
+                                                return Html::a('<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Detail</button>', $url, ['title' => 'Go']);
+                                            }
+                                        ],
                                     // 'length_adjuster',
                                     // 'hydraulic',
                                     // 'emulsion',

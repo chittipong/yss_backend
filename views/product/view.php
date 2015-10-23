@@ -137,23 +137,19 @@ $this->params['breadcrumbs'][] = $this->title;
                       'dataProvider' => $prodDetail,
                       'columns' => [
                           'id',
+                          [
+                                  'attribute'=>'รูปภาพ',                                           //title
+                                  'format' => ['image',['width'=>'60','height'=>'60']],           //Set width,height
+                                  'value' => function($model){
+                                        return $model->getImageUrl();                               //Get function in product model
+                                  }
+                           ], 
                           'lang',
                           'product_id',
                           'title',
                           'detail',
                           'keyword',
-                          'main',
-                           //Custom Lik-------------
-                            [
-                                'label'=>'Custom Link',
-                                'format'=>'raw',
-                                'value' => function($prodDetail){
-                                    $url = ['product-detail/delete','id'=>$prodDetail->id];
-                                    return Html::a('Delete', $url, ['title' => 'Go']);
-                                }
-                            ],
-                                    
-                          
+                          'main',     
                           //['class' => 'yii\grid\ActionColumn'],
                             
                                 [

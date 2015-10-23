@@ -68,6 +68,7 @@ class ProductDetailController extends Controller
             $model->file=  UploadedFile::getInstance($model, 'file');
             $upload='';
             
+            //CHECK FILE UPLOAD-----------------
             if($model->file){
                 $newName=date("Ymdhis");                                      //Generate filename from Date time
                 //$newName=$model->code;                                          //Set image name same Product code
@@ -79,16 +80,21 @@ class ProductDetailController extends Controller
             }
 
             if($model->save()){
-                //UPLOAD PICTURE----------------
+                //UPLOAD PICTURE AFTER SAVE DATA------------
                 if($upload){
                     $model->file->saveAs($model->detailDir.$model->pic);
                 }
                 
-                //SET DISPLAY MESSAGE ----------
+                //SET DISPLAY SUCCESS MESSAGE ----------
                 Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
                 
-                //REDIRECT PAGE-----------------
-                return $this->redirect(['view','id'=>$model->id]);
+                if(!empty($model->product_id)){
+                    //REDIRECT PAGE TO PRODUCT VIEW DETAIL-----------------
+                    return $this->redirect(['product/view','id'=>$model->product_id]);
+                }else{
+                    //REDIRECT PAGE DEFAULT-----------------
+                    return $this->redirect(['view','id'=>$model->id]);
+                }
             }
         }else{
             if(!empty($id)){
@@ -126,6 +132,9 @@ class ProductDetailController extends Controller
                 $imgPath=$model->detailDir;
                 $model->pic=$model->file->name;                  
                 $upload=1;
+                
+                //DELETE OLD PICTURE***
+                $this->deleteImageNoMsg($model->id,$imgPath,'pic');
             }
 
             //UPDATE MAIN DEFAULT BEFORE UPDATE----------
@@ -160,20 +169,40 @@ class ProductDetailController extends Controller
         $img=$this->findModel($id)->$field;
         if($img){
             if(!unlink($dir.$img)){
-                return false;
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
+            }else{
+                $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();
+
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
             }
         }
-        
-        $img=$this->findModel($id);
-        $img->$field=null;
-        $img->update();
-        
-        //SET DISPLAY MESSAGE ----------
-        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-                
-        //REDIRECT PAGE-----------------
-        return $this->redirect(['update','id'=>$id]);
     }//end**
+    
+    
+    //FUNCTION FOR DELETE IMAGE NO SHOW MESSAGE------------------
+    public function deleteImageNoMsg($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }else{
+               /* $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();*/
+              return true;
+            }
+        }
+    }//end
     
     
     /**
@@ -182,23 +211,13 @@ class ProductDetailController extends Controller
      * @param integer $id
      * @return mixed
      */
-//    public function actionDelete($id=null)
-//    {
-//        $this->findModel($id)->delete();
-//
-//        return $this->redirect(['index']);
-//    }
-    
     
     public function actionDelete($id=null){
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model=new ProductDetail();
+        $dir=$model->detailDir;                              //Get Director image
         
-        $model=new News();
-        $dir=$model->newsDir;                            //Get Director image
-        
-        $this->actionDeleteimage($id,$dir,'pic');         //Delete product image
+        //DELETE PRODUCT DETAIL----------
+        $this->actionDeleteimage($id,$dir,'pic');            //Delete product image
         $this->findModel($id)->delete();
 
         //SET DISPLAY MESSAGE ----------

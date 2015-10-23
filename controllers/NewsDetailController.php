@@ -8,6 +8,7 @@ use app\models\NewsDetailSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsDetailController implements the CRUD actions for NewsDetail model.
@@ -47,10 +48,10 @@ class NewsDetailController extends Controller
      * @param integer $news_id
      * @return mixed
      */
-    public function actionView($id, $news_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $news_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -62,12 +63,43 @@ class NewsDetailController extends Controller
     public function actionCreate($id=null)
     {
         $model = new NewsDetail();
+        $dateNow= date("Y-m-d h:i:s");                                          //Set date create
+        
         if(!empty($id)){
             $model->news_id=$id;
         }
         
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'news_id' => $model->news_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+
+            //UPLOAD SETUP-----------------
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->newsDetailDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
+
+           // echo "File name is: ".$model->pic; exit();
+            
+            //SAVE DATA TO DATABASE---------------
+             if($model->save()){
+                //UPLOAD FILE---
+                 if($upload){
+                    $model->file->saveAs($model->newsDetailDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+            
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,19 +114,87 @@ class NewsDetailController extends Controller
      * @param integer $news_id
      * @return mixed
      */
-    public function actionUpdate($id, $news_id)
-    {
-        $model = $this->findModel($id, $news_id);
+    
+    public function actionUpdate($id=null){
+        $model = $this->findModel($id);
+        $dateNow= date("Y-m-d h:i:s");                               //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                        //Generate filename from Date time
+                //$newName=$model->code;                                        //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->newsDetailDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+                
+                //DELETE OLD PICTURE***
+                $this->deleteImageNoMsg($id,$imgPath,'pic');
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'news_id' => $model->news_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            if($model->save()){
+               //UPLOAD PIC------------------
+                if($upload){
+                    $model->file->saveAs($model->newsDetailDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+         }else{
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+         }
+    }//end***
+    
+     //FUNCTION FOR DELETE IMAGE------------------
+    public function actionDeleteimage($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
+            }else{
+                 $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();             //Update field
+
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['update','id'=>$id]);
+            }
         }
-    }
+    }//end**
 
+    //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
+    public function deleteImageNoMsg($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            if(!unlink($dir.$img)){
+                return false;
+            }else{
+                /*$img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();*/
+                return true;
+            }
+        }
+    }//end**
+    
+    
     /**
      * Deletes an existing NewsDetail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -102,12 +202,23 @@ class NewsDetailController extends Controller
      * @param integer $news_id
      * @return mixed
      */
-    public function actionDelete($id, $news_id)
-    {
-        $this->findModel($id, $news_id)->delete();
 
+    public function actionDelete($id=null){
+        $model=new NewsDetail();
+        $dir=$model->newsDetailDir;                            //Get Director image
+        
+        //DELETE IMAGE--------------
+        $this->deleteImageNoMsg($id,$dir,'pic');        
+        
+        //DELETE DATA IN TABLE
+        $this->findModel($id)->delete();
+
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        //REDIRECT PAGE-----------------
         return $this->redirect(['index']);
-    }
+    }//end***
 
     /**
      * Finds the NewsDetail model based on its primary key value.
@@ -117,9 +228,9 @@ class NewsDetailController extends Controller
      * @return NewsDetail the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $news_id)
+    protected function findModel($id)
     {
-        if (($model = NewsDetail::findOne(['id' => $id, 'news_id' => $news_id])) !== null) {
+        if (($model = NewsDetail::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

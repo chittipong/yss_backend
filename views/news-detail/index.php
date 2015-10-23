@@ -26,11 +26,31 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            [
+                'attribute'=>'รูปภาพ',                                           //title
+                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
+                'value' => function($model){
+                    return $model->getImageUrl();                               //Get function in product model
+                }
+            ],
             'news_id',
             'title',
             'detail',
-            'sort_order',
-            'lang',
+            'main',
+             'sort_order',
+             'lang',
+             [
+                //ดึงค่ามาตรวจสอบแล้วแสดงในแบบที่ต้องการ-------
+                'label' => 'Default',
+                'format' => 'text',
+                'value' => function($dataProvider) {
+                    if ($dataProvider->main == 'Y') {
+                        return 'Yes';
+                    } else {
+                        return '';
+                    }
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

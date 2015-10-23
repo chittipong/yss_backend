@@ -3,7 +3,7 @@
 -- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-22 17:59:07
+-- Date/time:                    2015-10-23 17:35:32
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `importers` (
 -- Dumping data for table db_yss_new.importers: 79 rows
 /*!40000 ALTER TABLE `importers` DISABLE KEYS */;
 INSERT INTO `importers` (`id`, `import_cat_id`, `title`, `pic`, `detil`, `status`, `sort_order`, `lang`) VALUES
-	(1, 1, 'SOLE DISTRIBUTOR', 'distributors_1.jpg', '<div><div><b>HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>SANWA MOTORCYCLE COMPANY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><br></div></div>', 'D', 1, 'EN'),
+	(1, 1, 'SOLE DISTRIBUTOR', '20151023105155.jpg', '<div><div><b>HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>SANWA MOTORCYCLE COMPANY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><br></div></div>', 'D', 1, 'EN'),
 	(2, 1, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br>\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br>\r\n                                        TEL. 852-2336-6880 , 852-2336-6880\r\n                                        <br>\r\n                                        FAX. 852-2338-3904&nbsp;<div>E-MAIL: sanwa8@netvigator.com</div>', 'D', NULL, 'EN'),
 	(3, 1, 'SOLE DISTRIBUTOR', 'distributors_3.gif', '<div><b>PMC. INC<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 2, 'EN'),
 	(4, 3, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br />\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        FAX. 852-2338-3904\r\n                                        <br />\r\n                                        E-MAIL: sanwa8@netvigator.com', 'D', NULL, 'EN'),
@@ -409,61 +409,25 @@ INSERT INTO `yss_brand` (`brand_id`, `brand`, `logo`) VALUES
 /*!40000 ALTER TABLE `yss_brand` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_category
-CREATE TABLE IF NOT EXISTS `yss_category` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NO` int(11) DEFAULT NULL,
-  `NAME` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- Dumping data for table db_yss_new.yss_category: 5 rows
-/*!40000 ALTER TABLE `yss_category` DISABLE KEYS */;
-INSERT INTO `yss_category` (`ID`, `NO`, `NAME`) VALUES
-	(1, 0, 'MOTORCYCLE'),
-	(2, 1, 'QUAD'),
-	(3, 2, 'SCOOTER'),
-	(4, 3, 'SPECIAL'),
-	(5, 4, 'CAR');
-/*!40000 ALTER TABLE `yss_category` ENABLE KEYS */;
-
-
 -- Dumping structure for table db_yss_new.yss_content
 CREATE TABLE IF NOT EXISTS `yss_content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `page` varchar(45) DEFAULT NULL COMMENT 'หน้า',
-  `type` varchar(45) DEFAULT NULL COMMENT 'ประเภท',
+  `page` int(10) DEFAULT NULL COMMENT 'หน้า',
   `position` varchar(45) DEFAULT NULL COMMENT 'ตำแหน่ง',
-  `author` varchar(45) DEFAULT NULL COMMENT 'ผู้เขียน',
-  `title` varchar(100) DEFAULT NULL,
-  `keyword` varchar(60) DEFAULT NULL,
+  `title` varchar(100) DEFAULT NULL COMMENT 'หัวข้อ',
+  `detail` varchar(100) DEFAULT NULL COMMENT 'รายละเอียด',
+  `pic` varchar(100) DEFAULT NULL COMMENT 'รูปภาพ',
+  `lang` varchar(5) DEFAULT NULL COMMENT 'ภาษา',
+  `sort_order` int(5) DEFAULT NULL COMMENT 'ลำดับ',
   `date_create` varchar(45) DEFAULT NULL COMMENT 'วันที่สร้าง',
   `date_update` varchar(45) DEFAULT NULL COMMENT 'วันที่มีการแก้ไข',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_content: ~0 rows (approximately)
 /*!40000 ALTER TABLE `yss_content` DISABLE KEYS */;
 /*!40000 ALTER TABLE `yss_content` ENABLE KEYS */;
-
-
--- Dumping structure for table db_yss_new.yss_content_detail
-CREATE TABLE IF NOT EXISTS `yss_content_detail` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `content_id` int(10) DEFAULT NULL,
-  `title` varchar(60) DEFAULT NULL,
-  `detail` text,
-  `pic` varchar(45) DEFAULT NULL,
-  `lang` varchar(45) DEFAULT NULL,
-  `sort_order` int(3) DEFAULT NULL COMMENT 'ลำดับ',
-  PRIMARY KEY (`id`),
-  KEY `fk_yss_content_detail_yss_content1_idx` (`content_id`),
-  CONSTRAINT `fk_yss_content_detail_yss_content1` FOREIGN KEY (`content_id`) REFERENCES `yss_content` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Dumping data for table db_yss_new.yss_content_detail: ~0 rows (approximately)
-/*!40000 ALTER TABLE `yss_content_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `yss_content_detail` ENABLE KEYS */;
 
 
 -- Dumping structure for table db_yss_new.yss_download
@@ -2096,6 +2060,48 @@ INSERT INTO `yss_lang` (`id`, `abb`, `lang_name`, `remark`, `default`, `sort_ord
 	(1, 'TH', 'Thai', NULL, 'N', 1),
 	(2, 'EN', 'English', NULL, 'Y', 2);
 /*!40000 ALTER TABLE `yss_lang` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_yss_new.yss_menu
+CREATE TABLE IF NOT EXISTS `yss_menu` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `specific_name` varchar(50) DEFAULT NULL COMMENT 'ชื่อภาษาอังกฤษเท่านั้น',
+  `TH` varchar(50) DEFAULT NULL COMMENT 'ภาษาไทย',
+  `EN` varchar(50) DEFAULT NULL COMMENT 'ภาษาอังกฤษ',
+  `L3` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 3',
+  `L4` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 4',
+  `L5` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 5',
+  `L6` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 6',
+  `L7` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 7',
+  `L8` varchar(50) DEFAULT NULL COMMENT 'ภาษาที่ 8',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_menu: ~20 rows (approximately)
+/*!40000 ALTER TABLE `yss_menu` DISABLE KEYS */;
+INSERT INTO `yss_menu` (`id`, `specific_name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
+	(1, 'index', 'หน้าแรก', 'Index', '', '', '', '', '', ''),
+	(2, 'aboutus', 'เกี่ยวกับเรา', 'About Us', '', '', '', '', '', ''),
+	(3, 'product', 'สินค้า', 'Product', '', '', '', '', '', ''),
+	(4, 'service', 'บริการ', 'Service', '', '', '', '', '', ''),
+	(5, 'introduction', 'ประวัติ', 'Introduction', '', '', '', '', '', ''),
+	(6, 'csr', 'เพื่อสังคม', 'CSR', '', '', '', '', '', ''),
+	(7, 'quality', 'คุณภาพ', 'Quality', '', '', '', '', '', ''),
+	(8, 'award', 'รางวัล', 'Award', '', '', '', '', '', ''),
+	(9, 'rnd', 'วิจัยและพัฒนา', 'R & D', '', '', '', '', '', ''),
+	(10, 'contactus', 'ติดต่อเรา', 'Contact Us', '', '', '', '', '', ''),
+	(11, 'setupinstall', 'การติดตั้ง', 'Setup & Install', '', '', '', '', '', ''),
+	(12, 'warranty', 'การรับประกัน', 'Warranty', '', '', '', '', '', ''),
+	(13, 'newsevent', 'ข่าวและกิจกรรม', 'News & Event', '', '', '', '', '', ''),
+	(14, 'download', 'ดาวน์โหลด', 'Download', '', '', '', '', '', ''),
+	(15, 'support', 'ซัพพอร์ต', 'Support', '', '', '', '', '', ''),
+	(16, 'productcode', 'รหัสสินค้า', 'Product Code', '', '', '', '', '', ''),
+	(17, 'springcode', 'รหัสสปริง', 'Spring Code', '', '', '', '', '', ''),
+	(18, 'policy', 'นโยบาย', 'Policy', '', '', '', '', '', ''),
+	(19, 'faq', 'คำถามที่พบบ่อย', 'FAQ', '', '', '', '', '', ''),
+	(20, 'sitemap', 'แผนผังเว็บ', 'Site Map', '', '', '', '', '', '');
+/*!40000 ALTER TABLE `yss_menu` ENABLE KEYS */;
 
 
 -- Dumping structure for table db_yss_new.yss_model
@@ -5360,19 +5366,19 @@ CREATE TABLE IF NOT EXISTS `yss_news` (
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่อัพเดต',
   `type` enum('NEWS','EVENT') DEFAULT 'NEWS' COMMENT 'ประเภท',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_news: ~8 rows (approximately)
 /*!40000 ALTER TABLE `yss_news` DISABLE KEYS */;
 INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `date_update`, `type`) VALUES
-	(2, '20151021060544.jpg', NULL, 7, '2015-10-20 12:39:02', '2015-10-21 06:05:44', 'EVENT'),
-	(3, NULL, NULL, 8, '2015-10-21 04:36:23', NULL, 'NEWS'),
 	(4, '20151021044819.jpg', NULL, 8, '2015-10-21 04:48:19', NULL, 'NEWS'),
 	(5, '20151021045026.jpg', NULL, 8, '2015-10-21 04:50:26', NULL, 'EVENT'),
 	(6, '20151021045109.jpg', NULL, 7, '2015-10-21 04:51:09', '2015-10-21 05:45:02', 'EVENT'),
 	(7, '20151021050120.jpg', NULL, 6, '2015-10-21 05:01:20', '2015-10-21 05:45:56', 'NEWS'),
 	(8, '20151021060658.jpg', NULL, NULL, '2015-10-21 06:06:58', NULL, 'EVENT'),
-	(11, '20151022115459.jpg', NULL, 5, '2015-10-22 11:54:59', '2015-10-22 11:55:36', 'NEWS');
+	(11, '20151022115459.jpg', NULL, 5, '2015-10-22 11:54:59', '2015-10-22 11:55:36', 'NEWS'),
+	(12, '20151023050026.jpg', NULL, 5, '2015-10-23 05:00:26', NULL, 'NEWS'),
+	(13, '20151023061541.jpg', NULL, NULL, '2015-10-23 06:15:41', NULL, 'NEWS');
 /*!40000 ALTER TABLE `yss_news` ENABLE KEYS */;
 
 
@@ -5382,24 +5388,25 @@ CREATE TABLE IF NOT EXISTS `yss_news_detail` (
   `news_id` int(10) NOT NULL COMMENT 'รหัสข่าว',
   `title` varchar(45) DEFAULT NULL COMMENT 'หัวข้อ',
   `detail` varchar(45) DEFAULT NULL COMMENT 'รายละเอียด',
+  `main` varchar(1) DEFAULT NULL COMMENT 'Default',
+  `pic` varchar(50) DEFAULT NULL COMMENT 'pic',
   `sort_order` int(3) DEFAULT NULL COMMENT 'ลำดับ',
   `lang` varchar(5) DEFAULT NULL COMMENT 'ลำดับ',
   PRIMARY KEY (`id`,`news_id`),
   UNIQUE KEY `id` (`id`),
   KEY `fk_news` (`news_id`),
   CONSTRAINT `fk_yss_news_detail_yss_news1` FOREIGN KEY (`news_id`) REFERENCES `yss_news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news_detail: ~7 rows (approximately)
+-- Dumping data for table db_yss_new.yss_news_detail: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_news_detail` DISABLE KEYS */;
-INSERT INTO `yss_news_detail` (`id`, `news_id`, `title`, `detail`, `sort_order`, `lang`) VALUES
-	(1, 7, 'ทอสอบ ไตเติล', 'ทดสอบ รายละเอียด', NULL, 'TH'),
-	(3, 7, 'aaaaa', 'bbbbb', NULL, 'EN'),
-	(5, 2, 'update title 2', 'update detail 2', NULL, 'TH'),
-	(6, 8, 'title aaaa', 'detail aaaaa', NULL, 'TH'),
-	(7, 7, 'test add 7', 'detail 7', NULL, 'TH'),
-	(11, 2, 'aaaaa', 'ssdfsdsdfsdfs', 5, 'TH'),
-	(12, 11, 'bbbbbbbb', 'bbbbbbb', NULL, 'TH');
+INSERT INTO `yss_news_detail` (`id`, `news_id`, `title`, `detail`, `main`, `pic`, `sort_order`, `lang`) VALUES
+	(7, 7, 'test add 7', 'detail 7', '', '20151023101947.jpg', NULL, 'TH'),
+	(12, 11, 'bbbbbbbb', 'bbbbbbb', NULL, NULL, NULL, 'TH'),
+	(14, 12, 'ทดสอบ', 'ทดสอบ', 'N', NULL, 5, 'TH'),
+	(16, 13, 'cccccc', 'cccccccccc', 'Y', NULL, NULL, NULL),
+	(17, 13, 'aaaaaaa', 'aaaaaaaaaa', 'N', '', 1, 'TH'),
+	(19, 7, 'aaaaA', 'AAAAAA', 'N', '', 6, 'TH');
 /*!40000 ALTER TABLE `yss_news_detail` ENABLE KEYS */;
 
 
@@ -5421,6 +5428,29 @@ INSERT INTO `yss_option` (`id`, `option_name`, `detail`, `sort_order`) VALUES
 	('P', 'P ', 'P: แบบ Step ขั้นบันได 5-7 ระดับ', 1),
 	('T', 'T ', 'T: แบบ Thred เกรียวหมุน', 2);
 /*!40000 ALTER TABLE `yss_option` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_yss_new.yss_page
+CREATE TABLE IF NOT EXISTS `yss_page` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `specific_name` varchar(50) DEFAULT NULL COMMENT 'ชื่อ Page ภาษาอังกฤษเท่านั้น',
+  `title` varchar(50) DEFAULT NULL COMMENT 'title เพื่อแสดงในแทบไตเติลบาร์',
+  `description` text COMMENT 'Description สำหรับ Meta tag',
+  `keyword` varchar(250) DEFAULT NULL COMMENT 'Keyword สำหรับ Meta tag',
+  `lang` varchar(5) DEFAULT NULL COMMENT 'Keyword สำหรับ Meta tag',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_page: ~5 rows (approximately)
+/*!40000 ALTER TABLE `yss_page` DISABLE KEYS */;
+INSERT INTO `yss_page` (`id`, `specific_name`, `title`, `description`, `keyword`, `lang`) VALUES
+	(1, 'index', 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'xxxxc', 'TH'),
+	(2, 'aboutus', 'YSS About us', 'sdfjsdfjksddfsdfsdfsdf sdfsdfsdfsdfklksdfjsdfk', 'aaa,bbb,cccc', NULL),
+	(3, 'contactus', 'YSS Contact', 'YSS Contact', 'yss,contact', 'EN'),
+	(4, 'rnd', 'YSS R & D', '', '', 'TH'),
+	(5, 'introduction', 'YSS Introduction', '', '', 'TH');
+/*!40000 ALTER TABLE `yss_page` ENABLE KEYS */;
 
 
 -- Dumping structure for table db_yss_new.yss_piston
@@ -5491,9 +5521,9 @@ CREATE TABLE IF NOT EXISTS `yss_product` (
   KEY `product_type` (`product_type`),
   KEY `fk_yss_product_yss_model1_idx` (`model_id`),
   FULLTEXT KEY `code` (`code`)
-) ENGINE=MyISAM AUTO_INCREMENT=2966 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2967 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product: 2,961 rows
+-- Dumping data for table db_yss_new.yss_product: 2,962 rows
 /*!40000 ALTER TABLE `yss_product` DISABLE KEYS */;
 INSERT INTO `yss_product` (`product_id`, `brand_id`, `model_id`, `product_group`, `product_type`, `abeflag`, `hyd`, `emu`, `res`, `code`, `type`, `top`, `bot`, `image`, `contenttype`, `image_name`, `Thumbnails`, `closeflag`, `spring`, `length`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjuster`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `create_by`, `update_by`, `date_create`, `date_update`, `price`, `discount`) VALUES
 	(1, 1, 1, 'R', 'X', 0, 0, 0, 0, 'RX362-340TRW-28', 'TS', '10x20', '10x20', 'RX362-340TRW-28.jpg', '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', '-', 'W', '-', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, '2015-10-22 11:54:30', '5000', '4500'),
@@ -8456,7 +8486,8 @@ INSERT INTO `yss_product` (`product_id`, `brand_id`, `model_id`, `product_group`
 	(2958, 1, 1, 'M', 'G', 0, 0, 0, 0, 'MG5022-315TRWL-49I', 'TS', '', '', '', '', '', '', 0, '', '315', '50', '22', 'T', 'Y', 'W', 'Y', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, NULL, '1500', '1300'),
 	(2959, 1, 1, 'F', 'B', 0, 0, 0, 0, 'FB3020-500C-01', 'TS', '', '', '', '', '', '', 0, '', '500', '30', '20', 'T', 'Y', '', 'Y', '-', '-', '-', 'Y', 'Y', '-', NULL, NULL, NULL, NULL, '', ''),
 	(2960, 1, 1, 'M', 'G', 0, 0, 0, 0, 'MG508-320TRWL-49I', 'TS', '', '', '', '', '', '', 0, '', '320', '50', '8', 'T', 'Y', 'W', 'Y', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, NULL, '', ''),
-	(2961, 1, 1, 'R', 'B', 0, 0, 0, 0, 'RB308-565L-01', 'TS', '', '', 'RB308-565L-01.jpg', '', '', '', 0, '', '565', '30', '8', '', '-', '', 'Y', '-', '-', '-', '-', '-', '-', NULL, NULL, '2015-10-20 08:12:05', NULL, '3500', '2500');
+	(2961, 1, 1, 'R', 'B', 0, 0, 0, 0, 'RB308-565L-01', 'TS', '', '', 'RB308-565L-01.jpg', '', '', '', 0, '', '565', '30', '8', '', '-', '', 'Y', '-', '-', '-', '-', '-', '-', NULL, NULL, '2015-10-20 08:12:05', NULL, '3500', '2500'),
+	(2966, 107, 1, 'R', 'X', 0, 0, 0, 0, 'RX366-380TRW-28', 'TS', '', '', 'RX366-380TRW-28.jpg', '', '', '', 0, '', '380', '36', '16', 'T', '-', 'W', '-', '-', '-', '-', '-', '-', '-', NULL, NULL, '2015-10-23 04:57:30', '2015-10-23 09:32:21', '5000', '4500');
 /*!40000 ALTER TABLE `yss_product` ENABLE KEYS */;
 
 
@@ -8475,26 +8506,23 @@ CREATE TABLE IF NOT EXISTS `yss_product_detail` (
   UNIQUE KEY `id` (`id`),
   KEY `fk_yss_product_detail_yss_product_idx` (`product_id`),
   KEY `fk_yss_product_detail_yss_lang_idx` (`lang`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_detail: ~15 rows (approximately)
+-- Dumping data for table db_yss_new.yss_product_detail: ~12 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_detail` DISABLE KEYS */;
 INSERT INTO `yss_product_detail` (`id`, `product_id`, `title`, `detail`, `lang`, `keyword`, `main`, `pic`, `sort_order`) VALUES
-	(3, 2964, 'test', 'aaaaa bbbbbbb cccccccc', 'EN', 'sdfsdfsdfsd', 'N', NULL, NULL),
-	(4, 2964, 'ทดสอบหัวข้อ 1', 'ทดสอบรายละเอียด 1', 'EN', 'sdfsdsdfs   sdfsdfsdfsf', 'N', NULL, NULL),
-	(5, 123456, 'aaaaaaa aaaaa', 'aaaaa bbbbbbb cccccccc', 'EN', 'sdfsdsdfs   sdfsdfsdfsf', 'N', NULL, NULL),
-	(6, NULL, 'dddddd', 'dddddddddd', 'dd', 'dddddd', NULL, NULL, NULL),
 	(7, 2963, 'xxxxxxx xxxxxxx xxxxxxx', 'test ', 'TH', '', 'N', NULL, NULL),
 	(8, 2963, 'test test test title2', 'test test test detail2', 'TH', 'ปปป', 'N', NULL, NULL),
-	(9, 2962, 'gggggggggg', 'ddddddddddddd', 'EN', 'aaaa,bbbbb,ccccc', 'N', '20151022095202.jpg', 5),
 	(10, 2963, 'ต้อง ทดสอบ ระบบ', 'ทดสอบระบบ รายละเีดยด', 'TH', NULL, 'Y', NULL, NULL),
 	(11, 2963, '', '', 'TH', '', 'N', NULL, NULL),
 	(12, 2964, 'ทดสอบ title', 'ทดสอบ รายละเอียด', 'TH', NULL, 'N', NULL, NULL),
 	(13, 2964, 'aaaaaaaaaaa', 'bbbbbbbbbbbbbbbbbbbbb', 'TH', 'aaaaa,bbbbbbbbb', 'N', '20151022095111.jpg', 3),
-	(14, 2964, 'yuyuuusdfsj', 'aaaaaaa', 'TH', 'aaa,bbb', 'Y', '20151022100226.jpg', 3),
+	(14, 2964, 'yuyuuusdfsj', 'aaaaaaa', 'TH', 'aaa,bbb', 'N', '20151022100226.jpg', 3),
 	(15, 2965, 'TEST', 'TEST', 'TH', NULL, 'Y', NULL, NULL),
-	(16, 1, 'sssss', 'sssssss', 'TH', 'sdfs,asda,sfsdsdf', 'Y', NULL, 2),
-	(17, 1, 'aaaaaa bbbbbb', 'aaaa vvvvvv vdddddfdsdsdfsds', 'EN', 'aaaa,bbbbb,ccccc', 'N', '20151022115636.jpg', 2);
+	(20, 2966, 'bbbbbbbb', 'bbbbbbb', 'TH', '', 'N', '20151023045838.jpg', NULL),
+	(21, 2966, 'BBBBB', 'BBBBBBBB', 'TH', 'aaaa,bbbbb,ccccc', 'N', '20151023045819.jpg', 2),
+	(22, 1, 'ssss', 'ssssss', 'TH', 'aaaa,bbbbb,ccccc', 'N', '20151023061659.jpg', 7),
+	(23, 2966, 'aaaaa', 'aaaaaaa', NULL, NULL, 'Y', NULL, NULL);
 /*!40000 ALTER TABLE `yss_product_detail` ENABLE KEYS */;
 
 
@@ -11634,5 +11662,25 @@ INSERT INTO `yss_type_shock` (`ID`, `NO`, `NAME`) VALUES
 	(9, 8, 'DTG PLUS Rear Load 3.5'),
 	(10, 9, 'DTG Rear Load 3.5');
 /*!40000 ALTER TABLE `yss_type_shock` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_yss_new.yss_vehicle
+CREATE TABLE IF NOT EXISTS `yss_vehicle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_vehicle: 5 rows
+/*!40000 ALTER TABLE `yss_vehicle` DISABLE KEYS */;
+INSERT INTO `yss_vehicle` (`id`, `name`, `remark`) VALUES
+	(1, 'MOTORCYCLE', NULL),
+	(2, 'QUAD', NULL),
+	(3, 'SCOOTER', NULL),
+	(4, 'SPECIAL', NULL),
+	(5, 'CAR', NULL);
+/*!40000 ALTER TABLE `yss_vehicle` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

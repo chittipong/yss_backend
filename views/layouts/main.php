@@ -48,7 +48,19 @@ AppAsset::register($this);
                      ['label' => 'Product Review', 'url' => ['/product-review/index']],
                 ],
             ],
-            ['label' => 'News', 'url' => ['/news/index']],
+            ['label' => 'News',
+                'items'=>[
+                    ['label'=>'News','url'=>['/news/index']],
+                    ['label'=>'News Detail','url' => ['/news-detail/index']],
+                ]
+            ],
+            ['label' => 'Content',
+                'items'=>[
+                    ['label'=>'Page','url' => ['/page/index']],
+                    ['label'=>'Content','url'=>['/content/index']],
+                    ['label'=>'Menu','url' => ['/menu/index']],
+                ]
+            ],
             ['label' => 'Download', 'url' => ['/download/index']],
             ['label' => 'Importers', 'url' => ['/importers/index']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
@@ -64,6 +76,7 @@ AppAsset::register($this);
                     ['label' => 'Shaft', 'url' => ['/shaft/index']],
                     ['label' => 'Preload Option', 'url' => ['/preload-option/index']],
                     ['label' => 'Importers Category', 'url' => ['/importer-cat/index']],
+                    ['label' => 'Vehicle Type', 'url' => ['/vehicle/index']],
                 ],
             ],
             Yii::$app->user->isGuest ?

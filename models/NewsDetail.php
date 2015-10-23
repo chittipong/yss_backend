@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%yss_news_detail}}".
@@ -19,6 +20,8 @@ use yii\helpers\ArrayHelper;
  */
 class NewsDetail extends \yii\db\ActiveRecord
 {
+    public $file;
+    public $newsDetailDir="../../images/news/";
     /**
      * @inheritdoc
      */
@@ -35,8 +38,13 @@ class NewsDetail extends \yii\db\ActiveRecord
         return [
             [['news_id'], 'required'],
             [['news_id', 'sort_order'], 'integer'],
-            [['title', 'detail'], 'string', 'max' => 100],
-            [['lang'], 'string', 'max' => 5]
+            [['title'], 'string', 'max' => 100],
+            [['main','pic','detail'],'string'],
+            [['lang'], 'string', 'max' => 5],
+            
+            //UPLOAD FILE---------------
+            [['file'],'safe'],
+            [['file'],'file','extensions'=>'jpg,png,gif']
         ];
     }
 
@@ -50,6 +58,8 @@ class NewsDetail extends \yii\db\ActiveRecord
             'news_id' => Yii::t('app', 'รหัสข่าว'),
             'title' => Yii::t('app', 'หัวข้อ'),
             'detail' => Yii::t('app', 'รายละเอียด'),
+            'main'=>Yii::t('app','Default'),
+            'file'=>Yii::t('app','pic'),
             'sort_order' => Yii::t('app', 'ลำดับ'),
             'lang' => Yii::t('app', 'ภาษา'),
         ];
@@ -67,8 +77,14 @@ class NewsDetail extends \yii\db\ActiveRecord
         return $this->hasMany(NewsDetail::className(),['news_id'=>'news_id']);
     }
     
+    //Get Language List------------
     public function getLangList(){
         $list=Lang::find()->orderBy('sort_order')->all();
         return ArrayHelper::map($list, 'abb', 'lang_name');
+    }
+    
+    //GET image Path---------------
+    public function getImageUrl(){
+        return Url::to($this->newsDetailDir.$this->pic);        //Output: yss_new2/web/
     }
 }
