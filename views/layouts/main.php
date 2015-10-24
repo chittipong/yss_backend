@@ -56,9 +56,10 @@ AppAsset::register($this);
             ],
             ['label' => 'Content',
                 'items'=>[
-                    ['label'=>'Page','url' => ['/page/index']],
-                    ['label'=>'Content','url'=>['/content/index']],
                     ['label'=>'Menu','url' => ['/menu/index']],
+                    ['label'=>'Page','url' => ['/page/index']],
+                    ['label'=>'Slide','url' => ['/yss-slide/index']],
+                    ['label'=>'Content','url'=>['/content/index']],
                 ]
             ],
             ['label' => 'Download', 'url' => ['/download/index']],
@@ -79,6 +80,7 @@ AppAsset::register($this);
                     ['label' => 'Vehicle Type', 'url' => ['/vehicle/index']],
                 ],
             ],
+            ['label' => 'User', 'url' => ['/users/index']],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [
