@@ -28,6 +28,16 @@ class NewsController extends Controller
             ],
         ];
     }
+    
+    //USER CHEK PERMISSION********
+    public function checkPermission(){
+        //USER PROTECTED==========================================
+        if(Yii::$app->user->isGuest){
+            Yii::$app->session->setFlash('error', 'You must login.');
+            return $this->redirect(['site/login']);
+        }
+         //END USER PROTECTED=====================================
+    }//end***
 
     /**
      * Lists all News models.
@@ -35,6 +45,8 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +64,8 @@ class NewsController extends Controller
     
     public function actionView($id)
     {
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model=$this->findModel($id);
         
         $detail= NewsDetail::find()->where(['news_id'=>$id,'main'=>'Y'])->one();       //find News detail
@@ -82,6 +96,8 @@ class NewsController extends Controller
      */
     
     public function actionCreate(){
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model=new News();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
@@ -142,6 +158,8 @@ class NewsController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model = $this->findModel($id);
         $model->date_update= date("Y-m-d h:i:s");                               //Set date create
        
@@ -208,6 +226,8 @@ class NewsController extends Controller
     
    //INSERT NEWS DETAIL----------------
     public function insertNewsDetail($data){
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model=new NewsDetail();
         $model->news_id=$data['news_id'];
         $model->title=$data['title'];
@@ -223,6 +243,8 @@ class NewsController extends Controller
     
     //UPDATE NEWS DETAIL---------------
     public function updateNewsDetail($data){
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model= NewsDetail::find()->where(['news_id'=>$data['news_id'],'main'=>'Y'])->one();
         if($model){
              $model->title=$data['title'];
@@ -285,6 +307,8 @@ class NewsController extends Controller
      */
     public function actionDelete($id=null)
     {        
+        $this->checkPermission();                   //CHECK PERMISSION***
+        
         $model=new News();
         $dir=$model->newsDir;                           
         

@@ -29,6 +29,16 @@ class ProductController extends Controller
             ],
         ];
     }
+    
+    //USER CHEK PERMISSION********
+    public function checkPermission(){
+        //USER PROTECTED==========================================
+        if(Yii::$app->user->isGuest){
+            Yii::$app->session->setFlash('error', 'You must login.');
+            return $this->redirect(['site/login']);
+        }
+         //END USER PROTECTED=====================================
+    }//end***
 
     /**
      * Lists all Product models.
@@ -36,8 +46,11 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
+        $this->checkPermission();                 //User check permission*****
+        
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort->defaultOrder=['product_id'=>'DESC'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -52,6 +65,7 @@ class ProductController extends Controller
      */
     
     public function actionView($id){
+        $this->checkPermission();                 //User check permission*****
         $model=$this->findModel($id);
         
         $detail= ProductDetail::find()->where(['product_id'=>$id,'main'=>'Y'])->one();       //find News detail
@@ -83,6 +97,8 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
+        $this->checkPermission();                 //User check permission*****
+        
         $model = new Product();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
@@ -150,6 +166,8 @@ class ProductController extends Controller
     
     //Function for save product detail------
         public function insertDetail($data){
+            $this->checkPermission();                 //User check permission*****
+            
             $model=new ProductDetail();
             $model->product_id=$data['product_id'];
             $model->title=$data['title'];
@@ -171,6 +189,8 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->checkPermission();                 //User check permission*****
+        
         $model = $this->findModel($id);
         $model->date_update= date("Y-m-d h:i:s");                           //Set date update
 
@@ -259,6 +279,8 @@ class ProductController extends Controller
     
      //Function for save product detail------
     public function updateDetail($data){
+        $this->checkPermission();                 //User check permission*****
+        
         $model= ProductDetail::find()->where(['product_id'=>$data['product_id'],'main'=>'Y'])->one();
         if($model){
              $model->title=$data['title'];
@@ -276,7 +298,8 @@ class ProductController extends Controller
     public function actionDeleteimage($id,$dir,$field){
         $img=$this->findModel($id)->$field;
         if($img){
-            if(!unlink($dir.$img)){
+            $delImg=@unlink($dir.$img);
+            if(!$delImg){
                  //SET DISPLAY MESSAGE ----------
                 Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
 
@@ -320,6 +343,8 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->checkPermission();                 //User check permission*****
+        
         $model=new Product();
         $dir=$model->productDir;                            //Get Director image
         

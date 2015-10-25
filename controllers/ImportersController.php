@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * ImportersController implements the CRUD actions for Importers model.
@@ -25,8 +26,28 @@ class ImportersController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            
+            //CODE FOR PROTECTED USER==============================
+            'access'=>[
+                'class'=>  AccessControl::className(),
+                'only'=>['index','view','create','update','delete'],             //All action in controller***
+                'rules'=>[
+                    [
+                        //Action for ADMIN can Access---------
+                        'actions'=>['index','create','update','delete'],
+                        'allow'=>true,
+                        'roles'=>['@']                                          // @ คือใครก็ได้ที่ผ่านการ login เข้ามา
+                    ],
+                    [
+                        //Action for Guest can Access---------
+                        'actions'=>['index','view'],
+                        'allow'=>true,
+                        'roles'=>['?','@']                                      //? คือใครก็ได้ที่ไม่ได้ login ดังนั้นต้องใส่ @ เข้าไปด้วย
+                    ]
+                ]
+            ],//end code for protect user===========================
         ];
-    }
+    }//end***
 
     /**
      * Lists all Importers models.

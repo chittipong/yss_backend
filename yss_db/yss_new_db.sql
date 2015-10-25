@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.6.26 - MySQL Community Server (GPL)
+-- Server version:               5.6.25 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-23 17:35:32
+-- Date/time:                    2015-10-25 22:13:29
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -266,17 +266,48 @@ CREATE TABLE IF NOT EXISTS `product_gallery` (
 /*!40000 ALTER TABLE `product_gallery` ENABLE KEYS */;
 
 
+-- Dumping structure for table db_yss_new.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `lname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '10',
+  `roles` int(10) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `password_reset_token` (`password_reset_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Dumping data for table db_yss_new.user: ~3 rows (approximately)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `username`, `fname`, `lname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `roles`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'chittipong', 'mongpranit', 'zaED_Yu5iXIT2EssXFDjHWytobDMBg7T', '$2y$13$6n6Oajm7pvQPX6UKFBE2KOkjSrnMqguQolbUxAnSAC88k0cewa63y', NULL, 'admin@hotmail.com', 10, 10, 1444461071, 1445670305),
+	(2, 'testrole', 'aaaaa', 'bbbbb', 'OOyu8KPlH_3LSfI0SfYqmRVR3wXVSCkZ', '$2y$13$wVtyAYNyDkOBYBd4oKN6wuB7LKxuNnOPXxYjbHHA8GLsgoMl/qywq', NULL, 'testrole@hotmail.com', 10, 10, 1444465518, 1444501444),
+	(4, 'zodiac', 'tong', 'mong', 'IGsDq5JMCsEgK8hCg-qvY1woexc-k53r', '$2y$13$JVUEkb56WNrimgohqF/e1OJF32/5VegxVccyRgjypF0oHFRnGx.3y', NULL, 'jittipong_m@hotmail.com', 10, 30, 1445669811, 1445674031),
+	(5, 'user1', 'user', 'aaa', 'ndfDv6qvO7HY4hRbxB5dfIvisWc7rXQW', '$2y$13$.N/GV0AXzC/9rmYuAF3dgujM6.Stx3l6QoufUErlz.Vf7E9m4Piji', NULL, 'user@hotmail.com', 10, 10, 1445758182, 1445758182);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+
 -- Dumping structure for table db_yss_new.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `name` varchar(45) DEFAULT NULL COMMENT 'ชื่อ',
   `lname` varchar(45) DEFAULT NULL COMMENT 'นามสกุล',
-  `uname` varchar(45) DEFAULT NULL COMMENT 'User Name',
+  `uname` varchar(45) DEFAULT NULL COMMENT 'ชื่อเข้าใช้งาน',
   `pass` varchar(45) DEFAULT NULL COMMENT 'รหัสผ่าน',
   `tel` varchar(45) DEFAULT NULL COMMENT 'โทร',
   `email` varchar(45) DEFAULT NULL COMMENT 'อีเมล์',
   `department` varchar(45) DEFAULT NULL COMMENT 'แผนก',
   `role` varchar(45) DEFAULT NULL COMMENT 'สิทธิ์',
+  `remark` text COMMENT 'หมายเหตุ',
   `date_create` datetime DEFAULT NULL COMMENT 'วันที่สร้าง',
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่แก้ไข',
   PRIMARY KEY (`id`)
@@ -5396,7 +5427,7 @@ CREATE TABLE IF NOT EXISTS `yss_news_detail` (
   UNIQUE KEY `id` (`id`),
   KEY `fk_news` (`news_id`),
   CONSTRAINT `fk_yss_news_detail_yss_news1` FOREIGN KEY (`news_id`) REFERENCES `yss_news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_news_detail: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_news_detail` DISABLE KEYS */;
@@ -11580,7 +11611,7 @@ CREATE TABLE IF NOT EXISTS `yss_product_type` (
   KEY `type` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_type: ~7 rows (approximately)
+-- Dumping data for table db_yss_new.yss_product_type: ~8 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_type` DISABLE KEYS */;
 INSERT INTO `yss_product_type` (`id`, `type`, `detail`, `remark`) VALUES
 	(1, 'S', 'SINGLE TUBE HYDRAULIC SHOCK', NULL),
@@ -11621,14 +11652,12 @@ INSERT INTO `yss_shaft` (`id`, `size`, `title`, `remark`) VALUES
 CREATE TABLE IF NOT EXISTS `yss_slide` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `slide_name` varchar(45) NOT NULL COMMENT 'ชื่อสไลด์ (ภาษาอังกฤษเท่านั้น)',
-  `title` varchar(45) DEFAULT NULL COMMENT 'คำบรรยาย',
   `page` varchar(45) DEFAULT NULL COMMENT 'หน้า',
-  `position` varchar(45) DEFAULT NULL COMMENT 'ตำแหน่ง',
   `pic` varchar(100) DEFAULT NULL COMMENT 'รูปภาพ',
+  `title` varchar(45) DEFAULT NULL COMMENT 'คำบรรยาย',
   `link` varchar(100) DEFAULT NULL COMMENT 'ลิงค์',
   `lang` varchar(3) DEFAULT NULL COMMENT 'ภาษา',
   `sort_order` int(3) DEFAULT NULL COMMENT 'ลำดับ',
-  `author` varchar(20) DEFAULT 'คนเพิ่มข้อมูล' COMMENT 'ผู้เพิ่ม',
   `date_create` datetime DEFAULT NULL COMMENT 'วันที่สร้าง',
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่แก้ไข',
   PRIMARY KEY (`id`,`slide_name`),

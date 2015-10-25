@@ -10,6 +10,9 @@ $this->title = 'YSS ADMINISTRATOR';
 ?>
 <div class="site-index">
     <div class="container">
+        <?php
+            echo Yii::$app->user->isGuest;
+        ?>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-info">

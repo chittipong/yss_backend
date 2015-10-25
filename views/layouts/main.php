@@ -28,6 +28,28 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+        if(Yii::$app->user->isGuest){
+    ?>
+    <?php
+            NavBar::begin([
+                'brandLabel' => 'ADMINISTRATOR',
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => [
+                    'class' => 'navbar-inverse navbar-fixed-top',
+                ],
+            ]);
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    ['label' => 'Signup', 'url' => ['/site/signup']],
+                    ['label' => 'Login', 'url' => ['/site/login']],
+                ],
+            ]);
+            NavBar::end();
+            ?>
+    <?php }else{ ?>
+    
+    <?php
     NavBar::begin([
         'brandLabel' => 'ADMINISTRATOR',
         'brandUrl' => Yii::$app->homeUrl,
@@ -80,18 +102,27 @@ AppAsset::register($this);
                     ['label' => 'Vehicle Type', 'url' => ['/vehicle/index']],
                 ],
             ],
-            ['label' => 'User', 'url' => ['/users/index']],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
-                [
+                /*[
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
-                ],
+                ],*/
+                ['label'=>'User','items'=>[
+                    ['label' => 'Profile', 'url' => ['/user/view','id'=>Yii::$app->user->identity->id]],
+                    ['label' => 'User', 'url' => ['/user/index']],
+                    ['label'=>'Logout(' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ]
+                ]]
+        
         ],
     ]);
     NavBar::end();
     ?>
+    <?php } ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

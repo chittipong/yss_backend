@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\helpers\Url;
 
 /**
  * DownloadController implements the CRUD actions for Download model.
@@ -33,6 +34,13 @@ class DownloadController extends Controller
      */
     public function actionIndex()
     {
+        //USER PROTECTED==========================================
+        if(Yii::$app->user->isGuest){
+            Yii::$app->session->setFlash('error', 'You must login.');
+            return $this->redirect(['site/login']);
+        }
+         //END USER PROTECTED=====================================
+        
         $searchModel = new DownloadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

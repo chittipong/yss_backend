@@ -6,22 +6,35 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 use app\models\Product;
 use app\models\ProductSearch;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 
+use app\models\LoginForm;
+use app\models\PasswordResetRequestForm;
+use app\models\ResetPasswordForm;
+use app\models\SignupForm;
+use app\models\ContactForm;
+use app\component\AccessRule;
+
 class SiteController extends Controller
 {
-    public function behaviors()
+     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['logout', 'signup'],
                 'rules' => [
+                    [
+                        'actions' => ['signup'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,
@@ -36,7 +49,7 @@ class SiteController extends Controller
                 ],
             ],
         ];
-    }
+    }//end***
 
     public function actions()
     {
@@ -50,18 +63,33 @@ class SiteController extends Controller
             ],
         ];
     }
+    
+    //USER CHEK PERMISSION********
+    public function checkPermission(){
+        //USER PROTECTED==========================================
+        if(Yii::$app->user->isGuest){
+            Yii::$app->session->setFlash('error', 'You must login.');
+            return $this->redirect(['site/login']);
+        }
+         //END USER PROTECTED=====================================
+    }//end***
 
     public function actionIndex()
     {
-        $searchModel = new ProductSearch();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $this->checkPermission();                   //CHECK USER PERMISSION***
         
-        $dataProvider = new ActiveDataProvider([
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        /*$dataProvider = new ActiveDataProvider([
             'query' => Product::find(),
             'pagination' => [
                 'pageSize' => 5,       //Set page size
             ],
-        ]);
+        ]);*/
+        
+        $dataProvider->pagination->pageSize=3;
+        $dataProvider->sort->defaultOrder=['product_id'=>'DESC'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -91,21 +119,114 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionContact()
+//    public function actionContact()
+//    {
+//        $model = new ContactForm();
+//        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+//            Yii::$app->session->setFlash('contactFormSubmitted');
+//
+//            return $this->refresh();
+//        }
+//        return $this->render('contact', [
+//            'model' => $model,
+//        ]);
+//    }
+    
+     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+            } else {
+                Yii::$app->session->setFlash('error', 'There was an error sending email.');
+            }
 
             return $this->refresh();
+        } else {
+            return $this->render('contact', [
+                'model' => $model,
+            ]);
         }
-        return $this->render('contact', [
+    }
+
+     /**
+     * Displays about page.
+     *
+     * @return mixed
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
+    }
+
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
             'model' => $model,
         ]);
     }
 
-    public function actionAbout()
+    /**
+     * Requests password reset.
+     *
+     * @return mixed
+     */
+    public function actionRequestPasswordReset()
     {
-        return $this->render('about');
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+
+                return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+            }
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Resets password.
+     *
+     * @param string $token
+     * @return mixed
+     * @throws BadRequestHttpException
+     */
+    public function actionResetPassword($token)
+    {
+        try {
+            $model = new ResetPasswordForm($token);
+        } catch (InvalidParamException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+            Yii::$app->session->setFlash('success', 'New password was saved.');
+
+            return $this->goHome();
+        }
+
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
     }
 }
