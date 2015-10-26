@@ -11,7 +11,8 @@ $this->title = 'YSS ADMINISTRATOR';
 <div class="site-index">
     <div class="container">
         <?php
-            echo Yii::$app->user->isGuest;
+            //echo Yii::$app->user->isGuest;
+            //echo Yii::$app->user->identity->
         ?>
         <div class="row">
             <div class="col-lg-12">

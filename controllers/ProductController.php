@@ -9,27 +9,58 @@ use app\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+use yii\web\UploadedFile;                   //For upload file
 use \app\models\ProductDetailSearch;
 use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
+
+use app\models\User;                        //For set permission
+use yii\filters\AccessControl;              //For set permission
+use \app\component\AccessRule;              //For set permission
 
 /**
  * ProductController implements the CRUD actions for Product model.
  */
 class ProductController extends Controller
 {
+    //SET PERMISSION========================================
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['create', 'update', 'delete','index','view'],
+                'rules' => [
+                    [
+                        //กำหนด User ที่สามารถทำการ Create,Update,Delete ได้
+                        'actions' => ['create','update','delete','index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_MANAGER,
+                            User::ROLE_ADMIN,
+                            //User::ROLE_USER,
+                        ],
+                    ],
+                    [
+                        //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
+                        'actions' => ['index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_USER,
+                        ],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
-    }
+    }//END SET PERMISSION============================
     
     //USER CHEK PERMISSION********
     public function checkPermission(){
@@ -46,9 +77,7 @@ class ProductController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $this->checkPermission();                 //User check permission*****
-        
+    {        
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort->defaultOrder=['product_id'=>'DESC'];
@@ -66,7 +95,6 @@ class ProductController extends Controller
      */
     
     public function actionView($id){
-        $this->checkPermission();                 //User check permission*****
         $model=$this->findModel($id);
         
         $detail= ProductDetail::find()->where(['product_id'=>$id,'main'=>'Y'])->one();       //find News detail
@@ -98,7 +126,6 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        $this->checkPermission();                 //User check permission*****
         
         $model = new Product();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
@@ -167,8 +194,6 @@ class ProductController extends Controller
     
     //Function for save product detail------
         public function insertDetail($data){
-            $this->checkPermission();                 //User check permission*****
-            
             $model=new ProductDetail();
             $model->product_id=$data['product_id'];
             $model->title=$data['title'];
@@ -190,8 +215,6 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->checkPermission();                 //User check permission*****
-        
         $model = $this->findModel($id);
         $model->date_update= date("Y-m-d h:i:s");                           //Set date update
 
@@ -280,8 +303,6 @@ class ProductController extends Controller
     
      //Function for save product detail------
     public function updateDetail($data){
-        $this->checkPermission();                 //User check permission*****
-        
         $model= ProductDetail::find()->where(['product_id'=>$data['product_id'],'main'=>'Y'])->one();
         if($model){
              $model->title=$data['title'];
@@ -298,43 +319,54 @@ class ProductController extends Controller
     //FUNCTION FOR DELETE IMAGE------------------
     public function actionDeleteimage($id,$dir,$field){
         $img=$this->findModel($id)->$field;
-        if($img){
-            $delImg=@unlink($dir.$img);
-            if(!$delImg){
-                 //SET DISPLAY MESSAGE ----------
-                Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
+        //CHECK FILE EXISTED---------
+            if(file_exists($dir.$img)){
+                    if(!unlink($dir.$img)){
+                         //SET DISPLAY MESSAGE ----------
+                        Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
 
-                //REDIRECT PAGE-----------------
-                return $this->redirect(['update','id'=>$id]);
+                        //REDIRECT PAGE-----------------
+                        return $this->redirect(['update','id'=>$id]);
+                    }else{
+                        $img=$this->findModel($id);
+                        $img->$field=null;
+                        $img->update();
+
+                        //SET DISPLAY MESSAGE ----------
+                        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+
+                        //REDIRECT PAGE-----------------
+                        return $this->redirect(['update','id'=>$id]);
+                    }
             }else{
                 $img=$this->findModel($id);
                 $img->$field=null;
-                $img->update();
-
-                //SET DISPLAY MESSAGE ----------
-                Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-
-                //REDIRECT PAGE-----------------
-                return $this->redirect(['update','id'=>$id]);
+                $img->update();             //Update field
             }
-        }
     }//end
     
     
-    //FUNCTION FOR DELETE IMAGE NO SHOW MESSAGE------------------
+    //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
     public function deleteImageNoMsg($id,$dir,$field){
         $img=$this->findModel($id)->$field;
         if($img){
-            if(!unlink($dir.$img)){
-                return false;
+            //CHECK FILE EXISTED---------
+            if(file_exists($dir.$img)){
+                if(!unlink($dir.$img)){
+                    return false;
+                }else{
+                    /*$img=$this->findModel($id);
+                    $img->$field=null;
+                    $img->update();*/
+                    return true;
+                }
             }else{
-               /* $img=$this->findModel($id);
+                $img=$this->findModel($id);
                 $img->$field=null;
-                $img->update();*/
-              return true;
+                $img->update();             //Update field
             }
         }
-    }//end
+    }//end**
 
     /**
      * Deletes an existing Product model.
@@ -344,8 +376,6 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->checkPermission();                 //User check permission*****
-        
         $model=new Product();
         $dir=$model->productDir;                            //Get Director image
         

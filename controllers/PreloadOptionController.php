@@ -8,43 +8,55 @@ use app\models\PreloadOptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
+use app\models\User;                        //For set permission
+use yii\filters\AccessControl;              //For set permission
+use \app\component\AccessRule;              //For set permission
 
 /**
  * PreloadOptionController implements the CRUD actions for PreloadOption model.
  */
 class PreloadOptionController extends Controller
 {
+    //SET PERMISSION========================================
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['create', 'update', 'delete','index','view'],
+                'rules' => [
+                    [
+                        //กำหนด User ที่สามารถทำการ Create,Update,Delete ได้
+                        'actions' => ['create','update','delete','index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_MANAGER,
+                            User::ROLE_ADMIN,
+                            //User::ROLE_USER,
+                        ],
+                    ],
+                    [
+                        //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
+                        'actions' => ['index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_USER,
+                        ],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
-            //CODE FOR PROTECTED USER==============================
-            'access'=>[
-                'class'=>  AccessControl::className(),
-                'only'=>['index','view','create','update','delete'],             //All action in controller***
-                'rules'=>[
-                    [
-                        //Action for ADMIN can Access---------
-                        'actions'=>['index','create','update','delete'],
-                        'allow'=>true,
-                        'roles'=>['@']                                          // @ คือใครก็ได้ที่ผ่านการ login เข้ามา
-                    ],
-                    [
-                        //Action for Guest can Access---------
-                        'actions'=>['index','view'],
-                        'allow'=>true,
-                        'roles'=>['?','@']                                      //? คือใครก็ได้ที่ไม่ได้ login ดังนั้นต้องใส่ @ เข้าไปด้วย
-                    ]
-                ]
-            ],//end code for protect user===========================
         ];
-    }
+    }//END SET PERMISSION============================
 
     /**
      * Lists all PreloadOption models.

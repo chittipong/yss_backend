@@ -9,26 +9,57 @@ use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+use yii\web\UploadedFile;                   //For upload file
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
-use yii\filters\AccessControl;
+
+use app\models\User;                        //For set permission
+use yii\filters\AccessControl;              //For set permission
+use \app\component\AccessRule;              //For set permission
 /**
  * NewsController implements the CRUD actions for News model.
  */
 class NewsController extends Controller
 {
+    //SET PERMISSION========================================
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['create', 'update', 'delete','index','view'],
+                'rules' => [
+                    [
+                        //กำหนด User ที่สามารถทำการ Create,Update,Delete ได้
+                        'actions' => ['create','update','delete','index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_MANAGER,
+                            User::ROLE_ADMIN,
+                            //User::ROLE_USER,
+                        ],
+                    ],
+                    [
+                        //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
+                        'actions' => ['index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_USER,
+                        ],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
-    }
+    }//END SET PERMISSION============================
     
     //USER CHEK PERMISSION********
     public function checkPermission(){
@@ -46,8 +77,6 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -65,8 +94,6 @@ class NewsController extends Controller
     
     public function actionView($id)
     {
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model=$this->findModel($id);
         
         $detail= NewsDetail::find()->where(['news_id'=>$id,'main'=>'Y'])->one();       //find News detail
@@ -97,8 +124,6 @@ class NewsController extends Controller
      */
     
     public function actionCreate(){
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model=new News();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
@@ -159,8 +184,6 @@ class NewsController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model = $this->findModel($id);
         $model->date_update= date("Y-m-d h:i:s");                               //Set date create
        
@@ -227,8 +250,6 @@ class NewsController extends Controller
     
    //INSERT NEWS DETAIL----------------
     public function insertNewsDetail($data){
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model=new NewsDetail();
         $model->news_id=$data['news_id'];
         $model->title=$data['title'];
@@ -244,8 +265,6 @@ class NewsController extends Controller
     
     //UPDATE NEWS DETAIL---------------
     public function updateNewsDetail($data){
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model= NewsDetail::find()->where(['news_id'=>$data['news_id'],'main'=>'Y'])->one();
         if($model){
              $model->title=$data['title'];
@@ -308,8 +327,6 @@ class NewsController extends Controller
      */
     public function actionDelete($id=null)
     {        
-        $this->checkPermission();                   //CHECK PERMISSION***
-        
         $model=new News();
         $dir=$model->newsDir;                           
         

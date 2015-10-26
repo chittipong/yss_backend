@@ -8,44 +8,56 @@ use app\models\AppListSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use yii\web\UploadedFile;
+use yii\web\UploadedFile;                   //For upload file
+
+use app\models\User;                        //For set permission
+use yii\filters\AccessControl;              //For set permission
+use \app\component\AccessRule;              //For set permission
 
 /**
  * AppListController implements the CRUD actions for AppList model.
  */
 class AppListController extends Controller
 {
+    //SET PERMISSION========================================
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['create', 'update', 'delete','index','view'],
+                'rules' => [
+                    [
+                        //กำหนด User ที่สามารถทำการ Create,Update,Delete ได้
+                        'actions' => ['create','update','delete','index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_MANAGER,
+                            User::ROLE_ADMIN,
+                            //User::ROLE_USER,
+                        ],
+                    ],
+                    [
+                        //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
+                        'actions' => ['index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_USER,
+                        ],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
-            //CODE FOR PROTECTED USER==============================
-            'access'=>[
-                'class'=>  AccessControl::className(),
-                'only'=>['index','view','create','update','delete'],             //All action in controller***
-                'rules'=>[
-                    [
-                        //Action for ADMIN can Access---------
-                        'actions'=>['index','create','update','delete'],
-                        'allow'=>true,
-                        'roles'=>['@']                                          // @ คือใครก็ได้ที่ผ่านการ login เข้ามา
-                    ],
-                    [
-                        //Action for Guest can Access---------
-                        'actions'=>['index','view'],
-                        'allow'=>true,
-                        'roles'=>['?','@']                                      //? คือใครก็ได้ที่ไม่ได้ login ดังนั้นต้องใส่ @ เข้าไปด้วย
-                    ]
-                ]
-            ],//end code for protect user===========================
         ];
-    }
+    }//END SET PERMISSION============================
 
     /**
      * Lists all AppList models.
@@ -135,20 +147,6 @@ class AppListController extends Controller
      * @param integer $id
      * @return mixed
      */
-//    public function actionUpdate($id)
-//    {
-//        $model = $this->findModel($id);
-//        $dateNow= date("Y-m-d h:i:s");                           //Set date create
-//        $model->date_update=$dateNow;
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        } else {
-//            return $this->render('update', [
-//                'model' => $model,
-//            ]);
-//        }
-//    }
     
     public function actionUpdate($id=null){
         $model = $this->findModel($id);
@@ -220,7 +218,7 @@ class AppListController extends Controller
     }//end**
     
     
-     //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
+   //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
     public function deleteImageNoMsg($id,$dir,$field){
         $img=$this->findModel($id)->$field;
         if($img){

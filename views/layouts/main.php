@@ -25,8 +25,8 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <div class="wrap">
+    <?php echo app\models\User::ROLE_ADMIN; ?>
     <?php
         if(Yii::$app->user->isGuest){
     ?>

@@ -84,6 +84,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['fname','lname'],'string','max'=>100],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            
             //กำหนดสิทธิ์------------------------------------------
             ['roles','default','value' => self::ROLE_USER],
             ['roles','in','range' => [self::ROLE_USER, self::ROLE_MANAGER, self::ROLE_ADMIN]]
