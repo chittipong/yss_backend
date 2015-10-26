@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Users;
-use app\models\UsersSearch;
+use app\models\ApplicationList;
+use app\models\ApplicationListSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * UsersController implements the CRUD actions for Users model.
+ * ApplicationListController implements the CRUD actions for ApplicationList model.
  */
-class UsersController extends Controller
+class ApplicationListController extends Controller
 {
     public function behaviors()
     {
@@ -24,16 +24,35 @@ class UsersController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            //CODE FOR PROTECTED USER==============================
+            'access'=>[
+                'class'=>  AccessControl::className(),
+                'only'=>['index','view','create','update','delete'],             //All action in controller***
+                'rules'=>[
+                    [
+                        //Action for ADMIN can Access---------
+                        'actions'=>['index','create','update','delete'],
+                        'allow'=>true,
+                        'roles'=>['@']                                          // @ คือใครก็ได้ที่ผ่านการ login เข้ามา
+                    ],
+                    [
+                        //Action for Guest can Access---------
+                        'actions'=>['index','view'],
+                        'allow'=>true,
+                        'roles'=>['?','@']                                      //? คือใครก็ได้ที่ไม่ได้ login ดังนั้นต้องใส่ @ เข้าไปด้วย
+                    ]
+                ]
+            ],//end code for protect user===========================
         ];
     }
 
     /**
-     * Lists all Users models.
+     * Lists all ApplicationList models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
+        $searchModel = new ApplicationListSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +62,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Displays a single Users model.
+     * Displays a single ApplicationList model.
      * @param integer $id
      * @return mixed
      */
@@ -55,13 +74,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Creates a new Users model.
+     * Creates a new ApplicationList model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = new ApplicationList();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -73,7 +92,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing ApplicationList model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -92,7 +111,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing ApplicationList model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -105,15 +124,15 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds the Users model based on its primary key value.
+     * Finds the ApplicationList model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return ApplicationList the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = ApplicationList::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

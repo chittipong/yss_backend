@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
+use yii\filters\AccessControl;
 /**
  * NewsController implements the CRUD actions for News model.
  */

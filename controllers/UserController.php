@@ -8,6 +8,7 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -23,6 +24,25 @@ class UserController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            //CODE FOR PROTECTED USER==============================
+            'access'=>[
+                'class'=>  AccessControl::className(),
+                'only'=>['index','view','create','update','delete'],             //All action in controller***
+                'rules'=>[
+                    [
+                        //Action for ADMIN can Access---------
+                        'actions'=>['index','create','update','delete'],
+                        'allow'=>true,
+                        'roles'=>['@']                                          // @ คือใครก็ได้ที่ผ่านการ login เข้ามา
+                    ],
+                    [
+                        //Action for Guest can Access---------
+                        'actions'=>['index','view'],
+                        'allow'=>true,
+                        'roles'=>['?','@']                                      //? คือใครก็ได้ที่ไม่ได้ login ดังนั้นต้องใส่ @ เข้าไปด้วย
+                    ]
+                ]
+            ],//end code for protect user===========================
         ];
     }
 

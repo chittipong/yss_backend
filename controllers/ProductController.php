@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use \app\models\ProductDetailSearch;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 
 /**
  * ProductController implements the CRUD actions for Product model.
