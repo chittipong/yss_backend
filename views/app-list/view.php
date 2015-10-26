@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ApplicationList */
+/* @var $model app\models\AppList */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Application Lists'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'App Lists'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="application-list-view">
+<div class="app-list-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -28,8 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            //DISPLAY IMAGE--------------------
+                        [
+                          'attribute'=>'Pic',
+                          'value'=>$model->productDir.$model->pic,
+                          'format'=>['image',['width'=>'400','title'=>$model->pic]]                              //Set Image Width
+                        ],
             'id',
-            'brand',
+            'brand.brand',
             'cc',
             'model',
             'ref_no',
@@ -47,14 +53,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'preload',
             'rebound',
             'compression',
-            'length_adjst',
+            'length_adjust',
             'hydraulic',
             'emulsion',
             'piggy_back',
-            'on_host',
+            'on_hose',
             'free_piston',
             'dtg',
             'vehicle_type',
+            'pic',
+            'date_create',
+            'date_update',
         ],
     ]) ?>
 

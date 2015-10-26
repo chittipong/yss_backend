@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\ApplicationList;
+use app\models\AppList;
 
 /**
- * ApplicationListSearch represents the model behind the search form about `app\models\ApplicationList`.
+ * AppListSearch represents the model behind the search form about `app\models\AppList`.
  */
-class ApplicationListSearch extends ApplicationList
+class AppListSearch extends AppList
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class ApplicationListSearch extends ApplicationList
     {
         return [
             [['id', 'cc', 'length', 'piston', 'shaft'], 'integer'],
-            [['brand', 'model', 'ref_no', 'abe1', 'year', 'type', 'product_code', 'abe_shock', 'top', 'bottom', 'spring', 'preload', 'rebound', 'compression', 'length_adjst', 'hydraulic', 'emulsion', 'piggy_back', 'on_host', 'free_piston', 'dtg', 'vehicle_type'], 'safe'],
+            [['brand', 'model', 'ref_no', 'abe1', 'year', 'type', 'product_code', 'abe_shock', 'top', 'bottom', 'spring', 'preload', 'rebound', 'compression', 'length_adjust', 'hydraulic', 'emulsion', 'piggy_back', 'on_hose', 'free_piston', 'dtg', 'vehicle_type', 'pic', 'date_create', 'date_update'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ApplicationListSearch extends ApplicationList
      */
     public function search($params)
     {
-        $query = ApplicationList::find();
+        $query = AppList::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,6 +61,8 @@ class ApplicationListSearch extends ApplicationList
             'length' => $this->length,
             'piston' => $this->piston,
             'shaft' => $this->shaft,
+            'date_create' => $this->date_create,
+            'date_update' => $this->date_update,
         ]);
 
         $query->andFilterWhere(['like', 'brand', $this->brand])
@@ -77,14 +79,15 @@ class ApplicationListSearch extends ApplicationList
             ->andFilterWhere(['like', 'preload', $this->preload])
             ->andFilterWhere(['like', 'rebound', $this->rebound])
             ->andFilterWhere(['like', 'compression', $this->compression])
-            ->andFilterWhere(['like', 'length_adjst', $this->length_adjst])
+            ->andFilterWhere(['like', 'length_adjust', $this->length_adjust])
             ->andFilterWhere(['like', 'hydraulic', $this->hydraulic])
             ->andFilterWhere(['like', 'emulsion', $this->emulsion])
             ->andFilterWhere(['like', 'piggy_back', $this->piggy_back])
-            ->andFilterWhere(['like', 'on_host', $this->on_host])
+            ->andFilterWhere(['like', 'on_hose', $this->on_hose])
             ->andFilterWhere(['like', 'free_piston', $this->free_piston])
             ->andFilterWhere(['like', 'dtg', $this->dtg])
-            ->andFilterWhere(['like', 'vehicle_type', $this->vehicle_type]);
+            ->andFilterWhere(['like', 'vehicle_type', $this->vehicle_type])
+            ->andFilterWhere(['like', 'pic', $this->pic]);
 
         return $dataProvider;
     }

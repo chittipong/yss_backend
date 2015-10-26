@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ApplicationListSearch */
+/* @var $model app\models\AppListSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="application-list-search">
+<div class="app-list-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -68,6 +68,12 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'dtg') ?>
 
     <?php // echo $form->field($model, 'vehicle_type') ?>
+
+    <?php // echo $form->field($model, 'pic') ?>
+
+    <?php // echo $form->field($model, 'date_create') ?>
+
+    <?php // echo $form->field($model, 'date_update') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -1,14 +1,94 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.6.25 - MySQL Community Server (GPL)
+-- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-25 22:13:29
+-- Date/time:                    2015-10-26 17:58:53
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
+
+-- Dumping structure for table db_yss_new.application_list
+CREATE TABLE IF NOT EXISTS `application_list` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `brand` int(5) DEFAULT NULL,
+  `cc` int(3) DEFAULT NULL,
+  `model` varchar(50) DEFAULT NULL,
+  `ref_no` varchar(30) DEFAULT NULL COMMENT 'เลขตัวถัง',
+  `abe1` varchar(5) DEFAULT NULL COMMENT 'ABE ของ มอเตอร์ไซค์',
+  `year` varchar(5) DEFAULT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `product_code` varchar(50) DEFAULT NULL,
+  `abe_shock` varchar(5) DEFAULT NULL COMMENT 'ABE ของโช้ค',
+  `length` int(3) DEFAULT NULL,
+  `top` varchar(30) DEFAULT NULL,
+  `bottom` varchar(30) DEFAULT NULL,
+  `spring` varchar(30) DEFAULT NULL,
+  `piston` int(3) DEFAULT NULL,
+  `shaft` int(3) DEFAULT NULL,
+  `preload` varchar(1) DEFAULT NULL,
+  `rebound` varchar(1) DEFAULT NULL,
+  `compression` varchar(5) DEFAULT NULL,
+  `length_adjust` varchar(5) DEFAULT NULL,
+  `hydraulic` varchar(1) DEFAULT NULL,
+  `emulsion` varchar(1) DEFAULT NULL,
+  `piggy_back` varchar(1) DEFAULT NULL,
+  `on_hose` varchar(1) DEFAULT NULL,
+  `free_piston` varchar(1) DEFAULT NULL,
+  `dtg` varchar(1) DEFAULT NULL,
+  `vehicle_type` varchar(50) DEFAULT NULL,
+  `pic` varchar(50) DEFAULT NULL,
+  `date_create` datetime DEFAULT NULL,
+  `date_update` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `brand` (`brand`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.application_list: ~38 rows (approximately)
+/*!40000 ALTER TABLE `application_list` DISABLE KEYS */;
+INSERT INTO `application_list` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
+	(3, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2013', 'TS', 'RX362-340TRW-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', 'H-L', '', '', '', '', 'Y', '', '', '1', 'RX362-340TRW-28.png', NULL, NULL),
+	(4, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2013', 'TS', 'RZ362-340TR-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '1', 'RZ362-340TR-28.png', NULL, NULL),
+	(5, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2013', 'TS', 'RX362-340TRW-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', 'H-L', '', '', '', '', 'Y', '', '', '1', 'RX362-340TRW-28.png', NULL, NULL),
+	(6, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2014', 'TS', 'RZ362-340TR-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '1', 'RZ362-340TR-28.png', NULL, NULL),
+	(7, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2014', 'TS', 'RX362-340TRW-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', 'H-L', '', '', '', '', 'Y', '', '', '1', 'RX362-340TRW-28.png', NULL, NULL),
+	(8, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2015', 'TS', 'RZ362-340TR-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '1', 'RZ362-340TR-28.png', NULL, NULL),
+	(9, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2015', 'TS', 'RX362-340TRW-28', '-', 340, '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', 'H-L', '', '', '', '', 'Y', '', '', '1', 'RX362-340TRW-28.png', NULL, NULL),
+	(10, 2, 125, 'AF1 125 Sint / Futura', 'GS', 'ABE', '1993', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(11, 2, 125, 'AF1 125 R', 'GS', 'ABE', '1997', 'MS', 'ME302-300T-08', 'ABE', 300, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-300T-08.png', NULL, NULL),
+	(12, 2, 125, 'AF1 125 R', 'GS', 'ABE', '1998', 'MS', 'ME302-300T-08', 'ABE', 300, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-300T-08.png', NULL, NULL),
+	(13, 2, 125, 'AF1 125 R', 'GS', 'ABE', '1999', 'MS', 'ME302-300T-08', 'ABE', 300, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-300T-08.png', NULL, NULL),
+	(14, 2, 125, 'AF1 125 R ', '', 'ABE', '2000', 'MS', 'MZ362-310TRL-15', 'ABE', 310, '10x22 H+20', '10x19 ', '46-60-90-145', 36, 12, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ362-310TRL-15.png', NULL, NULL),
+	(15, 2, 125, 'AF1 125 R ', '', 'ABE', '2000', 'MS', 'ME302-310T-15', 'ABE', 310, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-310T-15.png', NULL, NULL),
+	(16, 2, 250, 'AF1 250 R ', '', 'ABE', '1996', 'MS', 'MZ366-330TRL-07', 'ABE', 330, '10x22', '10x19 ', '46-80-185', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-330TRL-07.png', NULL, NULL),
+	(17, 2, 250, 'AF1 250 R ', '', 'ABE', '1997', 'MS', 'MZ366-330TRL-07', 'ABE', 330, '10x22', '10x19 ', '46-80-185', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-330TRL-07.png', NULL, NULL),
+	(18, 2, 1000, 'ETV 1000 Caponord', 'PS', 'ABE', '2002', 'MS', 'MZ506-365TR-10', 'ABE', 365, '10x22', 'F.25x10', '60-160-185', 50, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '1', 'MZ506-365TR-10.png', NULL, NULL),
+	(19, 2, 650, 'Pegaso 650 ', 'ML/GA', 'ABE', '1992', 'MS', 'MZ366-335TRL-02', 'ABE', 335, '10x35', 'F.26x10', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-335TRL-02.png', NULL, NULL),
+	(20, 2, 650, 'Pegaso 651', 'ML/GA', 'ABE', '1993', 'MS', 'MZ366-335TRL-02', 'ABE', 335, '10x35', 'F.26x10', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-335TRL-02.png', NULL, NULL),
+	(21, 2, 650, 'Pegaso 652', 'ML/GA', 'ABE', '1994', 'MS', 'MZ366-335TRL-02', 'ABE', 335, '10x35', 'F.26x10', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-335TRL-02.png', NULL, NULL),
+	(22, 2, 650, 'Pegaso 650 Strada', 'VD', 'ABE', '2005', 'MS', 'MZ366-310TRL-22', 'ABE', 310, '10x35', '10x36 ', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-310TRL-22.png', NULL, NULL),
+	(23, 2, 650, 'Pegaso 650 Strada', 'VD', 'ABE', '2006', 'MS', 'MZ366-310TRL-22', 'ABE', 310, '10x35', '10x36 ', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-310TRL-22.png', NULL, NULL),
+	(24, 2, 650, 'Pegaso 650 Strada', 'VD', 'ABE', '2007', 'MS', 'MZ366-310TRL-22', 'ABE', 310, '10x35', '10x36 ', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-310TRL-22.png', NULL, NULL),
+	(25, 2, 650, 'Pegaso 650 Strada', 'VD', 'ABE', '2008', 'MS', 'MZ366-310TRL-22', 'ABE', 310, '10x35', '10x36 ', '46-170-175', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-310TRL-22.png', NULL, NULL),
+	(26, 2, 125, 'RS 125 Extrema / SP ', 'GS', 'ABE', '1994', 'MS', 'MZ366-330TRL-07', 'ABE', 330, '10x22', '10x19 ', '46-80-185', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-330TRL-07.png', NULL, NULL),
+	(27, 2, 125, 'RS 125 Extrema / SP ', 'GS', 'ABE', '1995', 'MS', 'MZ366-330TRL-07', 'ABE', 330, '10x22', '10x19 ', '46-80-185', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-330TRL-07.png', NULL, NULL),
+	(28, 2, 125, 'RS 125  ', 'MP', 'ABE', '1996', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(29, 2, 125, 'RS 126', 'MP', 'ABE', '1997', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(30, 2, 125, 'RS 127', 'MP', 'ABE', '1998', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(31, 2, 125, 'RS 128', 'MP', 'ABE', '1999', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(32, 2, 125, 'RS 129', 'MP', 'ABE', '2000', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(33, 2, 125, 'RS 130', 'MP', 'ABE', '2001', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(34, 2, 125, 'RS 131', 'MP', 'ABE', '2002', 'MS', 'ME302-280T-06', 'ABE', 280, '10X35', 'F.26X8', '46-130-110', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-280T-06.png', NULL, NULL),
+	(35, 2, 125, 'RS 125  ', '', 'ABE', '2003', 'MS', 'ME302-310T-15', 'ABE', 310, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-310T-15.png', NULL, NULL),
+	(36, 2, 125, 'RS 126', '', 'ABE', '2004', 'MS', 'ME302-310T-15', 'ABE', 310, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-310T-15.png', NULL, NULL),
+	(37, 2, 125, 'RS 127', '', 'ABE', '2005', 'MS', 'ME302-310T-15', 'ABE', 310, '10x22 H+20', '10x19 ', '46-60-90-145', 30, 12, 'T', '', '', '', '', 'Y', '', '', '', '', '1', 'ME302-310T-15.png', NULL, NULL),
+	(38, 2, 250, 'RS 250 Race Replica ', 'LD/LD01', 'ABE', '1995', 'MS', 'MZ366-315TR-09', 'ABE', 315, '10x30', 'F.30x10', '46-60-90-145', 36, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '1', 'MZ366-315TR-09.png', NULL, NULL),
+	(39, 2, 250, 'RS 250  GP', '', '', '1998', 'MS', 'MZ366-310TRL-03', '-', 310, '10x30', 'F.26xM10', '46-60-90-145', 36, 16, 'T', 'Y', '', 'Y', '', 'Y', '', '', '', '', '1', 'MZ366-310TRL-03.png', NULL, NULL);
+/*!40000 ALTER TABLE `application_list` ENABLE KEYS */;
+
 
 -- Dumping structure for table db_yss_new.download
 CREATE TABLE IF NOT EXISTS `download` (
@@ -286,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table db_yss_new.user: ~3 rows (approximately)
+-- Dumping data for table db_yss_new.user: ~4 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `fname`, `lname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `roles`, `created_at`, `updated_at`) VALUES
 	(1, 'admin', 'chittipong', 'mongpranit', 'zaED_Yu5iXIT2EssXFDjHWytobDMBg7T', '$2y$13$6n6Oajm7pvQPX6UKFBE2KOkjSrnMqguQolbUxAnSAC88k0cewa63y', NULL, 'admin@hotmail.com', 10, 10, 1444461071, 1445670305),
