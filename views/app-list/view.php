@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                           'format'=>['image',['width'=>'400','title'=>$model->pic]]                              //Set Image Width
                         ],
             'id',
-            'brand.brand',
+            'brandName.brand',
             'cc',
             'model',
             'ref_no',
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'on_hose',
             'free_piston',
             'dtg',
-            'vehicle_type',
+            'vehicle.name',
             'pic',
             'date_create',
             'date_update',

@@ -85,11 +85,11 @@ class AppList extends \yii\db\ActiveRecord
             'cc' => Yii::t('app', 'Cc'),
             'model' => Yii::t('app', 'Model'),
             'ref_no' => Yii::t('app', 'Ref_No.'),
-            'abe1' => Yii::t('app', 'ABE ของ มอเตอร์ไซค์'),
+            'abe1' => Yii::t('app', 'ABE (รถ)'),
             'year' => Yii::t('app', 'Year'),
             'type' => Yii::t('app', 'Type'),
             'product_code' => Yii::t('app', 'Product Code'),
-            'abe_shock' => Yii::t('app', 'ABE ของโช้ค'),
+            'abe_shock' => Yii::t('app', 'ABE (โช้ค)'),
             'length' => Yii::t('app', 'Length'),
             'top' => Yii::t('app', 'Top'),
             'bottom' => Yii::t('app', 'Bottom'),
@@ -113,36 +113,9 @@ class AppList extends \yii\db\ActiveRecord
         ];
     }
     
-     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductGalleries()
-    {
-        return $this->hasMany(ProductGallery::className(), ['product_id' => 'product_id']);
-    }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDownloads()
-    {
-        return $this->hasMany(Download::className(), ['product_id' => 'product_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductDetails()
-    {
-        return $this->hasMany(ProductDetail::className(), ['product_id' => 'product_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBrand()
-    {
-        return $this->hasOne(Brand::className(), ['brand' => 'brand_id']);
+    public function getBrandName(){
+        return $this->hasOne(Brand::className(),['brand_id' => 'brand']);
     }
     /**
      * @return \yii\db\ActiveQuery
@@ -218,6 +191,15 @@ class AppList extends \yii\db\ActiveRecord
         return $list;
     }
     
+    //List Year-----------------------
+    public function getYearList(){
+        $list=['1998'=>'1998','1999'=>'1999','2000'=>'2000','2001'=>'2001','2002'=>'2002','2003'=>'2003','2004'=>'2004',
+            '2005'=>'2005','2006'=>'2006','2007'=>'2007','2008'=>'2008','2009'=>'2009','2010'=>'2010','2011'=>'2011',
+            '2012'=>'2012','2013'=>'2013','2014'=>'2014','2015'=>'2015'];
+        return $list;
+    }
+
+
     //List Type------------------
     public function getTypeList(){
         $list=['TS' => 'TS', 'MS' => 'MS'];

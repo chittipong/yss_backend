@@ -30,7 +30,8 @@ use yii\helpers\Url;
 
             <?= $form->field($model, 'ref_no')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'year')->textInput(['maxlength' => true]) ?>
+            <?php // $form->field($model, 'year')->textInput(['maxlength' => true]) ?>
+            <?=$form->field($model, 'year')->dropDownList($model->getYearList()) ?>
 
             <?php // $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
             <?=$form->field($model, 'type')->dropDownList($model->getTypeList()) ?>
@@ -104,17 +105,17 @@ use yii\helpers\Url;
             <?= $form->field($model,'file')->fileInput()?>
 
             <!-- ตรวจสอบว่ามีรูปภาพหรือไม่ถ้ามีให้ดึงออกมาโชว์และมีปุ่ม delete -->
-                        <?php if($model->pic): ?>
-                        <div class="well">
-                        <?= Html::img(Url::to($model->productDir.$model->pic),['class'=>'thumbnail','width'=>'300']) //แสดงรูปภาพ ?>
-                        <?= Html::a(
-                                '<i class="glyphicon glyphicon-trash"></i>',
-                                ['deleteimage','id'=>$model->id,'dir'=>$model->productDir,'field'=>'pic'],
-                                ['class'=>'btn btn-danger']
-                            )//แสดงปุ่ม delete
-                        ?>
-                        </div>
-                        <?php endif; ?>
+                <?php if($model->pic): ?>
+                <div class="well">
+                <?= Html::img(Url::to($model->productDir.$model->pic),['class'=>'thumbnail','width'=>'300']) //แสดงรูปภาพ ?>
+                <?= Html::a(
+                        '<i class="glyphicon glyphicon-trash"></i>',
+                        ['deleteimage','id'=>$model->id,'dir'=>$model->productDir,'field'=>'pic'],
+                        ['class'=>'btn btn-danger']
+                    )//แสดงปุ่ม delete
+                ?>
+                </div>
+                <?php endif; ?>
 
                     <div class="form-group">
                         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

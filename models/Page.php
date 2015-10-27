@@ -45,7 +45,7 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'specific_name' => Yii::t('app', 'ชื่อ Page ภาษาอังกฤษเท่านั้น'),
+            'specific_name' => Yii::t('app', 'Specific Name'),
             'title' => Yii::t('app', 'title เพื่อแสดงในแทบไตเติลบาร์'),
             'description' => Yii::t('app', 'Description สำหรับ Meta tag'),
             'keyword' => Yii::t('app', 'Keyword สำหรับ Meta tag'),

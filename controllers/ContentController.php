@@ -121,6 +121,60 @@ class ContentController extends Controller
             ]);
         }
     }
+    
+    //FUNCTION FOR DELETE IMAGE------------------
+    public function actionDeleteimage($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            //CHECK FILE EXISTED---------
+            if(file_exists($dir.$img)){
+                    if(!unlink($dir.$img)){
+                        //SET DISPLAY MESSAGE ----------
+                        Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบภาพได้','options'=>['class'=>'alert-warning']]);
+
+                        //REDIRECT PAGE-----------------
+                        return $this->redirect(['update','id'=>$id]);
+                    }else{ //WHEN DELETE FILE SUCCESS-------
+                        $img=$this->findModel($id);
+                        $img->$field=null;
+                        $img->update();             //Update field
+
+                        //SET DISPLAY MESSAGE ----------
+                        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
+                    }
+            }else{
+                $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();             //Update field
+            }
+            
+            //REDIRECT PAGE-----------------
+              return $this->redirect(['update','id'=>$id]);
+        }
+    }//end**
+    
+    
+    //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
+    public function deleteImageNoMsg($id,$dir,$field){
+        $img=$this->findModel($id)->$field;
+        if($img){
+            //CHECK FILE EXISTED---------
+            if(file_exists($dir.$img)){
+                if(!unlink($dir.$img)){
+                    return false;
+                }else{
+                    /*$img=$this->findModel($id);
+                    $img->$field=null;
+                    $img->update();*/
+                    return true;
+                }
+            }else{
+                $img=$this->findModel($id);
+                $img->$field=null;
+                $img->update();             //Update field
+            }
+        }
+    }//end**
 
     /**
      * Deletes an existing Content model.

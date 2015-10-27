@@ -67,6 +67,7 @@ class AppListController extends Controller
     {
         $searchModel = new AppListSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort->defaultOrder=['id'=>'DESC'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -157,8 +158,8 @@ class AppListController extends Controller
             $upload='';
             
             if($model->file){
-                $newName=date("Ymdhis");                                        //Generate filename from Date time
-                //$newName=$model->code;                                        //Set image name same Product code
+                //$newName=date("Ymdhis");                                        //Generate filename from Date time
+                $newName=$model->product_code;                                        //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
                 $imgPath=$model->productDir;
@@ -205,20 +206,20 @@ class AppListController extends Controller
 
                         //SET DISPLAY MESSAGE ----------
                         Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-
-                        //REDIRECT PAGE-----------------
-                        return $this->redirect(['update','id'=>$id]);
                     }
             }else{
                 $img=$this->findModel($id);
                 $img->$field=null;
                 $img->update();             //Update field
             }
+            
+            //REDIRECT PAGE-----------------
+              return $this->redirect(['update','id'=>$id]);
         }
     }//end**
     
     
-   //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
+    //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
     public function deleteImageNoMsg($id,$dir,$field){
         $img=$this->findModel($id)->$field;
         if($img){

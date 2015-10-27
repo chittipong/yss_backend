@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             //'pic',
+            'title',
             'type',
             'author',
             'sort_order',

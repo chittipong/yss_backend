@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    
     <p>
         <?= Html::a(Yii::t('app', 'Create App List'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -23,17 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'brand.brand',
+            'product_code',
+            'brandName.brand',
             'cc',
             'model',
             'ref_no',
              'abe1',
              'year',
              'type',
-             'product_code',
              'abe_shock',
              'length',
              'top',

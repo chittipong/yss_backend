@@ -319,31 +319,33 @@ class ProductController extends Controller
     //FUNCTION FOR DELETE IMAGE------------------
     public function actionDeleteimage($id,$dir,$field){
         $img=$this->findModel($id)->$field;
-        //CHECK FILE EXISTED---------
+        if($img){
+            //CHECK FILE EXISTED---------
             if(file_exists($dir.$img)){
                     if(!unlink($dir.$img)){
-                         //SET DISPLAY MESSAGE ----------
-                        Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบรูปภาพได้','options'=>['class'=>'alert-warning']]);
+                        //SET DISPLAY MESSAGE ----------
+                        Yii::$app->getSession()->setFlash('alert',['body'=>'ไม่สามารถลบภาพได้','options'=>['class'=>'alert-warning']]);
 
                         //REDIRECT PAGE-----------------
                         return $this->redirect(['update','id'=>$id]);
-                    }else{
+                    }else{ //WHEN DELETE FILE SUCCESS-------
                         $img=$this->findModel($id);
                         $img->$field=null;
-                        $img->update();
+                        $img->update();             //Update field
 
                         //SET DISPLAY MESSAGE ----------
                         Yii::$app->getSession()->setFlash('alert',['body'=>'ลบรูปภาพเรียบร้อย','options'=>['class'=>'alert-success']]);
-
-                        //REDIRECT PAGE-----------------
-                        return $this->redirect(['update','id'=>$id]);
                     }
             }else{
                 $img=$this->findModel($id);
                 $img->$field=null;
                 $img->update();             //Update field
             }
-    }//end
+            
+            //REDIRECT PAGE-----------------
+              return $this->redirect(['update','id'=>$id]);
+        }
+    }//end**
     
     
     //FUNCTION FOR DELETE NO DISPLAY MESSAGE------------------
