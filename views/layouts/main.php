@@ -85,8 +85,10 @@ AppAsset::register($this);
                                 ['label'=>'Menu','url' => ['/menu/index']],
                                 ['label' => 'Shot Word', 'url' => ['/word/index']],
                                 ['label'=>'Page','url' => ['/page/index']],
+                                ['label'=>'Page Meta','url' => ['/page-meta/index']],
                                 ['label'=>'Slide','url' => ['/yss-slide/index']],
                                 ['label'=>'Content','url'=>['/content/index']],
+                                ['label'=>'Award','url'=>['/award/index']],
                             ]
                         ],
                         ['label' => 'Download', 'url' => ['/download/index']],

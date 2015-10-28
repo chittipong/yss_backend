@@ -126,7 +126,6 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        
         $model = new Product();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        

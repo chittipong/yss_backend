@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Content */
+/* @var $model app\models\Award */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contents'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Awards'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-view">
+<div class="award-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,20 +31,30 @@ $this->params['breadcrumbs'][] = $this->title;
     DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
+            //DISPLAY IMAGE--------------------
             [
                 'attribute' => 'photo',
-                'value' => $model->contentDir . $model->pic,
-                'format' => ['image', ['width' => '400', 'title' => $model->pic]]                              //Set Image Width
+                'value' => $model->awardDir . $model->pic,
+                'format' => ['image', ['width' => '200', 'title' => $model->pic]]                              //Set Image Width
             ],
-            'pic_title',
-            'page',
-            'position',
-            'title',
-            'detail',
+            'title_th',
+            'title_en',
+            'detail_th:ntext',
+            'detail_en:ntext',
+            'title_l3',
+            'title_l4',
+            'title_l5',
+            'title_l6',
+            'title_l7',
+            'title_l8',
+            'detail_l3:ntext',
+            'detail_l4:ntext',
+            'detail_l5:ntext',
+            'detail_l6:ntext',
+            'detail_l7:ntext',
+            'detail_l8:ntext',
             //'pic',
-            'lang',
-            'sort_order',
             'date_create',
             'date_update',
         ],

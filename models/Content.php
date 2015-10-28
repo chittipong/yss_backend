@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use app\models\Page;
+use yii\helpers\Url;
 /**
  * This is the model class for table "{{%yss_content}}".
  *
@@ -37,12 +38,12 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['page'], 'integer'],
+            [['page','sort_order'], 'integer'],
             [['position', 'date_create', 'date_update'], 'string', 'max' => 45],
-            [['title', 'detail', 'pic'], 'string', 'max' => 100],
+            [['title', 'detail', 'pic','pic_title'], 'string'],
             [['lang'], 'string', 'max' => 5],
             
-              //For upload pic
+             //For upload pic---------
             [['file'],'safe'],
             [['file'],'file','extensions'=>'jpg,png,gif']
         ];
@@ -60,7 +61,9 @@ class Content extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'หัวข้อ (Title)'),
             'detail' => Yii::t('app', 'รายละเอียด (Detail)'),
             'file' => Yii::t('app', 'รูปภาพ'),
+            'pic_title' => Yii::t('app', 'คำบรรยายใต้ภาพ'),
             'lang' => Yii::t('app', 'ภาษา'),
+            'sort_order' => Yii::t('app', 'ลำดับ'),
             'date_create' => Yii::t('app', 'วันที่สร้าง'),
             'date_update' => Yii::t('app', 'วันที่มีการแก้ไข'),
         ];
@@ -81,6 +84,12 @@ class Content extends \yii\db\ActiveRecord
         public function getPageList(){
             $list=  Page::find()->orderBy('id')->all();
             return ArrayHelper::map($list,'id', 'specific_name');
+        }
+        
+     //Get Section List------------
+        public function getSectionList(){
+            $list=['section1'=>'Section 1','section2'=>'Section 2','section3'=>'Section 3','section4'=>'Section 4','section5'=>'Section 5'];
+            return $list;
         }
 
 }

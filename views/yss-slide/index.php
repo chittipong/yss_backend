@@ -26,13 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            [
+                'attribute'=>'รูปภาพ',                                           //title
+                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
+                'value' => function($model){
+                    return $model->getImageUrl();                               //Get function in product model
+                }
+            ],
             'slide_name',
             'page',
-            'pic',
-            'title',
-            // 'link',
-            // 'lang',
-            // 'sort_order',
+            //'pic',
+            'header',
+            //'title',
+            'link',
+            'lang',
+            'sort_order',
             // 'date_create',
             // 'date_update',
 

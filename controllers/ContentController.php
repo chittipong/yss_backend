@@ -8,6 +8,7 @@ use app\models\ContentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 use app\models\User;                        //For set permission
 use yii\filters\AccessControl;              //For set permission
@@ -90,18 +91,44 @@ class ContentController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Content();
+    
+    public function actionCreate(){
+        $model=new Content();
+        $model->date_create= date("Y-m-d h:i:s");                           //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            //UPLOAD SETUP-----------------
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->contentDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+            if($model->save()){
+               //START UPLOAD IMAGE--------------
+                if($upload){
+                    $model->file->saveAs($model->contentDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
-    }
+    }//end***
 
     /**
      * Updates an existing Content model.
@@ -109,18 +136,47 @@ class ContentController extends Controller
      * @param integer $id
      * @return mixed
      */
+    
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->date_update= date("Y-m-d h:i:s");                               //Set date create
+       
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+            
+            if($model->file){
+                $newName=date("Ymdhis");                                        //Generate filename from Date time
+                //$newName=$model->code;                                        //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->contentDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+               //DELETE OLD PICTURE***
+                $this->deleteImageNoMsg($id,$imgPath,'pic');
+            }
+
+            if($model->save()){
+               //UPLOAD PIC------------------
+                if($upload){
+                    $model->file->saveAs($model->contentDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT PAGE-----------------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+        }else{
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
-    }
+    }//end***
     
     //FUNCTION FOR DELETE IMAGE------------------
     public function actionDeleteimage($id,$dir,$field){
@@ -182,12 +238,21 @@ class ContentController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    public function actionDelete($id=null)
+    {        
+        $model=new Content();
+        $dir=$model->contentDir;                       
+        
+        //DELETE PIC IN FLODER------
+        $this->deleteImageNoMsg($id,$dir,'pic');                            //Delete pic in floder
+        $this->findModel($id)->delete();                                    //Delete news
 
+        //SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        //REDIRECT PAGE-----------------
         return $this->redirect(['index']);
-    }
+    }//end***
 
     /**
      * Finds the Content model based on its primary key value.

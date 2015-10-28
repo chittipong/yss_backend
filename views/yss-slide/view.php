@@ -29,9 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            [
+                'attribute' => 'photo',
+                'value' => $model->slideDir . $model->pic,
+                'format' => ['image', ['width' => '400', 'title' => $model->pic]]                              //Set Image Width
+            ],
             'slide_name',
             'page',
-            'pic',
+            //'pic',
             'title',
             'link',
             'lang',

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Page */
+/* @var $model app\models\PageMeta */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pages'), 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Page Metas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="page-view">
+<div class="page-meta-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,9 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'page_id',
             'title',
-            'sort_order',
+            'description:ntext',
+            'keyword',
+            'lang',
         ],
     ]) ?>
 

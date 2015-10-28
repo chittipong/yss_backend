@@ -3,17 +3,14 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%yss_page}}".
  *
  * @property integer $id
- * @property string $specific_name
+ * @property string $name
  * @property string $title
- * @property string $description
- * @property string $keyword
- * @property string $lang
+ * @property integer $sort_order
  */
 class Page extends \yii\db\ActiveRecord
 {
@@ -31,10 +28,9 @@ class Page extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description'], 'string'],
-            [['specific_name', 'title'], 'string', 'max' => 50],
-            [['keyword'], 'string', 'max' => 250],
-            [['lang'], 'string', 'max' => 5]
+            [['name'], 'required'],
+            [['sort_order'], 'integer'],
+            [['name', 'title'], 'string', 'max' => 50]
         ];
     }
 
@@ -45,21 +41,9 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'specific_name' => Yii::t('app', 'Specific Name'),
-            'title' => Yii::t('app', 'title เพื่อแสดงในแทบไตเติลบาร์'),
-            'description' => Yii::t('app', 'Description สำหรับ Meta tag'),
-            'keyword' => Yii::t('app', 'Keyword สำหรับ Meta tag'),
-            'lang' => Yii::t('app', 'ภาษา'),
+            'name' => Yii::t('app', 'Specific Name'),
+            'title' => Yii::t('app', 'title'),
+            'sort_order' => Yii::t('app', 'ลำดับ'),
         ];
-    }
-    
-    public function getLang()
-    {
-        return $this->hasOne(Lang::className(), ['abb' => 'lang']);
-    }
-    
-    public function getLangList(){
-        $list=Lang::find()->orderBy('sort_order')->all();
-        return ArrayHelper::map($list, 'abb', 'lang_name');
     }
 }

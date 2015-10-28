@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Page;
+use app\models\PageMeta;
 
 /**
- * PageSearch represents the model behind the search form about `app\models\Page`.
+ * PageMetaSearch represents the model behind the search form about `app\models\PageMeta`.
  */
-class PageSearch extends Page
+class PageMetaSearch extends PageMeta
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class PageSearch extends Page
     public function rules()
     {
         return [
-            [['id', 'sort_order'], 'integer'],
-            [['name', 'title'], 'safe'],
+            [['id', 'page_id'], 'integer'],
+            [['title', 'description', 'keyword', 'lang'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PageSearch extends Page
      */
     public function search($params)
     {
-        $query = Page::find();
+        $query = PageMeta::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,11 +57,13 @@ class PageSearch extends Page
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'sort_order' => $this->sort_order,
+            'page_id' => $this->page_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'keyword', $this->keyword])
+            ->andFilterWhere(['like', 'lang', $this->lang]);
 
         return $dataProvider;
     }

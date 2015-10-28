@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Page;
-use app\models\PageSearch;
+use app\models\PageMeta;
+use app\models\PageMetaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PageController implements the CRUD actions for Page model.
+ * PageMetaController implements the CRUD actions for PageMeta model.
  */
-class PageController extends Controller
+class PageMetaController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PageController extends Controller
     }
 
     /**
-     * Lists all Page models.
+     * Lists all PageMeta models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PageSearch();
+        $searchModel = new PageMetaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class PageController extends Controller
     }
 
     /**
-     * Displays a single Page model.
+     * Displays a single PageMeta model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class PageController extends Controller
     }
 
     /**
-     * Creates a new Page model.
+     * Creates a new PageMeta model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Page();
+        $model = new PageMeta();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class PageController extends Controller
     }
 
     /**
-     * Updates an existing Page model.
+     * Updates an existing PageMeta model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class PageController extends Controller
     }
 
     /**
-     * Deletes an existing Page model.
+     * Deletes an existing PageMeta model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class PageController extends Controller
     }
 
     /**
-     * Finds the Page model based on its primary key value.
+     * Finds the PageMeta model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Page the loaded model
+     * @return PageMeta the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Page::findOne($id)) !== null) {
+        if (($model = PageMeta::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

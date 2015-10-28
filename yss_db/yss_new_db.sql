@@ -3,7 +3,7 @@
 -- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-27 17:53:37
+-- Date/time:                    2015-10-28 18:00:11
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -965,7 +965,7 @@ CREATE TABLE IF NOT EXISTS `applist_test` (
   KEY `brand` (`brand`)
 ) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.applist_test: ~353 rows (approximately)
+-- Dumping data for table db_yss_new.applist_test: ~352 rows (approximately)
 /*!40000 ALTER TABLE `applist_test` DISABLE KEYS */;
 INSERT INTO `applist_test` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
 	(41, '59', 0, 'QUAD     (FRONT)', '', '', '2009', 'TS', 'FZ366-410TR-01', '', 410, '10x20', '10x20', '46-25-45-280', 36, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '2', NULL, NULL, NULL),
@@ -1632,6 +1632,49 @@ CREATE TABLE IF NOT EXISTS `users` (
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
+-- Dumping structure for table db_yss_new.yss_award
+CREATE TABLE IF NOT EXISTS `yss_award` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title_th` varchar(100) DEFAULT NULL COMMENT 'Title (ไทย)',
+  `title_en` varchar(100) DEFAULT NULL COMMENT 'Title (EN)',
+  `title_l3` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 3)',
+  `title_l4` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 4)',
+  `title_l5` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 5)',
+  `title_l6` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 6)',
+  `title_l7` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 7)',
+  `title_l8` varchar(100) DEFAULT NULL COMMENT 'Title (ภาษาที่ 8)',
+  `detail_th` text COMMENT 'รายละเอียด(ไทย)',
+  `detail_en` text COMMENT 'รายละเอียด(EN)',
+  `detail_l3` text COMMENT 'รายละเอียด(ภาษาที่ 3)',
+  `detail_l4` text COMMENT 'รายละเอียด(ภาษาที่ 4)',
+  `detail_l5` text COMMENT 'รายละเอียด(ภาษาที่ 5)',
+  `detail_l6` text COMMENT 'รายละเอียด(ภาษาที่ 6)',
+  `detail_l7` text COMMENT 'รายละเอียด(ภาษาที่ 7)',
+  `detail_l8` text COMMENT 'รายละเอียด(ภาษาที่ 8)',
+  `pic` varchar(50) DEFAULT NULL COMMENT 'รูป',
+  `sort_order` int(10) DEFAULT NULL COMMENT 'ลำดับ',
+  `date_create` datetime DEFAULT NULL COMMENT 'วันที่สร้าง',
+  `date_update` datetime DEFAULT NULL COMMENT 'วันที่อัพเดต',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_award: ~10 rows (approximately)
+/*!40000 ALTER TABLE `yss_award` DISABLE KEYS */;
+INSERT INTO `yss_award` (`id`, `title_th`, `title_en`, `title_l3`, `title_l4`, `title_l5`, `title_l6`, `title_l7`, `title_l8`, `detail_th`, `detail_en`, `detail_l3`, `detail_l4`, `detail_l5`, `detail_l6`, `detail_l7`, `detail_l8`, `pic`, `sort_order`, `date_create`, `date_update`) VALUES
+	(1, 'True Vision', 'True Vision', '', '', '', '', '', '', 'TRUE VISIONS BOBBY HUNTER SUPER ONE RACE 2015\r\n4th Class B \r\nAsia Pick – Up Commonrail Open', 'TRUE VISIONS BOBBY HUNTER SUPER ONE RACE 2015\r\n4th Class B \r\nAsia Pick – Up Commonrail Open', '', '', '', '', '', '', '20151028053621.jpg', 1, '2015-10-28 05:34:32', '2015-10-28 05:36:21'),
+	(2, 'YSS-OSAKI DIRISHOP BIKE TEST 2005', 'YSS-OSAKI DIRISHOP BIKE TEST 2005', '', '', '', '', '', '', 'โครงการ YSS-OSAKI DIRISHOP BIKE TEST 2005 รางวัลรองชนะเลิศ อันดับ 1 รุ่นโอเพ่น รายการ RED BULL MOTOCROSS 2005 วันที่ 1 พฤษภาคม 2548 ณ สนามแข่ง SCD MOTOSPORT CLUB สมุทรปราการ', 'โครงการ YSS-OSAKI DIRISHOP BIKE TEST 2005 รางวัลรองชนะเลิศ อันดับ 1 รุ่นโอเพ่น รายการ RED BULL MOTOCROSS 2005 วันที่ 1 พฤษภาคม 2548 ณ สนามแข่ง SCD MOTOSPORT CLUB สมุทรปราการ', '', '', '', '', '', '', '20151028054055.jpg', 2, '2015-10-28 05:35:34', '2015-10-28 05:40:55'),
+	(3, 'TWIN RING MOTEGI', 'TWIN RING MOTEGI', '', '', '', '', '', '', '1st \r\nTWIN RING MOTEGI', '1st \r\nTWIN RING MOTEGI', '', '', '', '', '', '', '20151028054138.jpg', 3, '2015-10-28 05:41:30', '2015-10-28 05:43:49'),
+	(4, 'YONK JAYD Racing Team', 'YONK JAYD Racing Team', '', '', '', '', '', '', 'YONK JAYD Racing Team Terima Kasih', 'YONK JAYD Racing Team Terima Kasih', '', '', '', '', '', '', '20151028054438.jpg', 4, '2015-10-28 05:44:38', '2015-10-28 05:44:56'),
+	(5, 'FMSCT R2M SUPER NAKEDBIKES 2011', 'FMSCT R2M SUPER NAKEDBIKES 2011', '', '', '', '', '', '', 'FMSCT R2M SUPER NAKEDBIKES 2011\r\nTEAM PTT CHALLENGER YSS\r\nCHIANG MAI SUPERBIKE\r\nCHAMPION\r\nSUPER NAKEDBIKES CC', 'FMSCT R2M SUPER NAKEDBIKES 2011\r\nTEAM PTT CHALLENGER YSS\r\nCHIANG MAI SUPERBIKE\r\nCHAMPION\r\nSUPER NAKEDBIKES CC', '', '', '', '', '', '', '20151028054617.jpg', 5, '2015-10-28 05:46:17', NULL),
+	(6, 'PRO.RACING SERIES 2014', 'PRO.RACING SERIES 2014', '', '', '', '', '', '', 'Thanachart Bank\r\nPRO.RACING SERIES 2014 \r\nTHAILAND CHAMPIONSHIP\r\nYSS AUTO RACING SHOCK SIGHA PROJECT M\r\nGPI MOTORSPORT CHAMPIONS’ AWARD 2014\r\nรางวัลชนะเลิศประเภททีม รุ่น Pro. Truck Overall', 'Thanachart Bank\r\nPRO.RACING SERIES 2014 \r\nTHAILAND CHAMPIONSHIP\r\nYSS AUTO RACING SHOCK SIGHA PROJECT M\r\nGPI MOTORSPORT CHAMPIONS’ AWARD 2014\r\nรางวัลชนะเลิศประเภททีม รุ่น Pro. Truck Overall', '', '', '', '', '', '', '20151028054949.jpg', 6, '2015-10-28 05:49:49', NULL),
+	(7, '2013 PRO.RACING SERIES', '2013 PRO.RACING SERIES', '', '', '', '', '', '', '2013 PRO.RACING SERIES\r\nรางวัลรองชนะเลิศ  อันดับ 1 \r\nรุ่น Pro. Truck Over All\r\nการแข่งขันรายการ Pro. Racing Series Thailand Championship 2013\r\nสนามที่ 2 วันที่ 30 มิถุนายน 2556 \r\nณ  สนาม พีระอินเตอร์เนชั่นแนลเซอร์กิต พัทยา', '2013 PRO.RACING SERIES\r\nรางวัลรองชนะเลิศ  อันดับ 1 \r\nรุ่น Pro. Truck Over All\r\nการแข่งขันรายการ Pro. Racing Series Thailand Championship 2013\r\nสนามที่ 2 วันที่ 30 มิถุนายน 2556 \r\nณ  สนาม พีระอินเตอร์เนชั่นแนลเซอร์กิต พัทยา', '', '', '', '', '', '', '20151028055050.jpg', 7, '2015-10-28 05:50:50', NULL),
+	(8, '2013 PRO.RACING SERIES', '2013 PRO.RACING SERIES', '', '', '', '', '', '', '2013 PRO.RACING SERIES\r\nรางวัลรองชนะเลิศ  อันดับ 1 \r\nรุ่น Pro. Truck Over All\r\nการแข่งขันรายการ Pro. Racing Series Thailand Championship 2013\r\nสนามที่ 1 วันที่ 29 มิถุนายน 2556 \r\nณ  สนาม พีระอินเตอร์เนชั่นแนลเซอร์กิต พัทยา', '2013 PRO.RACING SERIES\r\nรางวัลรองชนะเลิศ  อันดับ 1 \r\nรุ่น Pro. Truck Over All\r\nการแข่งขันรายการ Pro. Racing Series Thailand Championship 2013\r\nสนามที่ 1 วันที่ 29 มิถุนายน 2556 \r\nณ  สนาม พีระอินเตอร์เนชั่นแนลเซอร์กิต พัทยา', '', '', '', '', '', '', '20151028055130.jpg', 8, '2015-10-28 05:51:30', NULL),
+	(9, 'สมาคมกีฬาแข่งรถจักรยานยนต์แห่งประเทศไทย', 'สมาคมกีฬาแข่งรถจักรยานยนต์แห่งประเทศไทย', '', '', '', '', '', '', 'สมาคมกีฬาแข่งรถจักรยานยนต์แห่งประเทศไทย \r\nมอบให้แด่ \r\nบริษัท วาย.เอส.เอส. (ประเทศไทย) จำกัด\r\nในฐานะให้การสนับสนุนกิจกรรมสมาคม \r\nให้ไว้ ณ วันที่ 24 มกราคม 2557', 'สมาคมกีฬาแข่งรถจักรยานยนต์แห่งประเทศไทย \r\nมอบให้แด่ \r\nบริษัท วาย.เอส.เอส. (ประเทศไทย) จำกัด\r\nในฐานะให้การสนับสนุนกิจกรรมสมาคม \r\nให้ไว้ ณ วันที่ 24 มกราคม 2557', '', '', '', '', '', '', '20151028055216.jpg', 9, '2015-10-28 05:52:16', '2015-10-28 05:52:45'),
+	(10, 'APPRECIATION YEAR 2012', 'APPRECIATION YEAR 2012', '', '', '', '', '', '', 'APPRECIATION YEAR 2012\r\nAS\r\nTHANK YOU YOUR GREAT SUPPORTIVENSS\r\nPANADDA RACING TINGNOTESHOP', 'APPRECIATION YEAR 2012\r\nAS\r\nTHANK YOU YOUR GREAT SUPPORTIVENSS\r\nPANADDA RACING TINGNOTESHOP', '', '', '', '', '', '', '20151028055402.jpg', 10, '2015-10-28 05:54:02', NULL);
+/*!40000 ALTER TABLE `yss_award` ENABLE KEYS */;
+
+
 -- Dumping structure for table db_yss_new.yss_brand
 CREATE TABLE IF NOT EXISTS `yss_brand` (
   `brand_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
@@ -1746,19 +1789,35 @@ CREATE TABLE IF NOT EXISTS `yss_content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `page` int(10) DEFAULT NULL COMMENT 'หน้า',
   `position` varchar(45) DEFAULT NULL COMMENT 'ตำแหน่ง',
-  `title` varchar(100) DEFAULT NULL COMMENT 'หัวข้อ',
-  `detail` varchar(100) DEFAULT NULL COMMENT 'รายละเอียด',
+  `title` varchar(225) DEFAULT NULL COMMENT 'หัวข้อ',
+  `detail` text COMMENT 'รายละเอียด',
   `pic` varchar(100) DEFAULT NULL COMMENT 'รูปภาพ',
+  `pic_title` varchar(225) DEFAULT NULL COMMENT 'คำบรรยายภาพ',
   `lang` varchar(5) DEFAULT NULL COMMENT 'ภาษา',
   `sort_order` int(5) DEFAULT NULL COMMENT 'ลำดับ',
   `date_create` varchar(45) DEFAULT NULL COMMENT 'วันที่สร้าง',
   `date_update` varchar(45) DEFAULT NULL COMMENT 'วันที่มีการแก้ไข',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_content: ~0 rows (approximately)
+-- Dumping data for table db_yss_new.yss_content: ~14 rows (approximately)
 /*!40000 ALTER TABLE `yss_content` DISABLE KEYS */;
+INSERT INTO `yss_content` (`id`, `page`, `position`, `title`, `detail`, `pic`, `pic_title`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
+	(4, 4, 'section1', 'YSS team confidence to R & D.', '<p>YSS is a shock absorber manufacturer for cars and motorcycles for more than 30 years. YSS continues using advanced technology and equipment at all stages of the production to develop and improve high quality of products continuously. Also, YSS has R & D team from Europe that has a lot of experience for developing shock absorber in order to compete in the global wide. All products made with quality equivalent to European quality including the shock absorber performance, installation, durability, and safety testing. R & D team cares every step to make YSS products to meet customer satisfaction.</p>\r\n\r\n<p>YSS received certification from the Institute Kraftfahrt-Bundesamt (KBA) - Federal Motor Transport Authority of Germany which is the only brand in ASEAN that has been certified. Additionally, YSS was certified in various automotive industries such as QS9000, ISO / TS16949, ISO9001 from TUV RHEILAND.<p>', '20151028075433.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 1, '2015-10-28 07:54:33', '2015-10-28 08:22:36'),
+	(5, 4, 'section1', 'YSS team confidence to R & D.', '<p>YSS is a shock absorber manufacturer for cars and motorcycles for more than 30 years. YSS continues using advanced technology and equipment at all stages of the production to develop and improve high quality of products continuously. Also, YSS has R & D team from Europe that has a lot of experience for developing shock absorber in order to compete in the global wide. All products made with quality equivalent to European quality including the shock absorber performance, installation, durability, and safety testing. R & D team cares every step to make YSS products to meet customer satisfaction.</p> <p>YSS received certification from the Institute Kraftfahrt-Bundesamt (KBA) - Federal Motor Transport Authority of Germany which is the only brand in ASEAN that has been certified. Additionally, YSS was certified in various automotive industries such as QS9000, ISO / TS16949, ISO9001 from TUV RHEILAND.<p>', '20151028080016.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 1, '2015-10-28 08:00:16', '2015-10-28 08:31:59'),
+	(6, 4, 'section2', '', 'YSS is also cultivate all staffs awareness to pay attention to the environment both internal and external communities with its philosophy of producing a shock absorber that "We have always thought that we are producing a shock absorber to myself and my family”.', '20151028083510.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 2, '2015-10-28 08:35:10', NULL),
+	(7, 4, 'section2', '', 'YSS is also cultivate all staffs awareness to pay attention to the environment both internal and external communities with its philosophy of producing a shock absorber that "We have always thought that we are producing a shock absorber to myself and my family”.', '20151028083831.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 2, '2015-10-28 08:38:31', '2015-10-28 08:39:21'),
+	(8, 6, 'section1', 'คุณภาพระดับโลก', 'Shock you can trust. Our shocks have met ABE product standard from Germany and are produced in the process certified under ISO 9001.', '20151028085711.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 1, '2015-10-28 08:57:11', '2015-10-28 09:05:02'),
+	(9, 6, 'section1', 'World Class Quality', 'Shock you can trust. Our shocks have met ABE product standard from Germany and are produced in the process certified under ISO 9001.', '20151028085821.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 1, '2015-10-28 08:58:21', NULL),
+	(10, 7, 'section1', 'ความรับผิดชอบต่อสังคม', 'บริษัท วาย.เอส.เอส (ประเทศไทย) จำกัด ได้ตระหนักถึงความสำคัญในการอยู่ร่วมกันของคนในสังคม และบริษัทได้มีกิจกรรมสนับสนุนและพัฒนาชุมชนทั้งทางด้านการศึกษา การร่วมแรงร่วมใจในการทำความสะอาดชุมชน การรณรงค์ต้านยาเสพติด ฯลฯ ซึ่งได้รับความร่วมมือของคนในชุมชนเป็นอย่างดี', '20151028091632.jpg', 'มอบทุนการศึกษาให้นักเรียน', 'TH', 1, '2015-10-28 09:16:32', NULL),
+	(11, 7, 'section1', 'Corporate Social Responsibility', 'Corporate Social Responsibility', '20151028092418.jpg', 'Corporate Social Responsibility', 'EN', 1, '2015-10-28 09:24:18', '2015-10-28 09:25:16'),
+	(12, 5, 'section1', 'Milestone : YSS (Thailand) Co., Ltd.', '<p class="history01">\r\n      <span class="dropcap2">1983</span>\r\n       Was established at Prapadaeng district, Samutprakarn province.\r\n</p>\r\n\r\n<p class="history01">\r\n        <span class="dropcap2">2005</span>\r\n         Joint venture with R&amp;D team from Europe to develop product and improve technology.\r\n</p>\r\n\r\n<p class="history01">\r\n         <span class="dropcap2">2007</span>\r\n        Established R&amp;D center name YSS Europe BV at Schijndel,Holland.\r\n</p>\r\n\r\n<p class="history01">\r\n                  <span class="dropcap2">2008</span>\r\n                  Only one shock brand in Asia has achieved the Quality certificate by ABE Kraftfahrt – Bundesant institute from Germany.\r\n</p>\r\n\r\n<p class="history01">\r\n                 <span class="dropcap2"> 2010</span>\r\n                  2 millions shock absorber per year in new factory and full of high technology machine that cover more than 30 countries.\r\n</p>\r\n\r\n<p class="history01">\r\n                  <span class="dropcap2">2013</span>\r\n                  Proud to emerge cars high performance shock absorber with YSS International standard\r\n</p>', '20151028094350.png', 'We serve the world, We provide the best', 'TH', 1, '2015-10-28 09:43:50', NULL),
+	(13, 5, 'section1', 'Milestone : YSS (Thailand) Co., Ltd.', '<p class="history01">\r\n      <span class="dropcap2">1983</span>\r\n       Was established at Prapadaeng district, Samutprakarn province.\r\n</p>\r\n\r\n<p class="history01">\r\n        <span class="dropcap2">2005</span>\r\n         Joint venture with R&amp;D team from Europe to develop product and improve technology.\r\n</p>\r\n\r\n<p class="history01">\r\n         <span class="dropcap2">2007</span>\r\n        Established R&amp;D center name YSS Europe BV at Schijndel,Holland.\r\n</p>\r\n\r\n<p class="history01">\r\n                  <span class="dropcap2">2008</span>\r\n                  Only one shock brand in Asia has achieved the Quality certificate by ABE Kraftfahrt – Bundesant institute from Germany.\r\n</p>\r\n\r\n<p class="history01">\r\n                 <span class="dropcap2"> 2010</span>\r\n                  2 millions shock absorber per year in new factory and full of high technology machine that cover more than 30 countries.\r\n</p>\r\n\r\n<p class="history01">\r\n                  <span class="dropcap2">2013</span>\r\n                  Proud to emerge cars high performance shock absorber with YSS International standard\r\n</p>', '20151028094443.png', 'We serve the world, We provide the best', 'EN', 1, '2015-10-28 09:44:43', NULL),
+	(14, 5, 'section2', 'The Philosophy of YSS', '<p><span class="dropcap2">T</span>he Philosophy of YSS is “We produce shock absorber for ourselves and our family”, YSS use International standard quality system to control and manage our production for the best quality in every piece of the product. From present to the future,  we strive to develop new technology for the best quality suspension and provide to our customer continuously covering the product for car, motorcycle, scooter, ATV and UTV.</p>\r\n\r\n<h2 class="yssfont01">Vision</h2>\r\n<p>We are the leadership in development and manufacturing of world class suspension, continuous innovating quality products with whole of technology, performance and value for our customers.</p>\r\n\r\n<h2 class="yssfont01">Mission</h2>\r\n<p>We produce high performance and more value suspension through advance technology and equipment with well-trained full skill and active teams. We also have service centers to provide worldwide customers. Furthermore, we have quality system and social responsibility to ensure that YSS is the world class suspension.\r\n                </p>', '20151028095218.jpg', 'We produce shock absorber for ourselves and our family', 'TH', 2, '2015-10-28 09:52:18', NULL),
+	(15, 5, 'section2', 'The Philosophy of YSS', '<p><span class="dropcap2">T</span>he Philosophy of YSS is “We produce shock absorber for ourselves and our family”, YSS use International standard quality system to control and manage our production for the best quality in every piece of the product. From present to the future,  we strive to develop new technology for the best quality suspension and provide to our customer continuously covering the product for car, motorcycle, scooter, ATV and UTV.</p>\r\n\r\n<h2 class="yssfont01">Vision</h2>\r\n<p>We are the leadership in development and manufacturing of world class suspension, continuous innovating quality products with whole of technology, performance and value for our customers.</p>\r\n\r\n<h2 class="yssfont01">Mission</h2>\r\n<p>We produce high performance and more value suspension through advance technology and equipment with well-trained full skill and active teams. We also have service centers to provide worldwide customers. Furthermore, we have quality system and social responsibility to ensure that YSS is the world class suspension.\r\n                </p>', '20151028095325.jpg', 'We produce shock absorber for ourselves and our family', 'EN', 2, '2015-10-28 09:53:25', '2015-10-28 09:54:13'),
+	(16, 10, 'section1', 'การติดตั้งโช้คอัพ', 'การติดตั้งโช้คอัพ ท่านสามารถนำรถของท่านเข้ามาทำการติดตั้งโดยผู้ชำนาญงานโดยเฉพาะที่โรงงานของเราได้ทุกวัน จันทร์-ศุกร์ เวลา 9.00 - 18.00 น. หรือสอบถามได้ที่ 02-706-3700,\r\n02-763-8600 ', '20151028101144.jpg', 'ติดตั้งโช้คอัพโดยช่างผู้เชี่ยวชาญ', 'TH', 1, '2015-10-28 10:11:44', '2015-10-28 10:17:11'),
+	(17, 10, 'section1', 'Setup & Install', '', '20151028101308.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 1, '2015-10-28 10:13:08', NULL);
 /*!40000 ALTER TABLE `yss_content` ENABLE KEYS */;
 
 
@@ -6700,7 +6759,7 @@ CREATE TABLE IF NOT EXISTS `yss_news` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news: ~4 rows (approximately)
+-- Dumping data for table db_yss_new.yss_news: ~3 rows (approximately)
 /*!40000 ALTER TABLE `yss_news` DISABLE KEYS */;
 INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `date_update`, `type`) VALUES
 	(15, '20151027055758.jpg', NULL, 1, '2015-10-27 05:57:58', '2015-10-27 06:03:29', 'NEWS'),
@@ -6758,6 +6817,42 @@ INSERT INTO `yss_option` (`id`, `option_name`, `detail`, `sort_order`) VALUES
 
 -- Dumping structure for table db_yss_new.yss_page
 CREATE TABLE IF NOT EXISTS `yss_page` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(50) NOT NULL COMMENT 'Page ID',
+  `title` varchar(100) DEFAULT NULL COMMENT 'title',
+  `sort_order` int(10) DEFAULT NULL COMMENT 'title',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_page: ~20 rows (approximately)
+/*!40000 ALTER TABLE `yss_page` DISABLE KEYS */;
+INSERT INTO `yss_page` (`id`, `name`, `title`, `sort_order`) VALUES
+	(1, 'index', 'Home', 1),
+	(2, 'aboutus', 'About Us', 2),
+	(3, 'contactus', 'Contact', 5),
+	(4, 'rnd', 'R & D', 7),
+	(5, 'introduction', 'Introduction', 3),
+	(6, 'quality', 'Quality', 6),
+	(7, 'csr', 'CSR', 8),
+	(8, 'award', 'Award', 9),
+	(9, 'product', 'Product', 10),
+	(10, 'setup_install', 'Setup & Install', 11),
+	(11, 'warranty', 'Warranty', 12),
+	(12, 'news', 'News & Event', 13),
+	(13, 'download', 'Download', 14),
+	(14, 'support', 'Support', 4),
+	(15, 'product_code', 'Product Code', 15),
+	(16, 'spring_code', 'Spring Code', 16),
+	(17, 'policy', 'Policy', 17),
+	(18, 'faq', 'FAQ', 18),
+	(19, 'site_map', 'Site Map', 19),
+	(100, 'demo', 'Demo', 20);
+/*!40000 ALTER TABLE `yss_page` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_yss_new.yss_page2
+CREATE TABLE IF NOT EXISTS `yss_page2` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `specific_name` varchar(50) DEFAULT NULL COMMENT 'ชื่อ Page ภาษาอังกฤษเท่านั้น',
   `title` varchar(50) DEFAULT NULL COMMENT 'title เพื่อแสดงในแทบไตเติลบาร์',
@@ -6766,11 +6861,11 @@ CREATE TABLE IF NOT EXISTS `yss_page` (
   `lang` varchar(5) DEFAULT NULL COMMENT 'Keyword สำหรับ Meta tag',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_page: ~36 rows (approximately)
-/*!40000 ALTER TABLE `yss_page` DISABLE KEYS */;
-INSERT INTO `yss_page` (`id`, `specific_name`, `title`, `description`, `keyword`, `lang`) VALUES
+-- Dumping data for table db_yss_new.yss_page2: ~40 rows (approximately)
+/*!40000 ALTER TABLE `yss_page2` DISABLE KEYS */;
+INSERT INTO `yss_page2` (`id`, `specific_name`, `title`, `description`, `keyword`, `lang`) VALUES
 	(1, 'index', 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
 	(2, 'aboutus', 'About Us', 'About Us', 'About Us', 'EN'),
 	(3, 'contactus', 'YSS Contact', 'YSS Contact', 'yss,contact', 'EN'),
@@ -6806,8 +6901,70 @@ INSERT INTO `yss_page` (`id`, `specific_name`, `title`, `description`, `keyword`
 	(33, 'product_code', 'รหัสสินค้า', 'รหัสสินค้า', 'รหัสสินค้า', 'TH'),
 	(34, 'spring_code', 'รหัสสปริง', 'รหัสสปริง', 'รหัสสปริง', 'TH'),
 	(35, 'policy', 'นโยบาย', 'นโยบาย', 'นโยบาย', 'TH'),
-	(36, 'faq', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'TH');
-/*!40000 ALTER TABLE `yss_page` ENABLE KEYS */;
+	(36, 'faq', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'TH'),
+	(37, 'site_map', 'Site Map', 'Site Map', 'site map', 'EN'),
+	(38, 'site_map', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'TH'),
+	(39, 'demo', 'This is demo page for test layout', 'This is demo page for test layout', 'demo,test,layout', 'EN'),
+	(40, 'demo', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'demo,ทดลอง,องค์ประกอบ', 'TH');
+/*!40000 ALTER TABLE `yss_page2` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_yss_new.yss_page_metatag
+CREATE TABLE IF NOT EXISTS `yss_page_metatag` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `page_id` int(10) DEFAULT NULL COMMENT 'Page ID',
+  `title` varchar(50) DEFAULT NULL COMMENT 'title เพื่อแสดงในแทบไตเติลบาร์',
+  `description` text COMMENT 'Description สำหรับ Meta tag',
+  `keyword` varchar(250) DEFAULT NULL COMMENT 'Keyword สำหรับ Meta tag',
+  `lang` varchar(5) DEFAULT NULL COMMENT 'ภาษา',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_page_metatag: ~8 rows (approximately)
+/*!40000 ALTER TABLE `yss_page_metatag` DISABLE KEYS */;
+INSERT INTO `yss_page_metatag` (`id`, `page_id`, `title`, `description`, `keyword`, `lang`) VALUES
+	(1, 0, 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
+	(2, 0, 'About Us', 'About Us', 'About Us', 'EN'),
+	(3, 0, 'YSS Contact', 'YSS Contact', 'yss,contact', 'EN'),
+	(4, 0, 'YSS R & D', 'R & D', 'R & D', 'EN'),
+	(5, 0, 'Introduction', 'introduction', 'introduction', 'EN'),
+	(6, 0, 'Quality', 'Quality', 'Quality', 'EN'),
+	(7, 0, 'CSR', 'CSR', 'csr', 'EN'),
+	(8, 0, 'Award', 'Award', 'Award', 'EN'),
+	(9, 0, 'Product', 'Product', 'Product', 'EN'),
+	(10, 0, 'Setup & Install', 'Setup & Install', 'setup,install', 'EN'),
+	(11, 0, 'Warranty', 'Warranty', 'Warranty', 'EN'),
+	(12, 0, 'News & Event', 'News & Event', 'News,Event', 'EN'),
+	(13, 0, 'Download', 'Download', 'Download', 'EN'),
+	(14, 0, 'Support', 'Support', 'Support', 'EN'),
+	(15, 0, 'Product Code', 'Product Code', 'Product Code', 'EN'),
+	(16, 0, 'Spring Code', 'Spring Code', 'Spring Code', 'EN'),
+	(17, 0, 'Policy', 'Policy', 'Policy', 'EN'),
+	(18, 0, 'FAQ', 'FAQ', 'FAQ', 'EN'),
+	(19, 0, 'หน้าหลัก', 'ยินดีต้อนรับ', 'หน้าหลัก', 'TH'),
+	(20, 0, 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'TH'),
+	(21, 0, 'ติดต่อเรา', 'ติดต่อเรา', 'ติดต่อเรา', 'TH'),
+	(22, 0, 'วิจัยและพัฒนา', 'วิจัยและพัฒนา', 'วิจัย,พัฒนา', 'TH'),
+	(23, 0, 'ความเป็นมา', 'ความเป็นมา', 'ความเป็นมา', 'TH'),
+	(24, 0, 'คุณภาพ', 'คุณภาพ', 'คุณภาพ', 'TH'),
+	(25, 0, 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'TH'),
+	(26, 0, 'รางวัลแห่งความสำเร็จ', 'รางวัล', 'รางวัล', 'TH'),
+	(27, 0, 'สินค้า', 'สินค้า', 'สินค้า', 'TH'),
+	(28, 0, 'การติดตั้ง', 'การติดตั้ง', 'การติดตั้ง', 'TH'),
+	(29, 0, 'การรับประกัน', 'การรับประกัน', 'การรับประกัน', 'TH'),
+	(30, 0, 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'TH'),
+	(31, 0, 'ดาวน์โหลด', 'ดาวน์โหลด', 'ดาวน์โหลด', 'TH'),
+	(32, 0, 'ซัพพอร์ต', 'ซัพพอร์ต', 'ซัพพอร์ต', 'TH'),
+	(33, 0, 'รหัสสินค้า', 'รหัสสินค้า', 'รหัสสินค้า', 'TH'),
+	(34, 0, 'รหัสสปริง', 'รหัสสปริง', 'รหัสสปริง', 'TH'),
+	(35, 0, 'นโยบาย', 'นโยบาย', 'นโยบาย', 'TH'),
+	(36, 0, 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'TH'),
+	(37, 0, 'Site Map', 'Site Map', 'site map', 'EN'),
+	(38, 0, 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'TH'),
+	(39, 0, 'This is demo page for test layout', 'This is demo page for test layout', 'demo,test,layout', 'EN'),
+	(40, 0, 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'demo,ทดลอง,องค์ประกอบ', 'TH');
+/*!40000 ALTER TABLE `yss_page_metatag` ENABLE KEYS */;
 
 
 -- Dumping structure for table db_yss_new.yss_piston
@@ -12977,21 +13134,29 @@ INSERT INTO `yss_shaft` (`id`, `size`, `title`, `remark`) VALUES
 -- Dumping structure for table db_yss_new.yss_slide
 CREATE TABLE IF NOT EXISTS `yss_slide` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
-  `slide_name` varchar(45) NOT NULL COMMENT 'ชื่อสไลด์ (ภาษาอังกฤษเท่านั้น)',
-  `page` varchar(45) DEFAULT NULL COMMENT 'หน้า',
-  `pic` varchar(100) DEFAULT NULL COMMENT 'รูปภาพ',
-  `title` varchar(45) DEFAULT NULL COMMENT 'คำบรรยาย',
-  `link` varchar(100) DEFAULT NULL COMMENT 'ลิงค์',
+  `slide_name` varchar(50) NOT NULL COMMENT 'ชื่อสไลด์ (ภาษาอังกฤษเท่านั้น)',
+  `page` varchar(50) DEFAULT NULL COMMENT 'หน้า',
+  `pic` varchar(50) DEFAULT NULL COMMENT 'รูปภาพ',
+  `header` varchar(50) DEFAULT NULL COMMENT 'รูปภาพ',
+  `title` varchar(225) DEFAULT NULL COMMENT 'คำบรรยาย',
+  `link` varchar(225) DEFAULT NULL COMMENT 'ลิงค์',
   `lang` varchar(3) DEFAULT NULL COMMENT 'ภาษา',
   `sort_order` int(3) DEFAULT NULL COMMENT 'ลำดับ',
   `date_create` datetime DEFAULT NULL COMMENT 'วันที่สร้าง',
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่แก้ไข',
   PRIMARY KEY (`id`,`slide_name`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_slide: ~0 rows (approximately)
+-- Dumping data for table db_yss_new.yss_slide: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_slide` DISABLE KEYS */;
+INSERT INTO `yss_slide` (`id`, `slide_name`, `page`, `pic`, `header`, `title`, `link`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
+	(2, 'main', 'index', '20151028030203.jpg', 'YSS SUSPENSION', '<span>Trusted by champions. Many champion user</span>', 'introduction.php', 'TH', 1, '2015-10-28 03:02:03', '2015-10-28 03:43:19'),
+	(3, 'main', 'index', '20151028032827.jpg', 'RACING', 'Suspension for champion', '', 'TH', 3, '2015-10-28 03:02:55', '2015-10-28 03:31:40'),
+	(4, 'main', 'index', '20151028030324.jpg', 'CONFIDENCE', '& Safety Control <span>BEST PRICES</span> for second-hand cars', '', 'TH', 4, '2015-10-28 03:03:24', '2015-10-28 03:32:00'),
+	(5, 'main', 'index', '20151028030349.jpg', 'TOURING', 'Passion in Journey <span>3500</span> vehicles in our offer', 'index.php', 'TH', 2, '2015-10-28 03:03:49', '2015-10-28 03:40:43'),
+	(6, 'main', 'index', '20151028033857.jpg', 'OFF ROAD', 'Always Confident', 'index.php', 'TH', 5, '2015-10-28 03:38:57', NULL),
+	(7, 'main', 'index', '20151028034011.jpg', 'CLASSIC', 'Finding your style', 'index.php', 'TH', 6, '2015-10-28 03:40:11', NULL);
 /*!40000 ALTER TABLE `yss_slide` ENABLE KEYS */;
 
 
@@ -13054,9 +13219,9 @@ CREATE TABLE IF NOT EXISTS `yss_word` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `specific_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_word: ~0 rows (approximately)
+-- Dumping data for table db_yss_new.yss_word: ~24 rows (approximately)
 /*!40000 ALTER TABLE `yss_word` DISABLE KEYS */;
 INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'quick_search', 'ค้นหาด่วน', 'Quick Search', '', '', '', '', '', ''),
@@ -13069,7 +13234,20 @@ INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, 
 	(9, 'news_event', 'ข่าว & กิจกรรม', 'NEWS & ACTIVITY', NULL, NULL, NULL, NULL, NULL, NULL),
 	(10, 'view_all', 'ดูทั้งหมด', 'View All', NULL, NULL, NULL, NULL, NULL, NULL),
 	(11, 'our_service', 'บริการของเรา', 'OUR SERVICE', NULL, NULL, NULL, NULL, NULL, NULL),
-	(12, 'most_pop_brands', 'แบร์นยอดนิยม', 'MOST POPULAR BRANDS', NULL, NULL, NULL, NULL, NULL, NULL);
+	(12, 'most_pop_brands', 'แบร์นยอดนิยม', 'MOST POPULAR BRANDS', NULL, NULL, NULL, NULL, NULL, NULL),
+	(13, 'view_biger_map', 'ดูแผนที่ขนาดขยาย', 'View Bigger Map', '', '', '', '', '', ''),
+	(14, 'aboutus', 'เกี่ยวกับเรา', 'ABOUTUS', NULL, NULL, NULL, NULL, NULL, NULL),
+	(15, 'award', 'รางวัล', 'AWARD', NULL, NULL, NULL, NULL, NULL, NULL),
+	(16, 'services', 'บริการ', 'SERVICES', NULL, NULL, NULL, NULL, NULL, NULL),
+	(17, 'headoffice', 'สำนักงานใหญ่', 'HEAD OFFICE', NULL, NULL, NULL, NULL, NULL, NULL),
+	(18, 'site_map', 'แผนผังเว็บ', 'SITE MAP', '', '', '', '', '', ''),
+	(19, 'introduction', 'ความเป็นมา', 'INTRODUCTION', '', '', '', '', '', ''),
+	(20, 'success', 'ความสำเร็จ', 'Success', '', '', '', '', '', ''),
+	(21, 'rnd', 'วิจัยและพัฒนา', 'R & D', NULL, NULL, NULL, NULL, NULL, NULL),
+	(22, 'quality', 'คุณภาพ', 'QUALITY', '', '', '', '', '', ''),
+	(23, 'csr', 'ความรับผิดชอบต่อสังคม', 'CSR', '', '', '', '', '', ''),
+	(24, 'setup_install', 'ติดตั้งโช้คอัพ', 'SETUP & INSTALL', '', '', '', '', '', ''),
+	(25, 'warranty', 'การรับประกัน', 'WARRANTY', '', '', '', '', '', '');
 /*!40000 ALTER TABLE `yss_word` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

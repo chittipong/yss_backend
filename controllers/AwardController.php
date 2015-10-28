@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\YssSlide;
-use app\models\YssSlideSearch;
+use app\models\Award;
+use app\models\AwardSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,9 +15,9 @@ use yii\filters\AccessControl;              //For set permission
 use \app\component\AccessRule;              //For set permission
 
 /**
- * YssSlideController implements the CRUD actions for YssSlide model.
+ * AwardController implements the CRUD actions for Award model.
  */
-class YssSlideController extends Controller
+class AwardController extends Controller
 {
     //SET PERMISSION========================================
     public function behaviors()
@@ -60,13 +60,14 @@ class YssSlideController extends Controller
     }//END SET PERMISSION============================
 
     /**
-     * Lists all YssSlide models.
+     * Lists all Award models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new YssSlideSearch();
+        $searchModel = new AwardSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort->defaultOrder=['sort_order'=>'ASC'];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -75,9 +76,8 @@ class YssSlideController extends Controller
     }
 
     /**
-     * Displays a single YssSlide model.
+     * Displays a single Award model.
      * @param integer $id
-     * @param string $slide_name
      * @return mixed
      */
     public function actionView($id)
@@ -88,12 +88,12 @@ class YssSlideController extends Controller
     }
 
     /**
-     * Creates a new YssSlide model.
+     * Creates a new Award model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-     public function actionCreate(){
-        $model=new YssSlide();
+    public function actionCreate(){
+        $model=new Award();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
         if ($model->load(Yii::$app->request->post())) {
@@ -106,7 +106,7 @@ class YssSlideController extends Controller
                 //$newName=$model->code;                                          //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
-                $imgPath=$model->slideDir;
+                $imgPath=$model->awardDir;
                 $model->pic=$model->file->name;                  
                 $upload=1;
             }
@@ -114,7 +114,7 @@ class YssSlideController extends Controller
             if($model->save()){
                //START UPLOAD IMAGE--------------
                 if($upload){
-                    $model->file->saveAs($model->slideDir.$model->pic);
+                    $model->file->saveAs($model->awardDir.$model->pic);
                 }
                 
                 //SET DISPLAY MESSAGE ----------
@@ -151,7 +151,7 @@ class YssSlideController extends Controller
                 //$newName=$model->code;                                        //Set image name same Product code
                 $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
             
-                $imgPath=$model->slideDir;
+                $imgPath=$model->awardDir;
                 $model->pic=$model->file->name;                  
                 $upload=1;
 
@@ -162,7 +162,7 @@ class YssSlideController extends Controller
             if($model->save()){
                //UPLOAD PIC------------------
                 if($upload){
-                    $model->file->saveAs($model->slideDir.$model->pic);
+                    $model->file->saveAs($model->awardDir.$model->pic);
                 }
                 
                 //SET DISPLAY MESSAGE ----------
@@ -240,8 +240,8 @@ class YssSlideController extends Controller
      */
     public function actionDelete($id=null)
     {        
-        $model=new YssSlide();
-        $dir=$model->slideDir;                       
+        $model=new Award();
+        $dir=$model->awardDir;                       
         
         //DELETE PIC IN FLODER------
         $this->deleteImageNoMsg($id,$dir,'pic');                            //Delete pic in floder
@@ -255,16 +255,15 @@ class YssSlideController extends Controller
     }//end***
 
     /**
-     * Finds the YssSlide model based on its primary key value.
+     * Finds the Award model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @param string $slide_name
-     * @return YssSlide the loaded model
+     * @return Award the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = YssSlide::findOne(['id' => $id])) !== null) {
+        if (($model = Award::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
