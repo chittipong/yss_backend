@@ -83,7 +83,7 @@ class Content extends \yii\db\ActiveRecord
      //Get Page List---------------
         public function getPageList(){
             $list=  Page::find()->orderBy('id')->all();
-            return ArrayHelper::map($list,'id', 'specific_name');
+            return ArrayHelper::map($list,'id', 'title');
         }
         
      //Get Section List------------

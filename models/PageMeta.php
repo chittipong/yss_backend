@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%yss_page_metatag}}".
@@ -30,7 +31,7 @@ class PageMeta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['page_id'], 'integer'],
+            [['page_id'], 'string'],
             [['description'], 'string'],
             [['title'], 'string', 'max' => 50],
             [['keyword'], 'string', 'max' => 250],
@@ -52,4 +53,19 @@ class PageMeta extends \yii\db\ActiveRecord
             'lang' => Yii::t('app', 'ภาษา'),
         ];
     }
+    
+    //Get Page List---------------
+        public function getPageList(){
+            $list=  Page::find()->orderBy('id')->all();
+            return ArrayHelper::map($list,'name', 'title');
+        }
+    //Get lang list---------------
+        public function getLangList(){
+            $list=Lang::find()->orderBy('sort_order')->all();
+            return ArrayHelper::map($list, 'abb', 'lang_name');
+        }
+        
+        public function getPage(){
+            return $this->hasOne(Page::className(), ['name' => 'page_id']);
+        }
 }

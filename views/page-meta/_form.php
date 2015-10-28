@@ -12,7 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'page_id')->textInput() ?>
+    <?php // $form->field($model, 'page_id')->textInput() ?>
+    
+    <?= $form->field($model,'page_id')->dropDownList($model->getPageList())?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -20,7 +22,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
+    <?php // $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model,'lang')->dropDownList($model->getLangList())?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

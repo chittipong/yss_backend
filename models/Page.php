@@ -42,7 +42,7 @@ class Page extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Specific Name'),
-            'title' => Yii::t('app', 'title'),
+            'title' => Yii::t('app', 'Page'),
             'sort_order' => Yii::t('app', 'ลำดับ'),
         ];
     }

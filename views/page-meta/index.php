@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description:ntext',
             'keyword',
-            // 'lang',
+            'lang',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

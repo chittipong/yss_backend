@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.6.26 - MySQL Community Server (GPL)
+-- Server version:               5.6.25 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-28 18:00:11
+-- Date/time:                    2015-10-29 01:55:32
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -965,7 +965,7 @@ CREATE TABLE IF NOT EXISTS `applist_test` (
   KEY `brand` (`brand`)
 ) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.applist_test: ~352 rows (approximately)
+-- Dumping data for table db_yss_new.applist_test: ~353 rows (approximately)
 /*!40000 ALTER TABLE `applist_test` DISABLE KEYS */;
 INSERT INTO `applist_test` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
 	(41, '59', 0, 'QUAD     (FRONT)', '', '', '2009', 'TS', 'FZ366-410TR-01', '', 410, '10x20', '10x20', '46-25-45-280', 36, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '2', NULL, NULL, NULL),
@@ -6759,7 +6759,7 @@ CREATE TABLE IF NOT EXISTS `yss_news` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news: ~3 rows (approximately)
+-- Dumping data for table db_yss_new.yss_news: ~4 rows (approximately)
 /*!40000 ALTER TABLE `yss_news` DISABLE KEYS */;
 INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `date_update`, `type`) VALUES
 	(15, '20151027055758.jpg', NULL, 1, '2015-10-27 05:57:58', '2015-10-27 06:03:29', 'NEWS'),
@@ -6912,7 +6912,7 @@ INSERT INTO `yss_page2` (`id`, `specific_name`, `title`, `description`, `keyword
 -- Dumping structure for table db_yss_new.yss_page_metatag
 CREATE TABLE IF NOT EXISTS `yss_page_metatag` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `page_id` int(10) DEFAULT NULL COMMENT 'Page ID',
+  `page_id` varchar(60) DEFAULT NULL COMMENT 'Page ID',
   `title` varchar(50) DEFAULT NULL COMMENT 'title เพื่อแสดงในแทบไตเติลบาร์',
   `description` text COMMENT 'Description สำหรับ Meta tag',
   `keyword` varchar(250) DEFAULT NULL COMMENT 'Keyword สำหรับ Meta tag',
@@ -6921,49 +6921,49 @@ CREATE TABLE IF NOT EXISTS `yss_page_metatag` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_page_metatag: ~8 rows (approximately)
+-- Dumping data for table db_yss_new.yss_page_metatag: ~40 rows (approximately)
 /*!40000 ALTER TABLE `yss_page_metatag` DISABLE KEYS */;
 INSERT INTO `yss_page_metatag` (`id`, `page_id`, `title`, `description`, `keyword`, `lang`) VALUES
-	(1, 0, 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
-	(2, 0, 'About Us', 'About Us', 'About Us', 'EN'),
-	(3, 0, 'YSS Contact', 'YSS Contact', 'yss,contact', 'EN'),
-	(4, 0, 'YSS R & D', 'R & D', 'R & D', 'EN'),
-	(5, 0, 'Introduction', 'introduction', 'introduction', 'EN'),
-	(6, 0, 'Quality', 'Quality', 'Quality', 'EN'),
-	(7, 0, 'CSR', 'CSR', 'csr', 'EN'),
-	(8, 0, 'Award', 'Award', 'Award', 'EN'),
-	(9, 0, 'Product', 'Product', 'Product', 'EN'),
-	(10, 0, 'Setup & Install', 'Setup & Install', 'setup,install', 'EN'),
-	(11, 0, 'Warranty', 'Warranty', 'Warranty', 'EN'),
-	(12, 0, 'News & Event', 'News & Event', 'News,Event', 'EN'),
-	(13, 0, 'Download', 'Download', 'Download', 'EN'),
-	(14, 0, 'Support', 'Support', 'Support', 'EN'),
-	(15, 0, 'Product Code', 'Product Code', 'Product Code', 'EN'),
-	(16, 0, 'Spring Code', 'Spring Code', 'Spring Code', 'EN'),
-	(17, 0, 'Policy', 'Policy', 'Policy', 'EN'),
-	(18, 0, 'FAQ', 'FAQ', 'FAQ', 'EN'),
-	(19, 0, 'หน้าหลัก', 'ยินดีต้อนรับ', 'หน้าหลัก', 'TH'),
-	(20, 0, 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'TH'),
-	(21, 0, 'ติดต่อเรา', 'ติดต่อเรา', 'ติดต่อเรา', 'TH'),
-	(22, 0, 'วิจัยและพัฒนา', 'วิจัยและพัฒนา', 'วิจัย,พัฒนา', 'TH'),
-	(23, 0, 'ความเป็นมา', 'ความเป็นมา', 'ความเป็นมา', 'TH'),
-	(24, 0, 'คุณภาพ', 'คุณภาพ', 'คุณภาพ', 'TH'),
-	(25, 0, 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'TH'),
-	(26, 0, 'รางวัลแห่งความสำเร็จ', 'รางวัล', 'รางวัล', 'TH'),
-	(27, 0, 'สินค้า', 'สินค้า', 'สินค้า', 'TH'),
-	(28, 0, 'การติดตั้ง', 'การติดตั้ง', 'การติดตั้ง', 'TH'),
-	(29, 0, 'การรับประกัน', 'การรับประกัน', 'การรับประกัน', 'TH'),
-	(30, 0, 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'TH'),
-	(31, 0, 'ดาวน์โหลด', 'ดาวน์โหลด', 'ดาวน์โหลด', 'TH'),
-	(32, 0, 'ซัพพอร์ต', 'ซัพพอร์ต', 'ซัพพอร์ต', 'TH'),
-	(33, 0, 'รหัสสินค้า', 'รหัสสินค้า', 'รหัสสินค้า', 'TH'),
-	(34, 0, 'รหัสสปริง', 'รหัสสปริง', 'รหัสสปริง', 'TH'),
-	(35, 0, 'นโยบาย', 'นโยบาย', 'นโยบาย', 'TH'),
-	(36, 0, 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'TH'),
-	(37, 0, 'Site Map', 'Site Map', 'site map', 'EN'),
-	(38, 0, 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'TH'),
-	(39, 0, 'This is demo page for test layout', 'This is demo page for test layout', 'demo,test,layout', 'EN'),
-	(40, 0, 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'demo,ทดลอง,องค์ประกอบ', 'TH');
+	(1, 'index', 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
+	(2, 'aboutus', 'About Us', 'About Us', 'About Us', 'EN'),
+	(3, 'contactus', 'Contact', 'Contact', 'yss,contact', 'EN'),
+	(4, 'rnd', 'R & D', 'R & D', 'R & D', 'EN'),
+	(5, 'introduction', 'Introduction', 'introduction', 'introduction', 'EN'),
+	(6, 'quality', 'Quality', 'Quality', 'Quality', 'EN'),
+	(7, 'csr', 'CSR', 'CSR', 'csr', 'EN'),
+	(8, 'award', 'Award', 'Award', 'Award', 'EN'),
+	(9, 'product', 'Product', 'Product', 'Product', 'EN'),
+	(10, 'setup_install', 'Setup & Install', 'Setup & Install', 'setup,install', 'EN'),
+	(11, 'warranty', 'Warranty', 'Warranty', 'Warranty', 'EN'),
+	(12, 'news', 'News & Event', 'News & Event', 'News,Event', 'EN'),
+	(13, 'download', 'Download', 'Download', 'Download', 'EN'),
+	(14, 'support', 'Support', 'Support', 'Support', 'EN'),
+	(15, 'product_code', 'Product Code', 'Product Code', 'Product Code', 'EN'),
+	(16, 'spring_code', 'Spring Code', 'Spring Code', 'Spring Code', 'EN'),
+	(17, 'policy', 'Policy', 'Policy', 'Policy', 'EN'),
+	(18, 'faq', 'FAQ', 'FAQ', 'FAQ', 'EN'),
+	(19, 'index', 'หน้าหลัก', 'ยินดีต้อนรับ', 'หน้าหลัก', 'TH'),
+	(20, 'aboutus', 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'เกี่ยวกับเรา', 'TH'),
+	(21, 'contactus', 'ติดต่อเรา', 'ติดต่อเรา', 'ติดต่อเรา', 'TH'),
+	(22, 'rnd', 'วิจัยและพัฒนา', 'วิจัยและพัฒนา', 'วิจัย,พัฒนา', 'TH'),
+	(23, 'introduction', 'ความเป็นมา', 'ความเป็นมา', 'ความเป็นมา', 'TH'),
+	(24, 'quality', 'คุณภาพ', 'คุณภาพ', 'คุณภาพ', 'TH'),
+	(25, 'csr', 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'กิจกรรมเพื่อสังคม', 'TH'),
+	(26, 'award', 'รางวัลแห่งความสำเร็จ', 'รางวัล', 'รางวัล', 'TH'),
+	(27, 'product', 'สินค้า', 'สินค้า', 'สินค้า', 'TH'),
+	(28, 'setup_install', 'การติดตั้ง', 'การติดตั้ง', 'การติดตั้ง', 'TH'),
+	(29, 'warranty', 'การรับประกัน', 'การรับประกัน', 'การรับประกัน', 'TH'),
+	(30, 'news', 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'ข่าวและกิจกรรม', 'TH'),
+	(31, 'download', 'ดาวน์โหลด', 'ดาวน์โหลด', 'ดาวน์โหลด', 'TH'),
+	(32, 'support', 'ซัพพอร์ต', 'ซัพพอร์ต', 'ซัพพอร์ต', 'TH'),
+	(33, 'product_code', 'รหัสสินค้า', 'รหัสสินค้า', 'รหัสสินค้า', 'TH'),
+	(34, 'spring_code', 'รหัสสปริง', 'รหัสสปริง', 'รหัสสปริง', 'TH'),
+	(35, 'policy', 'นโยบาย', 'นโยบาย', 'นโยบาย', 'TH'),
+	(36, 'faq', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'คำถามที่พบบ่อย', 'TH'),
+	(37, 'site_map', 'Site Map', 'Site Map', 'site map', 'EN'),
+	(38, 'site_map', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'แผนที่เว็บไซต์', 'TH'),
+	(39, 'demo', 'This is demo page for test layout', 'This is demo page for test layout', 'demo,test,layout', 'EN'),
+	(40, 'demo', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'หน้า demo มีไว้เพื่อทดสอบการวางองค์ประกอบเท่านั้น', 'demo,ทดลอง,องค์ประกอบ', 'TH');
 /*!40000 ALTER TABLE `yss_page_metatag` ENABLE KEYS */;
 
 
