@@ -9,22 +9,54 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\User;                        //For set permission
+use yii\filters\AccessControl;              //For set permission
+use \app\component\AccessRule;              //For set permission
+
 /**
  * PageMetaController implements the CRUD actions for PageMeta model.
  */
 class PageMetaController extends Controller
 {
+    //SET PERMISSION========================================
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig'=>[
+                  'class'=>AccessRule::className(),  
+                ],
+                'only' => ['create', 'update', 'delete','index','view'],
+                'rules' => [
+                    [
+                        //กำหนด User ที่สามารถทำการ Create,Update,Delete ได้
+                        'actions' => ['create','update','delete','index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_MANAGER,
+                            User::ROLE_ADMIN,
+                            //User::ROLE_USER,
+                        ],
+                    ],
+                    [
+                        //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
+                        'actions' => ['index','view'],
+                        'allow' => true,
+                        'roles' => [
+                            User::ROLE_USER,
+                        ],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
-    }
+    }//END SET PERMISSION============================
 
     /**
      * Lists all PageMeta models.

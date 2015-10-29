@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AppListSearch */
@@ -28,6 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'product_code',
             'brandName.brand',
+            [
+              'attribute'=>'brand',
+                'value'=>'brandName.brand',
+                'filter'=> ArrayHelper::map(app\models\Brand::find()->all(),'brand_id','brand'),
+            ],
             'cc',
             'model',
             'ref_no',
@@ -52,7 +58,12 @@ $this->params['breadcrumbs'][] = $this->title;
              'free_piston',
              'dtg',
              //'vehicle_type',
-             'vehicle.name',
+             //'vehicle.name',
+            [
+              'attribute'=>'vehicle_type',
+                'value'=>'vehicle.name',
+                'filter'=> ArrayHelper::map(app\models\Vehicle::find()->all(),'id','name'),
+            ],
              'pic',
             [
                 'attribute' => 'รูปภาพ', //title

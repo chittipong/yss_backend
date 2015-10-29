@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
@@ -44,10 +45,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],*/
                     'code',
-                    'model.model',
-                    'brand.brand',
-                    'pgroup.group',
-                    'ptype.type',
+                    //'model.model',
+                    [
+                        'attribute'=>'model_id',
+                        'value'=>'model.model',
+                        'filter'=> ArrayHelper::map(app\models\YssModel::find()->all(),'model_id','model'),
+                     ],
+                    //'brand.brand',
+                    [
+                        'attribute'=>'brand_id',
+                        'value'=>'brand.brand',
+                        'filter'=> ArrayHelper::map(app\models\Brand::find()->all(),'brand_id','brand'),
+                     ],
+                    //'pgroup.group',
+                    [
+                        'attribute'=>'product_group',
+                        'value'=>'pgroup.group',
+                        'filter'=> ArrayHelper::map(app\models\ProductGroup::find()->all(),'group','detail'),
+                     ],
+                    //'ptype.type',
+                    [
+                        'attribute'=>'product_type',
+                        'value'=>'ptype.type',
+                        'filter'=> ArrayHelper::map(app\models\ProductType::find()->all(),'type','detail'),
+                     ],
                      'abeflag',
                      'hyd',
                      'emu',
@@ -74,10 +95,10 @@ $this->params['breadcrumbs'][] = $this->title;
                      'on_hose',
                      'free_piston',
                      'dtg',
-                     'create_by',
-                     'update_by',
-                     'date_create',
-                     'date_update',
+                     //'create_by',
+                     //'update_by',
+                     //'date_create',
+                     //'date_update',
                      'price',
                      'discount',
                     ['class' => 'yii\grid\ActionColumn'],
