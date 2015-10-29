@@ -38,6 +38,8 @@ use yii\helpers\Url;
 
     <?php // $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
     
+    <?=$form->field($model,'status')->radioList(['enable'=>'Enable','disable'=>'Disable'])?>
+    
     <?= $form->field($model, 'file')->fileInput() ?>
     
     <!--CHECK FILE WHEN EDIT==================-->

@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
             //'pic',
-            'detil:html',
+            'detail:html',
             // 'status',
             // 'sort_order',
             // 'lang',

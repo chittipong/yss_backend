@@ -43,7 +43,7 @@ class Download extends \yii\db\ActiveRecord
             [['download_cat_id', 'product_id'], 'integer'],
             [['detail'], 'string'],
             [['title', 'file_folder', 'file_name', 'file_size'], 'string', 'max' => 50],
-            [['status'], 'string', 'max' => 2],
+            [['status'], 'string', 'max' => 20],
             [['lang'], 'string', 'max' => 20],
             [['author'], 'string'],
             

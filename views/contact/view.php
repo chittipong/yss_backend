@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Importers */
+/* @var $model app\models\Contact */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Importers'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="importers-view">
+<div class="contact-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,17 +29,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            [
-              'attribute'=>'pic',
-              'value'=>$model->importerDir.$model->pic,
-              'format'=>['image',['width'=>'200','title'=>$model->pic]]                              //Set Image Width
-            ],
-            'importersCat.title',
+            'specific_name',
             'title',
-            'pic',
-            'detail:html',  //ntext
-            'status',
-            'sort_order',
+            'address',
+            'district',
+            'province',
+            'zipcode',
+            'phone1',
+            'phone2',
+            'phone3',
+            'fax1',
+            'fax2',
+            'fax3',
+            'default_mail',
+            'support_mail',
+            'sale_mail',
+            'description',
             'lang',
         ],
     ]) ?>

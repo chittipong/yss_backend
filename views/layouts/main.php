@@ -108,6 +108,7 @@ AppAsset::register($this);
                                 ['label' => 'Preload Option', 'url' => ['/preload-option/index']],
                                 ['label' => 'Importers Category', 'url' => ['/importer-cat/index']],
                                 ['label' => 'Vehicle Type', 'url' => ['/vehicle/index']],
+                                ['label' => 'Contact Info', 'url' => ['/contact/index']],
                             ],
                         ],
                         Yii::$app->user->isGuest ?

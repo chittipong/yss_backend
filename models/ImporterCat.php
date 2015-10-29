@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%importers_category}}".
@@ -31,7 +32,7 @@ class ImporterCat extends \yii\db\ActiveRecord
         return [
             [['sort_order'], 'integer'],
             [['title'], 'string', 'max' => 250],
-            [['status'], 'string', 'max' => 2],
+            [['status'], 'string', 'max' => 20],
             [['lang'], 'string', 'max' => 50]
         ];
     }
@@ -48,6 +49,15 @@ class ImporterCat extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'lang' => Yii::t('app', 'Lang'),
         ];
+    }
+    
+    public function getLang(){
+        return $this->hasOne(Lang::className(),['abb'=>'lang_name']);
+    }
+    
+    public function getLangList(){
+        $list=Lang::find()->orderBy('sort_order')->all();
+        return ArrayHelper::map($list, 'abb', 'lang_name');
     }
     
 }

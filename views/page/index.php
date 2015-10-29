@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'title',
             'sort_order',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

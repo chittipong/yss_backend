@@ -11,14 +11,18 @@ use yii\widgets\ActiveForm;
 <div class="importer-cat-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    
+    <?= $form->field($model,'lang')->dropDownList($model->getLangList())?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sort_order')->textInput() ?>
+    <?php // $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
+    
+    <?=$form->field($model,'status')->radioList(['enable'=>'Enable','disable'=>'Disable'])?>
 
-    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
+    <?php // $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'sort_order')->textInput(['type'=>'number']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

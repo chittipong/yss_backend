@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pic') ?>
 
-    <?= $form->field($model, 'detil') ?>
+    <?= $form->field($model, 'detail') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 

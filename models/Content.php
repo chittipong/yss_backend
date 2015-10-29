@@ -91,5 +91,10 @@ class Content extends \yii\db\ActiveRecord
             $list=['section1'=>'Section 1','section2'=>'Section 2','section3'=>'Section 3','section4'=>'Section 4','section5'=>'Section 5'];
             return $list;
         }
+        
+     //Get page--------------------
+        public function getRefpage(){
+            return $this->hasOne(Page::className(), ['id' => 'page']);
+        }
 
 }

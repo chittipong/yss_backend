@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.6.25 - MySQL Community Server (GPL)
+-- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-29 01:56:35
+-- Date/time:                    2015-10-29 17:44:36
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -1334,63 +1334,63 @@ CREATE TABLE IF NOT EXISTS `download` (
   `file_folder` varchar(50) DEFAULT NULL,
   `file_name` varchar(50) DEFAULT NULL,
   `file_size` varchar(50) DEFAULT NULL,
-  `status` varchar(2) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
   `lang` varchar(20) DEFAULT NULL,
   `author` varchar(60) DEFAULT NULL,
   `date_create` datetime DEFAULT NULL,
   `date_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.download: 60 rows
 /*!40000 ALTER TABLE `download` DISABLE KEYS */;
 INSERT INTO `download` (`id`, `download_cat_id`, `product_id`, `title`, `detail`, `file_folder`, `file_name`, `file_size`, `status`, `lang`, `author`, `date_create`, `date_update`) VALUES
-	(1, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(2, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(3, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(4, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(5, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(6, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(7, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(8, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(9, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'EN', NULL, NULL, NULL),
-	(10, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(11, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(12, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(13, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(14, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(15, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(16, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(17, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(18, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
-	(20, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'D', 'TH', NULL, NULL, NULL),
+	(1, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(2, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(3, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(4, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(5, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(6, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(7, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(8, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(9, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
+	(10, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(11, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(12, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(13, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(14, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(15, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(16, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(17, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(18, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
+	(20, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'TH', NULL, NULL, NULL),
 	(21, 2, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', '', 'TH', NULL, NULL, NULL),
-	(40, 4, 0, 'ABE', NULL, 'download', 'brochures_40.pdf', '106399', 'D', 'EN', NULL, NULL, NULL),
-	(41, 2, 0, 'brochure', NULL, 'download', 'brochures_41.pdf', '61407', 'D', 'EN', NULL, NULL, NULL),
-	(42, 4, 0, 'ABE_TESTADD', NULL, 'download', 'brochures_42.pdf', '61407', 'D', 'EN', NULL, NULL, NULL),
-	(43, 5, 0, 'USERMANUAL', NULL, 'download', 'brochures_43.pdf', '61407', 'D', 'EN', NULL, NULL, NULL),
-	(44, 5, 0, 'USERMANUAL', NULL, 'download', 'brochures_44.pdf', '61407', 'D', 'EN', NULL, NULL, NULL),
-	(45, 6, 0, 'HONDA NC700', NULL, 'download', 'brochures_45.xls', '53760', 'D', 'EN', NULL, NULL, NULL),
-	(46, 2, 0, 'FORZA 300', NULL, NULL, NULL, NULL, 'D', 'EN', NULL, NULL, NULL),
+	(40, 4, 0, 'ABE', NULL, 'download', 'brochures_40.pdf', '106399', 'enable', 'EN', NULL, NULL, NULL),
+	(41, 2, 0, 'brochure', NULL, 'download', 'brochures_41.pdf', '61407', 'enable', 'EN', NULL, NULL, NULL),
+	(42, 4, 0, 'ABE_TESTADD', NULL, 'download', 'brochures_42.pdf', '61407', 'enable', 'EN', NULL, NULL, NULL),
+	(43, 5, 0, 'USERMANUAL', NULL, 'download', 'brochures_43.pdf', '61407', 'enable', 'EN', NULL, NULL, NULL),
+	(44, 5, 0, 'USERMANUAL', NULL, 'download', 'brochures_44.pdf', '61407', 'enable', 'EN', NULL, NULL, NULL),
+	(45, 6, 0, 'HONDA NC700', NULL, 'download', 'brochures_45.xls', '53760', 'enable', 'EN', NULL, NULL, NULL),
+	(46, 2, 0, 'FORZA 300', NULL, NULL, NULL, NULL, 'enable', 'EN', NULL, NULL, NULL),
 	(54, 6, 0, 'YSS INSTALLATION KSR 2014 TH', NULL, 'download', 'brochures_54.pdf', '3308017', NULL, 'EN', NULL, NULL, NULL),
-	(55, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_55.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
-	(56, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_56.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
-	(57, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_57.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
-	(58, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_58.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
-	(59, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_59.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
-	(60, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_60.pdf', '0', 'D', 'EN', NULL, NULL, NULL),
+	(55, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_55.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
+	(56, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_56.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
+	(57, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_57.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
+	(58, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_58.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
+	(59, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_59.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
+	(60, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_60.pdf', '0', 'enable', 'EN', NULL, NULL, NULL),
 	(61, 6, 0, 'YSS INSTALATION MANUAL HYDRULIC SPRING PRE-LOAD', NULL, 'download', 'brochures_61.pdf', '3855281', NULL, 'EN', NULL, NULL, NULL),
 	(62, 9, 0, 'YSS INSTRUCTION TOP LINE 2014', NULL, 'download', 'brochures_62.pdf', '3395073', NULL, 'EN', NULL, NULL, NULL),
 	(63, 10, 0, 'MANUAL WASHER', NULL, 'download', 'brochures_63.pdf', '263897', NULL, 'EN', NULL, NULL, NULL),
 	(64, 5, 0, 'WARNING TAG', NULL, 'download', 'brochures_64.pdf', '102605', NULL, 'EN', NULL, NULL, NULL),
 	(65, 11, 0, 'SPRING CODE', NULL, 'download', 'brochures_65.pdf', '106399', NULL, 'EN', NULL, NULL, NULL),
 	(66, 12, 0, 'YSS PRODUCT CODE', NULL, 'download', 'brochures_66.pdf', '61407', NULL, 'EN', NULL, NULL, NULL),
-	(67, 10, 0, 'ABE220', NULL, 'download', 'brochures_67.pdf', '618404', 'D', 'EN', NULL, NULL, NULL),
-	(68, 10, 0, 'ABE 302', NULL, 'download', 'brochures_68.pdf', '761601', 'D', 'EN', NULL, NULL, NULL),
-	(69, 10, 0, 'ABE 362', NULL, 'download', 'brochures_69.pdf', '449235', 'D', 'EN', NULL, NULL, NULL),
-	(70, 13, 0, 'SERIES 220', NULL, 'download', 'brochures_70.pdf', '618404', 'D', 'EN', NULL, NULL, NULL),
-	(71, 13, 0, 'SERIES 220', NULL, 'download', 'brochures_71.pdf', '618404', 'D', 'EN', NULL, NULL, NULL),
+	(67, 10, 0, 'ABE220', NULL, 'download', 'brochures_67.pdf', '618404', 'enable', 'EN', NULL, NULL, NULL),
+	(68, 10, 0, 'ABE 302', NULL, 'download', 'brochures_68.pdf', '761601', 'enable', 'EN', NULL, NULL, NULL),
+	(69, 10, 0, 'ABE 362', NULL, 'download', 'brochures_69.pdf', '449235', 'enable', 'EN', NULL, NULL, NULL),
+	(70, 13, 0, 'SERIES 220', NULL, 'download', 'brochures_70.pdf', '618404', 'enable', 'EN', NULL, NULL, NULL),
+	(71, 13, 0, 'SERIES 220', NULL, 'download', 'brochures_71.pdf', '618404', 'enable', 'EN', NULL, NULL, NULL),
 	(72, 13, 0, 'ABE 220', NULL, 'download', 'brochures_72.pdf', '618404', NULL, 'EN', NULL, NULL, NULL),
 	(73, 13, 0, 'ABE 302', NULL, 'download', 'brochures_73.pdf', '761601', NULL, 'EN', NULL, NULL, NULL),
 	(74, 13, 0, 'ABE 362', NULL, 'download', 'brochures_74.pdf', '449235', NULL, 'EN', NULL, NULL, NULL),
@@ -1401,8 +1401,8 @@ INSERT INTO `download` (`id`, `download_cat_id`, `product_id`, `title`, `detail`
 	(79, 14, 0, 'QUAD/ATV', NULL, 'download', 'brochures_79.pdf', '52821', NULL, 'EN', NULL, NULL, NULL),
 	(80, 14, 0, 'SPECIAL PURPOSE', NULL, 'download', 'brochures_80.pdf', '41285', NULL, 'EN', NULL, NULL, NULL),
 	(81, 14, 0, 'AUTO', NULL, 'download', 'brochures_81.pdf', '61093', NULL, 'EN', NULL, NULL, NULL),
-	(83, NULL, 0, 'aaaaaaaaaaaa', 'sdfsdfsdfsdf', 'ssssss', 'sssss.jpg', '', '', '', NULL, NULL, NULL),
-	(84, 2, 123456, 'aaaaa', 'ffffffffff', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(83, NULL, 0, 'aaaaaaaaaaaa', 'sdfsdfsdfsdf', 'ssssss', 'sssss.jpg', '', 'disable', 'TH', NULL, '2015-10-29 04:39:57', NULL),
+	(84, 2, 123456, 'aaaaa', 'ffffffffff  sdfsdfsdf sdfsdfs sds sdfsdf', NULL, NULL, NULL, 'enable', 'TH', NULL, '2015-10-29 04:56:12', NULL),
 	(85, 5, NULL, 'bbbbb', 'bbbbbbb', NULL, NULL, NULL, NULL, 'TH', NULL, NULL, NULL),
 	(86, 2, NULL, 'ccccc', 'cccccccc', NULL, NULL, NULL, NULL, 'TH', NULL, '2015-10-20 05:37:20', '2015-10-20 05:38:31'),
 	(87, 9, NULL, 'bbbbbb', 'bbbbbbbgb bbbbbb ssdfsdfsdf', NULL, '20151020061007.xlsx', NULL, NULL, 'EN', NULL, '2015-10-20 06:10:07', NULL);
@@ -1415,23 +1415,24 @@ CREATE TABLE IF NOT EXISTS `download_category` (
   `name` varchar(50) DEFAULT NULL,
   `status` varchar(2) DEFAULT NULL,
   `lang` varchar(5) DEFAULT NULL,
+  `sort_order` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.download_category: 11 rows
 /*!40000 ALTER TABLE `download_category` DISABLE KEYS */;
-INSERT INTO `download_category` (`id`, `name`, `status`, `lang`) VALUES
-	(1, 'FLYER', 'D', 'EN'),
-	(2, 'BROCHURE', 'D', 'EN'),
-	(4, 'ABE', 'D', 'EN'),
-	(5, 'WARNING', NULL, 'EN'),
-	(6, 'INSTALLATION', NULL, 'EN'),
-	(9, 'INSTRUCTION', NULL, 'EN'),
-	(10, 'MANUAL', NULL, 'EN'),
-	(11, 'SPRING CODE', NULL, 'EN'),
-	(12, 'YSS PRODUCT CODE', NULL, 'EN'),
-	(13, 'ABE MANUAL', NULL, 'EN'),
-	(14, 'APPLICATION LIST', NULL, 'EN');
+INSERT INTO `download_category` (`id`, `name`, `status`, `lang`, `sort_order`) VALUES
+	(1, 'FLYER', 'D', 'EN', 11),
+	(2, 'BROCHURE', 'D', 'EN', 10),
+	(4, 'ABE', 'D', 'EN', 9),
+	(5, 'WARNING', NULL, 'EN', 4),
+	(6, 'INSTALLATION', NULL, 'EN', 2),
+	(9, 'INSTRUCTION', NULL, 'EN', 6),
+	(10, 'MANUAL', NULL, 'EN', 3),
+	(11, 'SPRING CODE', NULL, 'EN', 7),
+	(12, 'YSS PRODUCT CODE', NULL, 'EN', 8),
+	(13, 'ABE MANUAL', NULL, 'EN', 1),
+	(14, 'APPLICATION LIST', NULL, 'EN', 5);
 /*!40000 ALTER TABLE `download_category` ENABLE KEYS */;
 
 
@@ -1441,8 +1442,8 @@ CREATE TABLE IF NOT EXISTS `importers` (
   `import_cat_id` int(11) DEFAULT NULL,
   `title` varchar(250) DEFAULT NULL,
   `pic` varchar(50) DEFAULT NULL,
-  `detil` text,
-  `status` varchar(2) DEFAULT NULL,
+  `detail` text,
+  `status` varchar(20) DEFAULT NULL,
   `sort_order` int(11) DEFAULT NULL,
   `lang` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1450,36 +1451,36 @@ CREATE TABLE IF NOT EXISTS `importers` (
 
 -- Dumping data for table db_yss_new.importers: 79 rows
 /*!40000 ALTER TABLE `importers` DISABLE KEYS */;
-INSERT INTO `importers` (`id`, `import_cat_id`, `title`, `pic`, `detil`, `status`, `sort_order`, `lang`) VALUES
-	(1, 1, 'SOLE DISTRIBUTOR', '20151023105155.jpg', '<div><div><b>HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>SANWA MOTORCYCLE COMPANY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><br></div></div>', 'D', 1, 'EN'),
-	(2, 1, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br>\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br>\r\n                                        TEL. 852-2336-6880 , 852-2336-6880\r\n                                        <br>\r\n                                        FAX. 852-2338-3904&nbsp;<div>E-MAIL: sanwa8@netvigator.com</div>', 'D', NULL, 'EN'),
-	(3, 1, 'SOLE DISTRIBUTOR', 'distributors_3.gif', '<div><b>PMC. INC<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 2, 'EN'),
-	(4, 3, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br />\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        FAX. 852-2338-3904\r\n                                        <br />\r\n                                        E-MAIL: sanwa8@netvigator.com', 'D', NULL, 'EN'),
-	(5, 1, 'test', 'distributors_5.png', '<span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">SANWA MOTORCYCLE COMPANY G/F, NO.9 JUNCTION ROAD,&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">TEL. 852-2336-6880&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">TEL. 852-2336-6880&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">FAX. 852-2338-3904&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">E-MAIL: sanwa8@netvigator.com</span><br>', 'D', NULL, 'EN'),
-	(6, 1, 'SOLE DISTRIBUTOR', 'distributors_6.gif', '<div><b>TEISHO CORPORATION</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>9-2-10 MINATOJIMA CHUO-KU<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOBE HYOGO<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>650-0045 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 81-78-302-0372<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 81-78-302-0347<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : teishosa@mercury.sannet.ne.jp<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 3, 'EN'),
-	(7, 1, 'SOLE DISTRIBUTOR', 'distributors_7.png', '<div><b>PT.MITRA LESTARI MOTORINDO<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>LODAN CENTER BLOK G. NO.2, JL.LODAN RAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>NO.2, JAKARTA UTARA 14430 INDONESIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 62-21-693-0777<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 62-21-691-6568, 62-21-691-7361<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@mitra2000.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 4, 'EN'),
-	(8, 3, 'SOLE DISTRIBUTOR', 'distributors_8.gif', '<div><div><font size="1"><span style="line-height: 10.125px;"><b>EUROPE<span class="Apple-tab-span" style="white-space: pre;">	</span></b></span></font></div><div><font size="1"><span style="line-height: 10.125px;">YSS EUROPE LTD.<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">DUINWEG 8 &nbsp;5482 VR SCHIJNDEL <span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">THE NETHERLANDS<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">TEL : 31-73-611-0221<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">FAX : 31-73-656-8676<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">WEBSITE : www.yss-suspension.eu<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">E-MAIL : info@yss-suspension.eu<span class="Apple-tab-span" style="white-space: pre;">	</span></span></font></div></div><div><br></div><div><br></div>', 'D', 1, 'EN'),
-	(9, 3, 'SOLE DISTRIBUTOR', 'distributors_9.gif', '<div><b>PE PE PARTS </b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>REEDIJK 7 NL-3274 KE HEINENOORD<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>THE NETHERLANDS<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : +31-186 630560<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : +31-186 630561<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.pepeparts.nl<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@pepeparts.nl <span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', NULL, 'EN'),
-	(10, 5, 'SOLE DISTRIBUTOR', 'distributors_10.png', '<div><div><b>NORTH AMERICA<span class="Apple-tab-span" style="white-space: pre;">	</span></b></div><div>SCOOTER WORK<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>5410 N DAMEN AVE.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>CHICAGO ILLINOIS 60625 USA.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : (773) 537 0800<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : (773) 537 0801<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@scooterworks.com<span class="Apple-tab-span" style="white-space:pre">	</span></div></div><div><br></div>', 'D', 4, 'EN'),
-	(11, 3, 'SOLE DISTRIBUTOR', 'distributors_11.png', '<div><div><div><b>BIKE ALERT PLC.</b></div><div>ONE OPTIMA PARK, THAMES ROAD,</div><div>CRAYFORD DARTFORD DA1 4QX</div><div>UNITED KINGDOM</div><div>TEL +44 0 1322-526-236</div><div>FAX +44 0 132528-487</div><div>WEBSITE : www.bikealert.com</div><div>E-MAIL: sales@bikealert.com</div></div></div><div><br></div><div><br></div>', 'D', 2, 'EN'),
-	(12, 5, 'SOLE DISTRIBUTOR', 'distributors_12.png', '2', 'D', 2, 'EN'),
-	(13, 5, 'SOLE DISTRIBUTOR', 'distributors_13.png', '2', 'D', 2, 'EN'),
-	(14, 5, 'SOLE DISTRIBUTOR', 'distributors_14.png', '<div><b>BEEMERSHOP,INC.</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>5100 SCOTTS VALLEY DR.SUITE 100<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SCOTTS VALLEY &nbsp;CA.95066 USA.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 831-4381100 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 831-4381104<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.beemershop.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : &nbsp;service@beemershop.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 2, 'EN'),
-	(15, 5, 'SOLE DISTRIBUTOR', 'distributors_15.png', '3', 'D', 3, 'EN'),
-	(16, 5, 'SOLE DISTRIBUTOR', 'distributors_16.jpg', '1', 'D', 1, 'EN'),
-	(17, 1, 'SOLE DISTRIBUTOR', 'distributors_17.jpg', '<div><b>VIETNAM</b></div><div>THIEN NHAN CO.,LTD.</div><div>34/27 LU GIA STREET, WARD 15, DISTRICT 11, HOCHIMINH CITY,</div><div>VIETNAM</div><div>TEL : + 84 8 3864-1203</div><div>FAX : + 84 8 3864-7063</div><div>E-MAIL : thiennhanco@yahoo.com</div>', 'D', 5, 'EN'),
-	(18, 3, 'SOLE DISTRIBUTOR', 'distributors_18.gif', '<div><b>&nbsp; &nbsp;DENMARK</b></div><div>&nbsp; &nbsp; MATTHIES APS</div><div>&nbsp; &nbsp; KOBBERVEJ 7</div><div>&nbsp; &nbsp; 6000 KOLDING</div><div>&nbsp; &nbsp; TEL : &nbsp;+76 31 13 30</div><div>&nbsp; &nbsp; FAX : +76 31 13 40</div><div>&nbsp; &nbsp; E-MAIL : info@dk.matthies.eu</div><div><br></div>', 'D', 4, 'EN'),
-	(19, 11, 'SOLE DISTRIBUTOR', 'distributors_19.jpg', '<div><div><b>BRAZIL<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>MOTRIX<span class="Apple-tab-span" style="white-space: pre;">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space: pre;">	</span></div></div><div><br></div>', 'D', 5, 'EN'),
-	(20, 9, 'SOLE DISTRIBUTOR', 'distributors_20.png', '<div><b>BMA MOTORCYCLE ACCESSORIES<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>4/34 PALMERSTON ROAD EAST RINGWOOD 3134<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>VICTORIA &nbsp;AUSTRALIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL: 61-3-9876-8966<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 61-3-9876-8988<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : sales@birdman.net.au<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.birdman.net.au<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 1, 'EN'),
-	(21, 11, 'SOLE DISTRIBUTOR', 'distributors_21.jpg', '<div><b>BRAZIL</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>MOTRIX<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 1, 'EN'),
-	(22, 11, 'SOLE DISTRIBUTOR', 'distributors_22.jpg', '<div><b>BRAZIL</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>MOTRIX<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 1, 'EN'),
-	(23, 1, 'f', NULL, 'f<br>', 'D', 1, 'EN'),
+INSERT INTO `importers` (`id`, `import_cat_id`, `title`, `pic`, `detail`, `status`, `sort_order`, `lang`) VALUES
+	(1, 1, 'SOLE DISTRIBUTOR', '20151023105155.jpg', '<div><div><b>HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>SANWA MOTORCYCLE COMPANY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><br></div></div>', 'enable', 1, 'EN'),
+	(2, 1, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br>\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br>\r\n                                        TEL. 852-2336-6880 , 852-2336-6880\r\n                                        <br>\r\n                                        FAX. 852-2338-3904&nbsp;<div>E-MAIL: sanwa8@netvigator.com</div>', 'enable', NULL, 'EN'),
+	(3, 1, 'SOLE DISTRIBUTOR', 'distributors_3.gif', '<div><b>PMC. INC<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 2, 'EN'),
+	(4, 3, 'SOLE DISTRIBUTOR', 'hk.png', '                                        HONG KONG\r\n                                        <br />\r\n                                        SANWA MOTORCYCLE COMPANY\r\n                                        G/F, NO.9 JUNCTION ROAD,\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        TEL. 852-2336-6880\r\n                                        <br />\r\n                                        FAX. 852-2338-3904\r\n                                        <br />\r\n                                        E-MAIL: sanwa8@netvigator.com', 'enable', NULL, 'EN'),
+	(5, 1, 'test', 'distributors_5.png', '<span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">SANWA MOTORCYCLE COMPANY G/F, NO.9 JUNCTION ROAD,&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">TEL. 852-2336-6880&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">TEL. 852-2336-6880&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">FAX. 852-2338-3904&nbsp;</span><br style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;"><span style="color: rgb(0, 0, 0); font-family: tahoma; font-size: 11px; line-height: normal;">E-MAIL: sanwa8@netvigator.com</span><br>', 'enable', NULL, 'EN'),
+	(6, 1, 'SOLE DISTRIBUTOR', 'distributors_6.gif', '<div><b>TEISHO CORPORATION</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>9-2-10 MINATOJIMA CHUO-KU<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOBE HYOGO<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>650-0045 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 81-78-302-0372<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 81-78-302-0347<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : teishosa@mercury.sannet.ne.jp<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 3, 'EN'),
+	(7, 1, 'SOLE DISTRIBUTOR', 'distributors_7.png', '<div><b>PT.MITRA LESTARI MOTORINDO<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>LODAN CENTER BLOK G. NO.2, JL.LODAN RAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>NO.2, JAKARTA UTARA 14430 INDONESIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 62-21-693-0777<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 62-21-691-6568, 62-21-691-7361<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@mitra2000.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 4, 'EN'),
+	(8, 3, 'SOLE DISTRIBUTOR', 'distributors_8.gif', '<div><div><font size="1"><span style="line-height: 10.125px;"><b>EUROPE<span class="Apple-tab-span" style="white-space: pre;">	</span></b></span></font></div><div><font size="1"><span style="line-height: 10.125px;">YSS EUROPE LTD.<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">DUINWEG 8 &nbsp;5482 VR SCHIJNDEL <span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">THE NETHERLANDS<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">TEL : 31-73-611-0221<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">FAX : 31-73-656-8676<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">WEBSITE : www.yss-suspension.eu<span class="Apple-tab-span" style="white-space:pre">	</span></span></font></div><div><font size="1"><span style="line-height: 10.125px;">E-MAIL : info@yss-suspension.eu<span class="Apple-tab-span" style="white-space: pre;">	</span></span></font></div></div><div><br></div><div><br></div>', 'enable', 1, 'EN'),
+	(9, 3, 'SOLE DISTRIBUTOR', 'distributors_9.gif', '<div><b>PE PE PARTS </b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>REEDIJK 7 NL-3274 KE HEINENOORD<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>THE NETHERLANDS<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : +31-186 630560<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : +31-186 630561<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.pepeparts.nl<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@pepeparts.nl <span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', NULL, 'EN'),
+	(10, 5, 'SOLE DISTRIBUTOR', 'distributors_10.png', '<div><div><b>NORTH AMERICA<span class="Apple-tab-span" style="white-space: pre;">	</span></b></div><div>SCOOTER WORK<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>5410 N DAMEN AVE.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>CHICAGO ILLINOIS 60625 USA.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : (773) 537 0800<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : (773) 537 0801<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@scooterworks.com<span class="Apple-tab-span" style="white-space:pre">	</span></div></div><div><br></div>', 'enable', 4, 'EN'),
+	(11, 3, 'SOLE DISTRIBUTOR', 'distributors_11.png', '<div><div><div><b>BIKE ALERT PLC.</b></div><div>ONE OPTIMA PARK, THAMES ROAD,</div><div>CRAYFORD DARTFORD DA1 4QX</div><div>UNITED KINGDOM</div><div>TEL +44 0 1322-526-236</div><div>FAX +44 0 132528-487</div><div>WEBSITE : www.bikealert.com</div><div>E-MAIL: sales@bikealert.com</div></div></div><div><br></div><div><br></div>', 'enable', 2, 'EN'),
+	(12, 5, 'SOLE DISTRIBUTOR', 'distributors_12.png', '2', 'enable', 2, 'EN'),
+	(13, 5, 'SOLE DISTRIBUTOR', 'distributors_13.png', '2', 'enable', 2, 'EN'),
+	(14, 5, 'SOLE DISTRIBUTOR', 'distributors_14.png', '<div><b>BEEMERSHOP,INC.</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>5100 SCOTTS VALLEY DR.SUITE 100<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SCOTTS VALLEY &nbsp;CA.95066 USA.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 831-4381100 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 831-4381104<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.beemershop.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : &nbsp;service@beemershop.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 2, 'EN'),
+	(15, 5, 'SOLE DISTRIBUTOR', 'distributors_15.png', '3', 'enable', 3, 'EN'),
+	(16, 5, 'SOLE DISTRIBUTOR', 'distributors_16.jpg', '1', 'enable', 1, 'EN'),
+	(17, 1, 'SOLE DISTRIBUTOR', 'distributors_17.jpg', '<div><b>VIETNAM</b></div><div>THIEN NHAN CO.,LTD.</div><div>34/27 LU GIA STREET, WARD 15, DISTRICT 11, HOCHIMINH CITY,</div><div>VIETNAM</div><div>TEL : + 84 8 3864-1203</div><div>FAX : + 84 8 3864-7063</div><div>E-MAIL : thiennhanco@yahoo.com</div>', 'enable', 5, 'EN'),
+	(18, 3, 'SOLE DISTRIBUTOR', 'distributors_18.gif', '<div><b>&nbsp; &nbsp;DENMARK</b></div><div>&nbsp; &nbsp; MATTHIES APS</div><div>&nbsp; &nbsp; KOBBERVEJ 7</div><div>&nbsp; &nbsp; 6000 KOLDING</div><div>&nbsp; &nbsp; TEL : &nbsp;+76 31 13 30</div><div>&nbsp; &nbsp; FAX : +76 31 13 40</div><div>&nbsp; &nbsp; E-MAIL : info@dk.matthies.eu</div><div><br></div>', 'enable', 4, 'EN'),
+	(19, 11, 'SOLE DISTRIBUTOR', 'distributors_19.jpg', '<div><div><b>BRAZIL<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>MOTRIX<span class="Apple-tab-span" style="white-space: pre;">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space: pre;">	</span></div></div><div><br></div>', 'enable', 5, 'EN'),
+	(20, 9, 'SOLE DISTRIBUTOR', 'distributors_20.png', '<div><b>BMA MOTORCYCLE ACCESSORIES<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>4/34 PALMERSTON ROAD EAST RINGWOOD 3134<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>VICTORIA &nbsp;AUSTRALIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL: 61-3-9876-8966<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 61-3-9876-8988<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : sales@birdman.net.au<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>WEBSITE : www.birdman.net.au<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 1, 'EN'),
+	(21, 11, 'SOLE DISTRIBUTOR', 'distributors_21.jpg', '<div><b>BRAZIL</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>MOTRIX<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 1, 'EN'),
+	(22, 11, 'SOLE DISTRIBUTOR', 'distributors_22.jpg', '<div><b>BRAZIL</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>MOTRIX<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>RUA GENERAL OSORIO.679, 3 ANDAR.<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SALA 9, SAO PAULO BRAZIL CEP 01231-003<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL/FAX : 55 11 3337 - 5312<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : fabio@motrixmotoparts.com.br<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 1, 'EN'),
+	(23, 1, 'f', NULL, 'f<br>', 'enable', 1, 'EN'),
 	(24, 1, 'HONG KONG', 'distributors_24.gif', '<div><font size="3"><b style="font-size: 0.75em; line-height: 1.125em;">HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></font><b><br>SANWA MOTORCYCLE COMPANY</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre"></span> KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><b>SOLE DISTRIBUTOR<br></b></div>', NULL, 0, 'EN'),
-	(25, 1, '', 'distributors_25.png', '<div><b>SOLE DISTRIBUTOR,SERVICE CENTER(BIG BIKE</b><b style="font-size: 0.75em; line-height: 1.125em;">)</b></div><div><b>JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div><b>1. PMC. INC</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 2, 'EN'),
-	(26, 1, 'Japan', 'distributors_26.png', '<div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER(SMALL BIKE AND SCOOTER)&nbsp;</b></div><div><b>JAPAN&nbsp;</b></div><div><b>2. TEISHO CORPORATION</b><span class="Apple-tab-span" style="line-height: 1.125em; font-size: small; white-space: pre;">	</span><br></div></div><div>9-2-10 MINATOJIMA CHUO-KU<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOBE HYOGO<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>650-0045 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 81-78-302-0372<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 81-78-302-0347<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : teishosa@mercury.sannet.ne.jp<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 3, 'EN'),
-	(27, 1, 'INDONESIA', 'distributors_27.png', '<div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER<br></b></div><div><b>INDONESIA<span class="Apple-tab-span" style="white-space: pre;">	</span></b></div><div><b>1. PT.MITRA LESTARI MOTORINDO</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>LODAN CENTER BLOK G. NO.2, JL.LODAN RAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>NO.2, JAKARTA UTARA 14430 INDONESIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 62-21-693-0777<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 62-21-691-6568, 62-21-691-7361<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@mitra2000.com<span class="Apple-tab-span" style="white-space: pre;">	</span></div></div><div><br></div>', 'D', 4, 'EN'),
-	(28, 1, 'MALAYSIA', NULL, '<div><b>DISTRIBUTOR<br></b></div><div><b>MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div><b>1. H.K. CYCLE PARTS SDN. BHD.<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>13 &amp; 15 JALAN SG. 10/4<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TAMAN SRI GOMBAK, 68100 BATU CAVES<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>BELANGOR DARUL EHSAN, MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 603-618-7-8606, 603-618-7-0128<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 603-618-62128<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : hkcpsb@yahoo.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 5, 'EN'),
-	(29, 1, 'MALAYSIA2', NULL, '<div><b>DISTRIBUTOR<br></b></div><div><b>MALAYSIA<br></b></div><div><b>2. SINRIANG TRADING SDN BHD</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>ADDRESS : 301-303,BANDAR BARU MERGONG,LEBUHRAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SULTANAH BAHIYAH 05150 ALOR SETAR,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KEDAH DARULAMAN,MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL.: +604 730 0498/+604 735 5498<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : +604 7327498<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : SINRIANG@GMAIL.COM<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'D', 6, 'EN'),
+	(25, 1, '', 'distributors_25.png', '<div><b>SOLE DISTRIBUTOR,SERVICE CENTER(BIG BIKE</b><b style="font-size: 0.75em; line-height: 1.125em;">)</b></div><div><b>JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div><b>1. PMC. INC</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 2, 'EN'),
+	(26, 1, 'Japan', 'distributors_26.png', '<div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER(SMALL BIKE AND SCOOTER)&nbsp;</b></div><div><b>JAPAN&nbsp;</b></div><div><b>2. TEISHO CORPORATION</b><span class="Apple-tab-span" style="line-height: 1.125em; font-size: small; white-space: pre;">	</span><br></div></div><div>9-2-10 MINATOJIMA CHUO-KU<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOBE HYOGO<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>650-0045 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 81-78-302-0372<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 81-78-302-0347<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : teishosa@mercury.sannet.ne.jp<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 3, 'EN'),
+	(27, 1, 'INDONESIA', 'distributors_27.png', '<div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER<br></b></div><div><b>INDONESIA<span class="Apple-tab-span" style="white-space: pre;">	</span></b></div><div><b>1. PT.MITRA LESTARI MOTORINDO</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>LODAN CENTER BLOK G. NO.2, JL.LODAN RAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>NO.2, JAKARTA UTARA 14430 INDONESIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 62-21-693-0777<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 62-21-691-6568, 62-21-691-7361<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@mitra2000.com<span class="Apple-tab-span" style="white-space: pre;">	</span></div></div><div><br></div>', 'enable', 4, 'EN'),
+	(28, 1, 'MALAYSIA', NULL, '<div><b>DISTRIBUTOR<br></b></div><div><b>MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div><b>1. H.K. CYCLE PARTS SDN. BHD.<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>13 &amp; 15 JALAN SG. 10/4<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TAMAN SRI GOMBAK, 68100 BATU CAVES<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>BELANGOR DARUL EHSAN, MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 603-618-7-8606, 603-618-7-0128<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 603-618-62128<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : hkcpsb@yahoo.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 5, 'EN'),
+	(29, 1, 'MALAYSIA2', NULL, '<div><b>DISTRIBUTOR<br></b></div><div><b>MALAYSIA<br></b></div><div><b>2. SINRIANG TRADING SDN BHD</b><span class="Apple-tab-span" style="white-space:pre">	</span></div><div>ADDRESS : 301-303,BANDAR BARU MERGONG,LEBUHRAYA <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>SULTANAH BAHIYAH 05150 ALOR SETAR,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KEDAH DARULAMAN,MALAYSIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL.: +604 730 0498/+604 735 5498<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : +604 7327498<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : SINRIANG@GMAIL.COM<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><br></div>', 'enable', 6, 'EN'),
 	(30, 1, 'JAPAN', 'distributors_30.gif', '<div><div><b>JAPAN<br></b></div><div><b>&nbsp;PMC. INC</b><br></div><div>404-2 SANO, AWAJI-CITY<span class="Apple-tab-span" style="white-space:pre"></span> HYOGO 656-2212 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 0799-60-0101 <span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 0799-60-0202<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@win-pmc.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER</b><br></div><span class="Apple-tab-span" style="white-space:pre"></span></div>', NULL, 1, 'EN'),
 	(32, 1, 'JAPAN', 'distributors_32.gif', '<div><b>JAPAN<br>TEISHO CORPORATION</b><span class="Apple-tab-span" style="white-space:pre">	</span><br></div><div>9-2-10 MINATOJIMA CHUO-KU<span class="Apple-tab-span" style="white-space:pre"></span> KOBE HYOGO<span class="Apple-tab-span" style="white-space:pre"></span> 650-0045 JAPAN<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 81-78-302-0372<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 81-78-302-0347<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : teishosa@mercury.sannet.ne.jp</div><b>SOLE DISTRIBUTOR,SERVICE CENTER</b>', NULL, 2, 'EN'),
 	(31, 1, 'INDONESIA', 'distributors_31.gif', '<div><b>INDONESIA<br></b></div><div><b>PT.MITRA LESTARI MOTORINDO<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>LODAN CENTER BLOK G. NO.2, JL.LODAN RAYA<span class="Apple-tab-span" style="white-space:pre"></span> NO.2, JAKARTA UTARA 14430 INDONESIA<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL : 62-21-693-0777<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX : 62-21-691-6568, 62-21-691-7361<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL : info@mitra2000.com<span class="Apple-tab-span" style="white-space:pre">	</span></div><div><div><b>SOLE DISTRIBUTOR,SERVICE CENTER</b><br><span class="Apple-tab-span" style="white-space:pre"></span></div></div>', NULL, 3, 'EN'),
@@ -1538,7 +1539,7 @@ CREATE TABLE IF NOT EXISTS `importers_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(250) DEFAULT NULL,
   `sort_order` int(11) DEFAULT NULL,
-  `status` varchar(2) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
   `lang` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
@@ -1546,19 +1547,19 @@ CREATE TABLE IF NOT EXISTS `importers_category` (
 -- Dumping data for table db_yss_new.importers_category: 13 rows
 /*!40000 ALTER TABLE `importers_category` DISABLE KEYS */;
 INSERT INTO `importers_category` (`id`, `title`, `sort_order`, `status`, `lang`) VALUES
-	(1, 'ASIA', 1, '', 'EN'),
-	(2, 'เอเชีย', 1, NULL, 'TH'),
-	(3, 'EUROPE', 2, NULL, 'EN'),
-	(4, 'ยูโรป', 2, NULL, 'TH'),
-	(5, 'NORTH AMERICA ', 4, NULL, 'EN'),
-	(6, 'อเมริกา', 3, NULL, 'TH'),
-	(9, 'AUSTRALIA AND OCEANIA', 3, NULL, 'EN'),
-	(10, 'ออสเตเรีย', 4, NULL, 'TH'),
-	(11, 'SOUTH AMERICA', 5, NULL, 'EN'),
-	(12, 'แอฟาริกา', 5, 'D', 'TH'),
-	(17, 'test test', 44, 'D', 'EN'),
-	(18, 'แอฟริกา', 5, 'D', 'TH'),
-	(19, 'แอฟริกา', 5, NULL, 'TH');
+	(1, 'ASIA', 1, 'enable', 'EN'),
+	(2, 'เอเชีย', 1, 'enable', 'TH'),
+	(3, 'EUROPE', 2, 'enable', 'EN'),
+	(4, 'ยูโรป', 2, 'enable', 'TH'),
+	(5, 'NORTH AMERICA ', 4, 'enable', 'EN'),
+	(6, 'อเมริกา', 3, 'enable', 'TH'),
+	(9, 'AUSTRALIA AND OCEANIA', 3, 'enable', 'EN'),
+	(10, 'ออสเตเรีย', 4, 'enable', 'TH'),
+	(11, 'SOUTH AMERICA', 5, 'enable', 'EN'),
+	(12, 'แอฟาริกา', 5, 'disable', 'TH'),
+	(17, 'test test', 44, 'disable', 'EN'),
+	(18, 'แอฟริกา', 5, 'disable', 'TH'),
+	(19, 'แอฟริกา', 5, 'enable', 'TH');
 /*!40000 ALTER TABLE `importers_category` ENABLE KEYS */;
 
 
@@ -1784,6 +1785,39 @@ INSERT INTO `yss_brand` (`brand_id`, `brand`, `logo`) VALUES
 /*!40000 ALTER TABLE `yss_brand` ENABLE KEYS */;
 
 
+-- Dumping structure for table db_yss_new.yss_contact
+CREATE TABLE IF NOT EXISTS `yss_contact` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `specific_name` varchar(50) DEFAULT NULL COMMENT 'Specific Name',
+  `title` varchar(150) DEFAULT NULL COMMENT 'ชื่อ',
+  `address` varchar(50) DEFAULT NULL COMMENT 'ที่อยู่',
+  `district` varchar(50) DEFAULT NULL COMMENT 'อำเภอ',
+  `province` varchar(50) DEFAULT NULL COMMENT 'จังหวัด ',
+  `zipcode` int(11) DEFAULT NULL COMMENT 'รหัสไปรษณีย์',
+  `phone1` varchar(50) DEFAULT NULL COMMENT 'เบอร์โทรศัพท์1',
+  `phone2` varchar(50) DEFAULT NULL COMMENT 'เบอร์โทรศัพท์ 2',
+  `phone3` varchar(50) DEFAULT NULL COMMENT 'เบอร์โทรศัพท์ 3',
+  `fax1` varchar(50) DEFAULT NULL COMMENT 'เบอร์แฟ็กซ์ 1',
+  `fax2` varchar(50) DEFAULT NULL COMMENT 'เบอร์แฟ็กซ์ 2',
+  `fax3` varchar(50) DEFAULT NULL COMMENT 'เบอร์แฟ็กซ์ 3',
+  `default_mail` varchar(50) DEFAULT NULL COMMENT 'Deault Mail',
+  `support_mail` varchar(50) DEFAULT NULL COMMENT 'Support Mail',
+  `sale_mail` varchar(50) DEFAULT NULL COMMENT 'Sale Mail',
+  `description` text COMMENT 'รายละเอียดเพิ่มเติม',
+  `lang` varchar(2) DEFAULT NULL COMMENT 'ภาษา',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `specific_name` (`specific_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.yss_contact: ~2 rows (approximately)
+/*!40000 ALTER TABLE `yss_contact` DISABLE KEYS */;
+INSERT INTO `yss_contact` (`id`, `specific_name`, `title`, `address`, `district`, `province`, `zipcode`, `phone1`, `phone2`, `phone3`, `fax1`, `fax2`, `fax3`, `default_mail`, `support_mail`, `sale_mail`, `description`, `lang`) VALUES
+	(1, 'yss_contact', 'Y.S.S (THAILAND) Company Limited.', '88 / 88 Moo.9 Soi Phikulthong Thepharak Rd.\r\nBangp', 'Bangphli', 'Samutprakarn', 10540, '+662-706-3700', '+662-763-8600', '', '+662-763- 8899', '', '', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', '<div class="right_side">\r\n                            <h3>How to arrive at our showroom</h3>\r\n                            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus eegx vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet. Curabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.</p>\r\n                            <p>Curabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.</p>\r\n                        </div>', 'EN'),
+	(2, 'yss_contact', 'วาย.เอส.เอส (ประเทศไทยจำกัด', '88 / 88  ม.9 ซอยพิกุลทอง ถ.เทพารักษ์ บางปลา', 'บางพลี', 'สมุทรปราการ', 10540, '+662-706-3700', '+662-763-8600', '', '+662-763- 8899', '', '', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'How to arrive at our showroom\r\n\r\nQuisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus eegx vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet. Curabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.\r\nCurabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.', 'TH');
+/*!40000 ALTER TABLE `yss_contact` ENABLE KEYS */;
+
+
 -- Dumping structure for table db_yss_new.yss_content
 CREATE TABLE IF NOT EXISTS `yss_content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1799,9 +1833,9 @@ CREATE TABLE IF NOT EXISTS `yss_content` (
   `date_update` varchar(45) DEFAULT NULL COMMENT 'วันที่มีการแก้ไข',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_content: ~14 rows (approximately)
+-- Dumping data for table db_yss_new.yss_content: ~18 rows (approximately)
 /*!40000 ALTER TABLE `yss_content` DISABLE KEYS */;
 INSERT INTO `yss_content` (`id`, `page`, `position`, `title`, `detail`, `pic`, `pic_title`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
 	(4, 4, 'section1', 'YSS team confidence to R & D.', '<p>YSS is a shock absorber manufacturer for cars and motorcycles for more than 30 years. YSS continues using advanced technology and equipment at all stages of the production to develop and improve high quality of products continuously. Also, YSS has R & D team from Europe that has a lot of experience for developing shock absorber in order to compete in the global wide. All products made with quality equivalent to European quality including the shock absorber performance, installation, durability, and safety testing. R & D team cares every step to make YSS products to meet customer satisfaction.</p>\r\n\r\n<p>YSS received certification from the Institute Kraftfahrt-Bundesamt (KBA) - Federal Motor Transport Authority of Germany which is the only brand in ASEAN that has been certified. Additionally, YSS was certified in various automotive industries such as QS9000, ISO / TS16949, ISO9001 from TUV RHEILAND.<p>', '20151028075433.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 1, '2015-10-28 07:54:33', '2015-10-28 08:22:36'),
@@ -1817,7 +1851,11 @@ INSERT INTO `yss_content` (`id`, `page`, `position`, `title`, `detail`, `pic`, `
 	(14, 5, 'section2', 'The Philosophy of YSS', '<p><span class="dropcap2">T</span>he Philosophy of YSS is “We produce shock absorber for ourselves and our family”, YSS use International standard quality system to control and manage our production for the best quality in every piece of the product. From present to the future,  we strive to develop new technology for the best quality suspension and provide to our customer continuously covering the product for car, motorcycle, scooter, ATV and UTV.</p>\r\n\r\n<h2 class="yssfont01">Vision</h2>\r\n<p>We are the leadership in development and manufacturing of world class suspension, continuous innovating quality products with whole of technology, performance and value for our customers.</p>\r\n\r\n<h2 class="yssfont01">Mission</h2>\r\n<p>We produce high performance and more value suspension through advance technology and equipment with well-trained full skill and active teams. We also have service centers to provide worldwide customers. Furthermore, we have quality system and social responsibility to ensure that YSS is the world class suspension.\r\n                </p>', '20151028095218.jpg', 'We produce shock absorber for ourselves and our family', 'TH', 2, '2015-10-28 09:52:18', NULL),
 	(15, 5, 'section2', 'The Philosophy of YSS', '<p><span class="dropcap2">T</span>he Philosophy of YSS is “We produce shock absorber for ourselves and our family”, YSS use International standard quality system to control and manage our production for the best quality in every piece of the product. From present to the future,  we strive to develop new technology for the best quality suspension and provide to our customer continuously covering the product for car, motorcycle, scooter, ATV and UTV.</p>\r\n\r\n<h2 class="yssfont01">Vision</h2>\r\n<p>We are the leadership in development and manufacturing of world class suspension, continuous innovating quality products with whole of technology, performance and value for our customers.</p>\r\n\r\n<h2 class="yssfont01">Mission</h2>\r\n<p>We produce high performance and more value suspension through advance technology and equipment with well-trained full skill and active teams. We also have service centers to provide worldwide customers. Furthermore, we have quality system and social responsibility to ensure that YSS is the world class suspension.\r\n                </p>', '20151028095325.jpg', 'We produce shock absorber for ourselves and our family', 'EN', 2, '2015-10-28 09:53:25', '2015-10-28 09:54:13'),
 	(16, 10, 'section1', 'การติดตั้งโช้คอัพ', 'การติดตั้งโช้คอัพ ท่านสามารถนำรถของท่านเข้ามาทำการติดตั้งโดยผู้ชำนาญงานโดยเฉพาะที่โรงงานของเราได้ทุกวัน จันทร์-ศุกร์ เวลา 9.00 - 18.00 น. หรือสอบถามได้ที่ 02-706-3700,\r\n02-763-8600 ', '20151028101144.jpg', 'ติดตั้งโช้คอัพโดยช่างผู้เชี่ยวชาญ', 'TH', 1, '2015-10-28 10:11:44', '2015-10-28 10:17:11'),
-	(17, 10, 'section1', 'Setup & Install', '', '20151028101308.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 1, '2015-10-28 10:13:08', NULL);
+	(17, 10, 'section1', 'Setup & Install', '', '20151028101308.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'EN', 1, '2015-10-28 10:13:08', NULL),
+	(18, 11, 'section1', 'การรับประกัน', 'รายละเอียดการรับประกันสินค้า', '20151029031052.png', 'บรรยายใต้ภาพ', 'TH', 1, '2015-10-29 03:10:52', NULL),
+	(19, 11, 'section1', 'Warranty', 'detail detail detail detail detail detail detail detail detail detail detail detail', '20151029031228.png', 'under pic detail', 'EN', 1, '2015-10-29 03:12:28', NULL),
+	(20, 14, 'section1', 'ซัพพอร์ต', 'รายละเอียดเกี่ยวกับซัพพอร์ต', '20151029051738.jpg', 'คำบรรยายใต้ภาพ', 'TH', 1, '2015-10-29 05:17:38', '2015-10-29 05:20:49'),
+	(21, 14, 'section1', 'Support', 'support detail support detail detail detail', '20151029052008.jpg', 'test description', 'EN', 1, '2015-10-29 05:20:08', NULL);
 /*!40000 ALTER TABLE `yss_content` ENABLE KEYS */;
 
 
@@ -13219,9 +13257,9 @@ CREATE TABLE IF NOT EXISTS `yss_word` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `specific_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_word: ~24 rows (approximately)
+-- Dumping data for table db_yss_new.yss_word: ~31 rows (approximately)
 /*!40000 ALTER TABLE `yss_word` DISABLE KEYS */;
 INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'quick_search', 'ค้นหาด่วน', 'Quick Search', '', '', '', '', '', ''),
@@ -13247,7 +13285,14 @@ INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, 
 	(22, 'quality', 'คุณภาพ', 'QUALITY', '', '', '', '', '', ''),
 	(23, 'csr', 'ความรับผิดชอบต่อสังคม', 'CSR', '', '', '', '', '', ''),
 	(24, 'setup_install', 'ติดตั้งโช้คอัพ', 'SETUP & INSTALL', '', '', '', '', '', ''),
-	(25, 'warranty', 'การรับประกัน', 'WARRANTY', '', '', '', '', '', '');
+	(25, 'warranty', 'การรับประกัน', 'WARRANTY', '', '', '', '', '', ''),
+	(26, 'download', 'ดาวน์โหลด', 'DOWNLOAD', '', '', '', '', '', ''),
+	(27, 'filename', 'ชื่อ', 'FILE NAME', '', '', '', '', '', ''),
+	(28, 'description', 'รายละเอียด', 'DESCRIPTION', '', '', '', '', '', ''),
+	(29, 'filesize', 'ขนาดไฟล์', 'FILE SIZE', '', '', '', '', '', ''),
+	(30, 'support', 'ซัพพอร์ต', 'SUPPORT', NULL, NULL, NULL, NULL, NULL, NULL),
+	(31, 'springcode', 'รหัสสปริง', 'SPRING CODE', NULL, NULL, NULL, NULL, NULL, NULL),
+	(32, 'product_code', 'รหัสสินค้า', 'PRODUCT CODE', NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `yss_word` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

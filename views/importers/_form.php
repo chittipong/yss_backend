@@ -25,9 +25,11 @@ use yii\helpers\Url;
 
             
 
-            <?= $form->field($model, 'detil')->textarea(['rows' => 6]) ?>
+            <?= $form->field($model, 'detail')->textarea(['rows' => 6]) ?>
 
             <?php // $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
+            
+            <?=$form->field($model,'status')->radioList(['enable'=>'Enable','disable'=>'Disable'])?>
 
             <?= $form->field($model, 'sort_order')->textInput(['type'=>'number']) ?>
 

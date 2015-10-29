@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'pic_title',
-            'page',
+            'refpage.title',
             'position',
             'title',
             'detail',

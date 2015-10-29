@@ -37,10 +37,10 @@ class Importers extends \yii\db\ActiveRecord
     {
         return [
             [['import_cat_id', 'sort_order'], 'integer'],
-            [['detil'], 'string'],
+            [['detail'], 'string'],
             [['title'], 'string', 'max' => 250],
             [['pic', 'lang'], 'string', 'max' => 50],
-            [['status'], 'string', 'max' => 2],
+            [['status'], 'string', 'max' => 20],
             
             [['file'],'safe'],
             [['file'],'file','extensions'=>'jpg,png,gif']

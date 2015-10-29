@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['image', ['width' => '400', 'title' => $model->pic]]                              //Set Image Width
             ],
             'pic_title',
-            'page',
+            'refpage.title',
             'position',
             'title',
             'detail',
