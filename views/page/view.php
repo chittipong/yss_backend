@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Page */
@@ -25,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+<!-- ============PAGE===================-->
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -35,4 +37,27 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+
+<!-- ============CONTENT===================-->
+    <?= GridView::widget([
+        'dataProvider' => $content,
+        //'filterModel' => $searchModel,
+        'columns' => [
+            //['class' => 'yii\grid\SerialColumn'],
+            'id',
+            'lang',
+            //'pic_title',
+            //'refpage.title',
+            'position',
+            'layout',
+            'title',
+            'detail',
+            // 'pic',
+            'sort_order',
+            // 'date_create',
+            // 'date_update',
+
+            //['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>

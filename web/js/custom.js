@@ -35,6 +35,11 @@ $(function(){
                  $("#product-shaft").val(shaft);                      //Set Shaft
                  $("#product-length").val(sLenght);                   //Set Shock Lenght
 
+                 //SET NEW LENGTH WHEN THERE IS LENGTH ADJUSTMENT----------
+                 if(code[1].search('L')>(-1)){
+                     var lenght2=parseInt(sLenght)+10;
+                    $("#product-length").val(sLenght+'-'+lenght2);      //Example: 325-335
+                 }
 
               //Example Product Code: MG5022-315TRWL-49I Feature is: TRWL -----
               //var feature=code[1].substring(3,code[1].length);      
@@ -114,7 +119,13 @@ $(function(){
                  $("#applist-piston").val(piston);                    //Set Piston
                  $("#applist-shaft").val(shaft);                      //Set Shaft
                  $("#applist-length").val(sLenght);                   //Set Shock Lenght
-
+                 
+             //SET NEW LENGTH WHEN THERE IS LENGTH ADJUSTMENT----------
+                 if(code[1].search('L')>(-1)){
+                     var lenght2=parseInt(sLenght)+10;
+                    $("#applist-length").val(sLenght+'-'+lenght2);      //Example: 325-335
+                 }
+                 
 
               //Example Product Code: MG5022-315TRWL-49I Feature is: TRWL -----
               //var feature=code[1].substring(3,code[1].length);      
@@ -163,5 +174,7 @@ $(function(){
                      var la=$("#applist-length_adjust input");             
                      la[0].setAttribute('checked','checked');              
                  }
+                 
+              //SET LENGTH-------------------
     });
 });

@@ -10,6 +10,7 @@ use app\models\Product;
 use app\models\ProductSearch;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
+use app\models\NewsSearch;
 
 use app\models\LoginForm;
 use app\models\PasswordResetRequestForm;
@@ -76,26 +77,24 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $this->checkPermission();                   //CHECK USER PERMISSION***
+        //PRODUCT==========================
+            $searchModel = new ProductSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $dataProvider->pagination->pageSize=3;                              //Set page size
+            $dataProvider->sort->defaultOrder=['product_id'=>'DESC'];           //Order by product_id
         
-        $searchModel = new ProductSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
-        /*$dataProvider = new ActiveDataProvider([
-            'query' => Product::find(),
-            'pagination' => [
-                'pageSize' => 5,       //Set page size
-            ],
-        ]);*/
-        
-        $dataProvider->pagination->pageSize=3;
-        $dataProvider->sort->defaultOrder=['product_id'=>'DESC'];
+        //NEWS==============================
+            $searchNewsModel=new NewsSearch();
+            $newsData = $searchNewsModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+        //RENDER TO VIEW====================
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'searchNewsModel'=>$searchNewsModel,
+                'newsData'=>$newsData,
+            ]);
+    }//end***
 
     public function actionLogin()
     {

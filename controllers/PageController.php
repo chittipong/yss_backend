@@ -8,6 +8,8 @@ use app\models\PageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Content;
+use yii\data\ActiveDataProvider;
 
 use app\models\User;                        //For set permission
 use yii\filters\AccessControl;              //For set permission
@@ -80,10 +82,20 @@ class PageController extends Controller
      */
     public function actionView($id)
     {
+        //Get News Detail---------------------
+        $content=  Content::find()->where(['page'=>$id])->all();                 //find News detail
+        $query=  Content::find()->where(['page' => $id]);
+        
+        $contentData = new ActiveDataProvider([
+           'query' => $query,
+        ]);
+        
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'content'=>$contentData,
         ]);
-    }
+    }//end***
 
     /**
      * Creates a new Page model.

@@ -16,3 +16,32 @@ and open the template in the editor.
     left: 28%;
     z-index:99999;
 }
+body{
+    font-size: 12px;
+}
+
+.wp-caption.alignright {
+    margin: 0px 0 20px 40px;
+    float:right;
+}
+.wp-caption.alignleft {
+    margin: 0px 40px 20px 0;
+    float: left;
+}
+.wp-caption, .image_frame {
+    display: inline-block;
+    background: #fff;
+    border-bottom: 3px solid #ced6db;
+    text-align: center;
+    max-width: 100%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.myDropcap1{
+    display: block;
+    float: left;
+    font-size: 26px;
+    line-height: 40px;
+    margin: 0 10px 0 0;
+}

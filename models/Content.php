@@ -39,7 +39,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             [['page','sort_order'], 'integer'],
-            [['position', 'date_create', 'date_update'], 'string', 'max' => 45],
+            [['layout','position', 'date_create', 'date_update'], 'string', 'max' => 45],
             [['title', 'detail', 'pic','pic_title'], 'string'],
             [['lang'], 'string', 'max' => 5],
             
@@ -57,6 +57,7 @@ class Content extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'page' => Yii::t('app', 'หน้า'),
+            'layout'=> Yii::t('app', 'การจัดวาง'),
             'position' => Yii::t('app', 'ตำแหน่ง'),
             'title' => Yii::t('app', 'หัวข้อ (Title)'),
             'detail' => Yii::t('app', 'รายละเอียด (Detail)'),
@@ -88,7 +89,12 @@ class Content extends \yii\db\ActiveRecord
         
      //Get Section List------------
         public function getSectionList(){
-            $list=['section1'=>'Section 1','section2'=>'Section 2','section3'=>'Section 3','section4'=>'Section 4','section5'=>'Section 5'];
+            $list=['none'=>'None','section1'=>'Section 1','section2'=>'Section 2','section3'=>'Section 3','section4'=>'Section 4','section5'=>'Section 5','other'=>'Other'];
+            return $list;
+        }
+        
+        public function getLayoutList(){
+            $list=['RIGHT_PIC'=>'Right pic','LEFT_PIC'=>'Left pic','TOP_PIC'=>'Top pic','ONLY_TEXT'=>'Only Text'];
             return $list;
         }
         

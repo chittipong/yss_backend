@@ -9,6 +9,30 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<!-- Modal -->
+<div id="layoutGuide" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Layout Guide</h4>
+      </div>
+      <div class="modal-body">
+          <p style="text-align: center;">
+            <img src="../../images/layout-left-pic.jpg"/><br/><br/>
+            <img src="../../images/layout-right-pic.jpg"/><br/><br/>
+            <img src="../../images/layout-top-pic.jpg"/><br/><br/>
+            <img src="../../images/layout-only-text.jpg"/>
+          </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="content-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
@@ -16,6 +40,10 @@ use yii\helpers\Url;
     <?php // $form->field($model, 'page')->textInput() ?>
     
     <?= $form->field($model, 'lang')->dropDownList($model->getLangList()) ?>
+    
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#layoutGuide">Layout Guide / รูปแบบการจัดวาง</button>
+    
+    <?= $form->field($model, 'layout')->dropDownList($model->getLayoutList()) ?>
 
     <?= $form->field($model, 'page')->dropDownList($model->getPageList()) ?>
 

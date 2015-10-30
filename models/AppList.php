@@ -61,10 +61,10 @@ class AppList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cc', 'length', 'piston', 'shaft'], 'integer'],
+            [['cc', 'piston', 'shaft'], 'integer'],
             [['date_create', 'date_update'], 'safe'],
             [['brand', 'model', 'product_code', 'vehicle_type', 'pic'], 'string', 'max' => 50],
-            [['ref_no', 'top', 'bottom', 'spring'], 'string', 'max' => 30],
+            [['length','ref_no', 'top', 'bottom', 'spring'], 'string', 'max' => 30],
             [['abe1', 'year', 'type', 'abe_shock', 'compression', 'length_adjust'], 'string', 'max' => 5],
             [['preload', 'rebound', 'hydraulic', 'emulsion', 'piggy_back', 'on_hose', 'free_piston', 'dtg'], 'string', 'max' => 1],
             

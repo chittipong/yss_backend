@@ -68,6 +68,7 @@ AppAsset::register($this);
                         [
                             'label' => 'Product',
                             'items' => [
+                                 ['label' => 'Application List', 'url' => ['/app-list/index']],
                                  ['label' => 'Product', 'url' => ['/product/index']],
                                  ['label' => 'Product Detail', 'url' => ['/product-detail/index']],
                                  ['label' => 'Product Gallery', 'url' => ['/product-gallery/index']],
@@ -82,12 +83,12 @@ AppAsset::register($this);
                         ],
                         ['label' => 'Content',
                             'items'=>[
+                                ['label'=>'Page','url' => ['/page/index']],
+                                ['label'=>'Content','url'=>['/content/index']],
+                                ['label'=>'Slide','url' => ['/yss-slide/index']],
                                 ['label'=>'Menu','url' => ['/menu/index']],
                                 ['label' => 'Shot Word', 'url' => ['/word/index']],
-                                ['label'=>'Page','url' => ['/page/index']],
                                 ['label'=>'Page Meta','url' => ['/page-meta/index']],
-                                ['label'=>'Slide','url' => ['/yss-slide/index']],
-                                ['label'=>'Content','url'=>['/content/index']],
                                 ['label'=>'Award','url'=>['/award/index']],
                             ]
                         ],
@@ -97,7 +98,6 @@ AppAsset::register($this);
                         [
                             'label' => 'Config',
                             'items' => [
-                                ['label' => 'App List', 'url' => ['/app-list/index']],
                                 ['label' => 'Language', 'url' => ['/lang/index']],
                                 ['label' => 'Product Group', 'url' => ['/product-group/index']],
                                 ['label' => 'Product Type', 'url' => ['/product-type/index']],
