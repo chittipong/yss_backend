@@ -247,7 +247,7 @@ $(function () {
     });
 
 
-//INSERT BY AJAX=======================================
+//TEST INSERT BY AJAX=======================================
     $("#submit-TestForm").click(function () {
         showLoading();
         var url = $("#testForm").attr('action');
@@ -285,59 +285,41 @@ $(function () {
     });
     
 
-    //TEST AJAX FORM====================================
-//    $("#testForm").on("submit",(function(e){
-//		e.preventDefault();
-//                var url=$("#testForm").attr('action');
-//                //alert(url);
-//                console.log(url);
-//		$.ajax({
-//			url: url,                               // Url to which the request is send
-//			type: "POST",             		// Type of request to be send, called as method
-//                        data:$("#testForm").serialize(),
-//			data: new FormData(this), 		// Data sent to server, a set of key/value pairs (i.e. form fields and values)
-//			contentType: false,       		// The content type used when sending data to the server.
-//			cache: false,             		// To unable request pages to be cached
-//			processData:false,        		// To send DOMDocument or non processed data file it is set to false
-//			beforeSend:function(){
-//                            showLoading();
-//			},
-//			success: function(result,status)   		// A function to be called if request succeeds
-//			{
-//					if(result.trim()=="done"){
-//						//Set Message display-------------
-//						var msg="<div class='alert alert-success fade in'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Successfully</strong> Insert complete!</div>";
-//						
-//						$("body").append("<div id='output'></div>");
-//						$("#output").html(msg);
-//						setCenter2("#output");
-//						$("#output").fadeIn("fast");
-//						
-//						hideMessage("#output");						//hide message after 3 second
-//						resetForm("#testForm");                                         //Reset form
-//						hideLoading();
-//						
-//					}else{
-//						//Set Message display-------------
-//						var msg="<div class='alert alert-error fade in'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Error!</strong>"+"Data: " + result + "\nStatus: " + status+"</div>";
-//						
-//						$("body").append("<div id='output'></div>");
-//						$("#output").html(msg);
-//						setCenter2("#output");
-//						
-//						hideLoading();
-//					}
-//				},
-//				error:function(error){
-//					hideLoading();
-//					alert("Error: " + error);
-//				}
-//			});
-//		}));
 
-    $('#modalButton-test').click(function(){
-        $('#modal').modal('show')
-                .find('#modalContent')
-                .load($(this).attr('value'));
-    });
+    //Page Create Modal-------------------
+        $('#pageCreate-btn').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });
+        
+    //News detail Create Modal-------------------
+        $('#newsdetailCreate-btn').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });
+        
+     //News Create Modal-------------------
+        $('#newsCreate-btn').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });  
+        
+        
+        //News Create Modal-------------------
+        $('#applistCreate-btn').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });  
+        
+
+    //Test Modal----------------------
+        $('#modalButton-test').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });
 });

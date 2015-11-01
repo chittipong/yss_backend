@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.6.26 - MySQL Community Server (GPL)
+-- Server version:               5.6.25 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-10-30 18:00:35
+-- Date/time:                    2015-11-01 23:27:31
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -965,7 +965,7 @@ CREATE TABLE IF NOT EXISTS `applist_test` (
   KEY `brand` (`brand`)
 ) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.applist_test: ~352 rows (approximately)
+-- Dumping data for table db_yss_new.applist_test: ~353 rows (approximately)
 /*!40000 ALTER TABLE `applist_test` DISABLE KEYS */;
 INSERT INTO `applist_test` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
 	(41, '59', 0, 'QUAD     (FRONT)', '', '', '2009', 'TS', 'FZ366-410TR-01', '', 410, '10x20', '10x20', '46-25-45-280', 36, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '2', NULL, NULL, NULL),
@@ -1581,6 +1581,37 @@ CREATE TABLE IF NOT EXISTS `product_gallery` (
 /*!40000 ALTER TABLE `product_gallery` ENABLE KEYS */;
 
 
+-- Dumping structure for table db_yss_new.test
+CREATE TABLE IF NOT EXISTS `test` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `uname` varchar(50) DEFAULT NULL,
+  `tel` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `pic` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table db_yss_new.test: ~11 rows (approximately)
+/*!40000 ALTER TABLE `test` DISABLE KEYS */;
+INSERT INTO `test` (`id`, `name`, `uname`, `tel`, `email`, `pic`) VALUES
+	(1, 'chittipong', 'chittipong', '0818754444', 'jittipong_m@hotmail.com', ''),
+	(5, 'tong', 'tong', '0874447777', 'jittipong_m@hotmail.com', ''),
+	(6, 'tong', 'tong', '0874447777', 'jittipong_m@hotmail.com', ''),
+	(7, 'adisorn', 'sdfsdfsdff', '0818744444', 'adisorn@gmail.com', ''),
+	(25, 'bbbbbb', 'bbbbbb', '', '', ''),
+	(26, 'cccccc', '', '', '', ''),
+	(27, 'dddd', '', '', '', ''),
+	(28, 'eeeeeee', '', '', '', ''),
+	(29, 'fffffff', '', '', '', ''),
+	(32, 'gggggg', 'ggggg', '0584447777', 'jittipong_m@hotmail.com', ''),
+	(33, 'dddddd', '', '', '', ''),
+	(34, 'ssssss', 'sssss', '', '', ''),
+	(35, 'xxxxxxx', '', '', '', '');
+/*!40000 ALTER TABLE `test` ENABLE KEYS */;
+
+
 -- Dumping structure for table db_yss_new.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1658,7 +1689,7 @@ CREATE TABLE IF NOT EXISTS `yss_award` (
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่อัพเดต',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_award: ~10 rows (approximately)
 /*!40000 ALTER TABLE `yss_award` DISABLE KEYS */;
@@ -1836,7 +1867,7 @@ CREATE TABLE IF NOT EXISTS `yss_content` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_content: ~19 rows (approximately)
+-- Dumping data for table db_yss_new.yss_content: ~23 rows (approximately)
 /*!40000 ALTER TABLE `yss_content` DISABLE KEYS */;
 INSERT INTO `yss_content` (`id`, `page`, `position`, `layout`, `title`, `detail`, `pic`, `pic_title`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
 	(4, 4, 'section1', 'RIGHT_PIC', 'YSS สู่ความเชื่อมั่นทีมงาน R&D', '<p>YSS ผู้ผลิตและพัฒนาโช้คอัพรถยนต์และรถมอเตอร์ไซค์มากว่า 30 ปี โดยใช้เทคโนโลยีและอุปกรณ์ที่ทันสมัย มีการพัฒนาและปรับปรุงผลิตภัณฑ์อย่างต่อเนื่อง ทำให้ในทุกขั้นตอนของการผลิตมีคุณภาพสูง พร้อมทั้งมีทีมงาน R&D มากประสบการณ์จากยุโรปที่พัฒนาโช้คอัพเพื่อใช้ในการแข่งขันในรายการระดับโลกมาอย่างมากมาย คอยมุ่งมั่นพัฒนาสินค้า และบุคลากรของเราอย่างต่อเนื่อง ทำให้สินค้าทุกชิ้นมีคุณภาพทัดเทียมยุโรป รวมถึงขั้นตอนการนำโช้คอัพไปทดสอบประสิทธิภาพการใช้งาน การติดตั้ง ความทนทานและความปลอดภัยทีม R&D ใส่ใจในทุกขั้นตอนทำให้คุณภาพสินค้าของ</p>\r\n\r\n<p>YSS ได้รับการรับรองมาตรฐานสินค้า จากสถาบัน Kraftfahrt-Bundesamt (KBA)- Federal Motor Transport Authority จากประเทศเยอรมัน ซึ่งเป็นแบรนด์เดียวในเอเซียที่ผ่านการรับรองนี้ และผ่านการทดสอบมาตรฐานสินค้า ABE จากประเทศเยอรมัน นอกจากนี้ สินค้าของ YSS ผ่านมาตรฐานอุตสาหกรรมยานยนต์มากมาย เช่น  QS9000, ISO/TS16949, ISO9001 จาก TUV RHEILAND รวมถึงเทคโนโลยที่คิดค้นขึ้นเองอย่าง VVSC,VBSC อีกด้วย</p>', '20151028075433.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 1, '2015-10-28 07:54:33', '2015-10-30 07:10:29'),
@@ -6802,15 +6833,16 @@ CREATE TABLE IF NOT EXISTS `yss_news` (
   `date_update` datetime DEFAULT NULL COMMENT 'วันที่อัพเดต',
   `type` enum('NEWS','EVENT') DEFAULT 'NEWS' COMMENT 'ประเภท',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news: ~3 rows (approximately)
+-- Dumping data for table db_yss_new.yss_news: ~4 rows (approximately)
 /*!40000 ALTER TABLE `yss_news` DISABLE KEYS */;
 INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `date_update`, `type`) VALUES
 	(15, '20151027055758.jpg', NULL, 1, '2015-10-27 05:57:58', '2015-10-27 06:03:29', 'NEWS'),
 	(16, '20151027060844.jpg', NULL, 2, '2015-10-27 06:08:44', NULL, 'EVENT'),
 	(17, '20151027061042.jpg', NULL, 3, '2015-10-27 06:10:42', NULL, 'NEWS'),
-	(18, '20151027065114.jpg', NULL, 4, '2015-10-27 06:51:14', NULL, 'NEWS');
+	(18, '20151027065114.jpg', NULL, 4, '2015-10-27 06:51:14', NULL, 'NEWS'),
+	(19, '20151101023112.jpg', NULL, 1, '2015-11-01 02:31:12', NULL, 'EVENT');
 /*!40000 ALTER TABLE `yss_news` ENABLE KEYS */;
 
 
@@ -6828,7 +6860,7 @@ CREATE TABLE IF NOT EXISTS `yss_news_detail` (
   UNIQUE KEY `id` (`id`),
   KEY `fk_news` (`news_id`),
   CONSTRAINT `fk_yss_news_detail_yss_news1` FOREIGN KEY (`news_id`) REFERENCES `yss_news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_news_detail: ~4 rows (approximately)
 /*!40000 ALTER TABLE `yss_news_detail` DISABLE KEYS */;
@@ -6836,7 +6868,8 @@ INSERT INTO `yss_news_detail` (`id`, `news_id`, `title`, `detail`, `main`, `pic`
 	(21, 15, 'YSS racing Bull Docker TAGOS KAWASAKI Ninja 250 คว้าชัยเหนือคู่แข่ง', 'กับรายการ MOTEGI OPEN 7 HOURS Endurance Road Race 2015 ณ ประเทศญี่ปุ่น งานแข่งขันสุดโหด 7 ชั่วโมง รอบสนาม Motegi Twin Ring ทีมแข่งสัญชาติญี่ปุ่น สังกัด YSS racing Bull Docker TAGOS KAWASAKI Ninja 250 (โช้คอัพ MX 366 ? 320 TRWL) ขับโดย Mr. Tatsuya Koitabashi / Mr. Toshihiro Nakazawa / Mr. Gaku Fujii / Mr. Masahiro Kawata 4 นักแข่งผลัดกันลงทำเวลา จนสามารถทำจำนวนรอบได้สูงสุด 172 รอบ ภายใน 7 ชั่วโมง (ระยะทาง 825 กิโลเมตร) พิสูจน์สมรรถนะการยึดเกาะถนน และความทนทาน คว้าชัยเหนือคู่แข่งกว่า 73 คัน ได้สำเร็จ ซึ่งถือเป็นการคว้าชัยรายการ Endurance 2 รายการติดต่อกันของโช้คอัพไทยในประเทศญี่ปุ่น', 'Y', NULL, NULL, NULL),
 	(22, 16, 'งาน Stunt Challenge 2015', 'งาน Stunt Challenge 2015 งานแข่งขัน Stunt ชิงถ้วยรัฐมนตรีว่าการกระทรวงท่องเที่ยว และกีฬา การันตีความมันส์ พร้อมรางวัลความสำเร็จโดย YSS', 'Y', NULL, NULL, NULL),
 	(23, 17, 'YSS โช้คอัพไทยคว้าชัยงาน Endurance ระดับโลก ที่สนาม SUZUKA ประเทศญี่ปุ่น', 'YSS โช้คอัพไทยคว้าชัยงาน Endurance ระดับโลก ที่สนาม SUZUKA ประเทศญี่ปุ่น\r\n\r\nงาน SUZUKA 8 Hours FIM Endurance World Championship 2015 ณ ประเทศญี่ปุ่น ทีมแข่งสัญชาติญี่ปุ่น ขับโดย Mr.Keiji Nakamura, Mr.Ruka Wada 2 นักแข่ง สังกัด TTS Racing Speed Hart YSS SANTABIKE NCC สลับกันควบ KAWASAKI ZX6 ลงพิสูจน์สมรรถนะการยึดเกาะถนน และความทนทาน ซึ่ง YSS ได้คว้าชัยเหนือนักแข่งนานาชาติกว่า 60 ทีม ในรุ่นการแข่งขัน Suzuka Endurance 4 ชั่วโมง โดยทีม TTS Racing Speed Hart YSS SANTABIKE NCC สามารถทำรอบสูงสุดถึง 95 รอบสนามซูซูกะ ระยะทางกว่า 550 กิโลเมตร คว้าแชมป์พร้อมพิสูจน์ศักยภาพโช้คอัพไทย ในสนามแข่งระดับโลกได้เป็นอย่างดี\r\n', 'Y', NULL, NULL, NULL),
-	(24, 18, 'YSS สนับสนุนทีมแข่งรถ จุฬาลงกรณ์มหาวิทยาลัย เข้าแข่งขันในรายการ Student Formula	', '	YSS สนับสนุนทีมแข่งรถ จุฬาลงกรณ์มหาวิทยาลัย เข้าแข่งขันในรายการ Student Formula (ประเภทรถพลังงานไฟฟ้า) ที่ประเทศญี่ปุ่น', 'Y', NULL, NULL, NULL);
+	(24, 18, 'YSS สนับสนุนทีมแข่งรถ จุฬาลงกรณ์มหาวิทยาลัย เข้าแข่งขันในรายการ Student Formula	', '	YSS สนับสนุนทีมแข่งรถ จุฬาลงกรณ์มหาวิทยาลัย เข้าแข่งขันในรายการ Student Formula (ประเภทรถพลังงานไฟฟ้า) ที่ประเทศญี่ปุ่น', 'Y', NULL, NULL, NULL),
+	(25, 19, 'aaaaaaa', 'aaaaa', 'Y', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `yss_news_detail` ENABLE KEYS */;
 
 
@@ -6868,7 +6901,7 @@ CREATE TABLE IF NOT EXISTS `yss_page` (
   `sort_order` int(10) DEFAULT NULL COMMENT 'title',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_page: ~21 rows (approximately)
 /*!40000 ALTER TABLE `yss_page` DISABLE KEYS */;
@@ -13269,7 +13302,7 @@ CREATE TABLE IF NOT EXISTS `yss_word` (
   KEY `specific_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_word: ~28 rows (approximately)
+-- Dumping data for table db_yss_new.yss_word: ~31 rows (approximately)
 /*!40000 ALTER TABLE `yss_word` DISABLE KEYS */;
 INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'quick_search', 'ค้นหาด่วน', 'Quick Search', '', '', '', '', '', ''),
