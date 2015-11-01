@@ -7,6 +7,10 @@ use yii\base\Widget;
 use yii\widgets;
 use yii\helpers\ArrayHelper;
 
+//For modal----------------
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
+
 $this->title = 'YSS ADMINISTRATOR';
 ?>
 <div class="site-index">
@@ -17,6 +21,7 @@ $this->title = 'YSS ADMINISTRATOR';
         //echo Yii::$app->user->identity->
         ?>
         <div class="row">
+            <?= Html::a('Create Product', ['product/create'], ['class' => 'btn btn-success']) ?>
             <div class="col-lg-12">
                 <?=
                 GridView::widget([
@@ -116,6 +121,23 @@ $this->title = 'YSS ADMINISTRATOR';
 
                 <div>
                     <h2>News</h2>
+                     <!-- Button Call modal-->
+                        <?= Html::button(Yii::t('app', 'Create News'),
+                            ['value'=>Url::to('index.php?r=news/create'),
+                            'class' => 'btn btn-success','id'=>'newsCreate-btn']) 
+                        ?>
+
+                        <?php 
+                        // Modal-----------------
+                            Modal::begin([
+                                'header'=>'<h4>Create News</h4>',
+                                    'id'=>'modal',
+                                    'size'=>'modal-lg',
+                            ]);
+
+                            echo "<div id='modalContent'></div>";
+                            Modal::end();
+                        ?>
                     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
                     <?=
                     GridView::widget([

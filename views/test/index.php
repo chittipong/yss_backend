@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+//use kartik\grid\GridView;
 use yii\bootstrap\ActiveForm;
 
-//use yii\widgets\Pjax;
+use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 /* @var $this yii\web\View */

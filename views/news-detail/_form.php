@@ -8,10 +8,6 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="col-lg-8">
-<div class="panel panel-primary">
-<div class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></div>
-  <div class="panel-body">
         <div class="news-detail-form">
 
             <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
@@ -50,6 +46,4 @@ use yii\helpers\Url;
             </div>
 
             <?php ActiveForm::end(); ?>
-
-        </div>
-  </div></div></div>
+   </div>

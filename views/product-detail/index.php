@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+//For modal----------------
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductDetailSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -17,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Product Detail'), ['create'], ['class' => 'btn btn-success']) ?>
+       
     </p>
 
     <?=

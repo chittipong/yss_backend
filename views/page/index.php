@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+//For modal----------------
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,7 +20,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Page'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a(Yii::t('app', 'Create Page'), ['create'], ['class' => 'btn btn-success'])// Old button ?>
+        
+        <!-- Button Call modal-->
+        <?= Html::button(Yii::t('app', 'Create'),
+            ['value'=>Url::to('index.php?r=page/create'),
+            'class' => 'btn btn-success','id'=>'pageCreate-btn']) 
+        ?>
+        
+        <?php 
+        // Modal-----------------
+            Modal::begin([
+                'header'=>'<h4>Create</h4>',
+                    'id'=>'modal',
+                    'size'=>'modal-lg',
+            ]);
+            
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+        ?>
     </p>
 
     <?= GridView::widget([

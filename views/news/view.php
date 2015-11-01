@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 
+//For modal----------------
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 
@@ -27,7 +31,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ])
         ?>
 
-<?= Html::a(Yii::t('app', '<i class="glyphicon glyphicon-plus"></i>เพิ่ม Detail(ภาษาอื่น)'), ['news-detail/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+<?php // Html::a(Yii::t('app', '<i class="glyphicon glyphicon-plus"></i>เพิ่ม Detail(ภาษาอื่น)'), ['news-detail/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+    <!-- Button Call modal-->
+        <?= Html::button(Yii::t('app', 'Create News Detail'),
+            ['value'=>Url::to('index.php?r=news-detail/create'),
+            'class' => 'btn btn-success','id'=>'newsdetailCreate-btn']) 
+        ?>
+        
+        <?php 
+        // Modal-----------------
+            Modal::begin([
+                'header'=>'<h4>Create News Detail</h4>',
+                    'id'=>'modal',
+                    'size'=>'modal-lg',
+            ]);
+            
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+        ?>
+    
     </p>
 
     <div class="panel panel-primary">
