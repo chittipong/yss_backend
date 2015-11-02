@@ -18,9 +18,14 @@ use yii\helpers\Url;
         <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
         <?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?>
+            
+       <?=$form->field($model,'popular')->radioList(['Y'=>'Yes','N'=>'No'])?>
+            
+       <?=$form->field($model,'brand_list')->radioList(['Y'=>'Yes','N'=>'No'])?>
 
-        <?php // $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
-        <?=$form->field($model,'file')->fileInput()?>
+       <?php // $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
+       
+       <?=$form->field($model,'file')->fileInput()?>
 
         <!-- ตรวจสอบว่ามีรูปภาพหรือไม่ถ้ามีให้ดึงออกมาโชว์และมีปุ่ม delete -->
                     <?php if($model->logo): ?>

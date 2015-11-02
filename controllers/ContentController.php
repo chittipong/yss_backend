@@ -92,7 +92,7 @@ class ContentController extends Controller
      * @return mixed
      */
     
-    public function actionCreate(){
+    public function actionCreate($page_id=null){
         $model=new Content();
         $model->date_create= date("Y-m-d h:i:s");                           //Set date create
        
@@ -124,9 +124,15 @@ class ContentController extends Controller
                 return $this->redirect(['view','id'=>$model->id]);
             }
         }else{
+            if(!empty($page_id)){            //กรณีที่กด insert จากหน้า page/view ใหเซต page_id เข้าไปทันที
+                $model=new Content();
+                $model->page=$page_id;
+            }
+                
             return $this->render('create', [
-                'model' => $model,
+               'model' => $model,
             ]);
+            
         }
     }//end***
 

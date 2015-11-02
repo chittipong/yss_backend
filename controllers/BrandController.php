@@ -121,7 +121,7 @@ class BrandController extends Controller
                 return $this->redirect(['view','id'=>$model->brand_id]);
             }
         }else{
-            return $this->render('create', [
+            return $this->renderAjax('create', [
                 'model' => $model,
             ]);
         }

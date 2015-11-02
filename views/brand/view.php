@@ -36,6 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'brand_id',
             'brand',
             'logo',
+            'popular',
+            'brand_list',
         ],
     ]) ?>
 

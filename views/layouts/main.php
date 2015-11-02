@@ -121,6 +121,7 @@ AppAsset::register($this);
                             ['label'=>'User','items'=>[
                                 ['label' => 'Profile', 'url' => ['/user/view','id'=>Yii::$app->user->identity->id]],
                                 ['label' => 'User', 'url' => ['/user/index']],
+                                ['label' => 'Config', 'url' => ['/yss-config/index']],
                                 ['label'=>'Logout(' . Yii::$app->user->identity->username . ')',
                                     'url' => ['/site/logout'],
                                     'linkOptions' => ['data-method' => 'post']

@@ -41,6 +41,8 @@ use yii\helpers\Url;
     
     <?= $form->field($model, 'lang')->dropDownList($model->getLangList()) ?>
     
+    <?= $form->field($model, 'specific_name')->textInput() ?>
+    
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#layoutGuide">Layout Guide / รูปแบบการจัดวาง</button>
     
     <?= $form->field($model, 'layout')->dropDownList($model->getLayoutList()) ?>

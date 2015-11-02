@@ -31,7 +31,7 @@ class Brand extends \yii\db\ActiveRecord
     {
         return [
             [['brand', 'logo'], 'required'],
-            [['brand', 'logo'], 'string', 'max' => 50],
+            [['brand', 'logo','popular','brand_list'], 'string', 'max' => 50],
             
             //Upload image------------
             [['file'],'safe'],
@@ -48,6 +48,8 @@ class Brand extends \yii\db\ActiveRecord
             'brand_id' => Yii::t('app', 'รหัส'),
             'brand' => Yii::t('app', 'ชื่อแบรนด์'),
             'file' => Yii::t('app', 'โลโก้'),
+            'popular'=> Yii::t('app','แบรนด์ยอดนิยม'),
+            'brand_list'=> Yii::t('app','แสดงในหน้าแรก'),
         ];
     }
     

@@ -77,6 +77,10 @@ class News extends \yii\db\ActiveRecord
     
     //Product image Path---------------
     public function getImageUrl(){
-        return Url::to($this->newsDir.$this->pic);        //Output: yss_new2/web/
+        if(!empty($this->pic)){
+            return Url::to($this->newsDir.$this->pic);              //Output: yss_new2/web/
+        }else{
+            return Url::to($this->newsDir."no-photo.jpg");          
+        }
     }
 }

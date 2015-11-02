@@ -216,10 +216,13 @@ class AppList extends \yii\db\ActiveRecord
         return ArrayHelper::map($list, 'id', 'name');
     }
     
-    
     //Product image Path---------------
     public function getImageUrl(){
-        return Url::to($this->productDir.$this->pic);        //Output: yss_new2/web/
+        if(!empty($this->image)){
+            return Url::to($this->productDir.$this->image);        //Output: yss_new2/web/
+        }else{
+            return Url::to($this->productDir."no-photo.jpg");          
+        }
         //return Url::to('../images/products/'.$this->image);                     //Output: ../images/product/
         
     }

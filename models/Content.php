@@ -39,7 +39,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             [['page','sort_order'], 'integer'],
-            [['layout','position', 'date_create', 'date_update'], 'string', 'max' => 45],
+            [['specific_name','layout','position', 'date_create', 'date_update'], 'string', 'max' => 45],
             [['title', 'detail', 'pic','pic_title'], 'string'],
             [['lang'], 'string', 'max' => 5],
             
@@ -56,6 +56,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'specific_name'=> Yii::t('app','Specific Name'),
             'page' => Yii::t('app', 'หน้า'),
             'layout'=> Yii::t('app', 'การจัดวาง'),
             'position' => Yii::t('app', 'ตำแหน่ง'),

@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ])
         ?>
+        
     </p>
     
     <h4><i class="glyphicon glyphicon-eye-open"></i> Frontend View  Layout: <?php echo $model->layout ?></h4>

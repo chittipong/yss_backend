@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+//For modal----------------
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BrandSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,7 +20,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Brand', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('Create Brand', ['create'], ['class' => 'btn btn-success']) ?>
+        
+         <!-- Button Call modal-->
+        <?= Html::button(Yii::t('app', 'Create Brand'),
+            ['value'=>Url::to('index.php?r=news/create'),
+            'class' => 'btn btn-success','id'=>'brandCreate-btn']) 
+        ?>
+        
+        <?php 
+        // Modal-----------------
+            Modal::begin([
+                'header'=>'<h4>Create Brand</h4>',
+                    'id'=>'modal',
+                    'size'=>'modal-lg',
+            ]);
+            
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -34,6 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'brand',
             'logo',
+            'popular',
+            'brand_list',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
