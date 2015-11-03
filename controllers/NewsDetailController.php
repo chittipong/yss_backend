@@ -133,7 +133,7 @@ class NewsDetailController extends Controller
             }
             
         } else {
-            return $this->renderAjax('create', [
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }

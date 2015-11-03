@@ -55,13 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getImageUrl();                               //Get function in product model
                 }
             ],
-            [
-                'attribute'=>'รูปภาพ',                                           //title
-                'format' => ['image',['width'=>'60','height'=>'60']],         //Set width,height
-                'value' => function($model){
-                    return $model->getImageUrl();                               //Get function in product model
-                }
-            ],
             //'pic',
             'title',
             'type',

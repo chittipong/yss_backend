@@ -84,7 +84,7 @@ class Product extends ActiveRecord
             [['brand_id', 'model_id', 'abeflag', 'closeflag'], 'integer'],
             [['image'], 'string'],
             [['date_create', 'date_update'], 'safe'],
-            [['product_group', 'product_type'], 'string', 'max' => 1],
+            [['product_group', 'product_type','new','hot','promotion','best_seller','enable'], 'string', 'max' => 1],
             [['code'], 'string', 'max' => 30],
             [['type'], 'string', 'max' => 2],
             [['top', 'bot'], 'string', 'max' => 255],
@@ -147,6 +147,11 @@ class Product extends ActiveRecord
             'title'=>'Title',
             'detail'=>'รายละเอียด',
             'discount' => 'ราคาลด',
+            'new'=>'สินค้าใหม่',
+            'hot'=>'Hot Product',
+            'best_seller'=>'สินค้าขายดี',
+            'promotion'=>'สินค้าจัดโปรโมชั่น',
+            'enable'=>'Enable',
         ];
     }
 

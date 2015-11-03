@@ -65,6 +65,37 @@ $this->params['breadcrumbs'][] = $this->title;
                         'title',
                         'detail',
                         'lang',
+                        //'hot',
+                        //'new',
+                        //'best_seller',
+                        //'promotion',
+                        //'enable',
+                        
+                        [
+                            'format'=>'html',
+                            'label' => 'Hot Product',
+                            'value' => $model->hot == 'Y' ? 'Yes' : 'No'
+                        ],
+                        [
+                            'format'=>'html',
+                            'label' => 'สินค้าใหม่',
+                            'value' => $model->new == 'Y' ? 'Yes' : 'No'
+                        ],
+                        [
+                            'format'=>'html',
+                            'label' => 'สินค้าขายดี ',
+                            'value' => $model->best_seller == 'Y' ? 'Yes' : 'No'
+                        ],
+                        [
+                            'format'=>'html',
+                            'label' => 'สินค้าโปรโมชั่น',
+                            'value' => $model->promotion == 'Y' ? 'Yes' : 'No'
+                        ],
+                        [
+                            'format'=>'html',
+                            'label' => 'Enable',
+                            'value' => $model->enable == 'Y' ? 'Yes' : 'No'
+                        ],
                     ],
                 ]) ?>
             </div>

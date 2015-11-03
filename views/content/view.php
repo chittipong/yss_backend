@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'refpage.title',
                     'position',
                     'title',
-                    'detail',
+                    'detail:html',
                     //'pic',
                     'date_create',
                     'date_update',

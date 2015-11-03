@@ -31,14 +31,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ])
         ?>
 
-<?php // Html::a(Yii::t('app', '<i class="glyphicon glyphicon-plus"></i>เพิ่ม Detail(ภาษาอื่น)'), ['news-detail/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+<?= Html::a(Yii::t('app', '<i class="glyphicon glyphicon-plus"></i>เพิ่ม Detail(ภาษาอื่น)'), ['news-detail/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     <!-- Button Call modal-->
-        <?= Html::button(Yii::t('app', 'Create News Detail'),
+        <?php /* Html::button(Yii::t('app', '<i class="glyphicon glyphicon-plus"></i> Create News Detail'),
             ['value'=>Url::to('index.php?r=news-detail/create'),
             'class' => 'btn btn-success','id'=>'newsdetailCreate-btn']) 
+         * 
+         */
         ?>
         
         <?php 
+        /*
         // Modal-----------------
             Modal::begin([
                 'header'=>'<h4>Create News Detail</h4>',
@@ -48,6 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
             
             echo "<div id='modalContent'></div>";
             Modal::end();
+         * 
+         */
         ?>
     
     </p>
@@ -70,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'author',
                     'sort_order',
                     'title',
-                    'detail',
+                    'detail:html',
                     [
                         'attribute' => 'date_create',
                         'format' => ['date', 'php:d-M-Y h:i:s']
@@ -85,6 +90,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+<input type="hidden" id='newsId' value="<?php echo $model->id ?>"/>
 
 <div class="panel panel-primary">
     <div class="panel-heading">News Detail</div>

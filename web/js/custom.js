@@ -297,7 +297,11 @@ $(function () {
         $('#newsdetailCreate-btn').click(function(){
             $('#modal').modal('show')
                     .find('#modalContent')
-                    .load($(this).attr('value'));
+                    .load($(this).attr('value')
+            );
+            
+            var nid=$('#newsId').val();
+            $('#newsdetail-news_id').val(nid);
         });
         
      //News Create Modal-------------------

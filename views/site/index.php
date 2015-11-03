@@ -34,8 +34,8 @@ $this->title = 'YSS ADMINISTRATOR';
                             'attribute' => 'รูปภาพ', //title
                             'format' => ['image', ['width' => '60', 'height' => '60']], //Set width,height
                             'value' => function($model) {
-                        return $model->getImageUrl();                               //Get function in product model
-                    }
+                                        return $model->getImageUrl();                               //Get function in product model
+                                       }
                         ],
                         /* [
                           'label' => 'Custom Link',
@@ -46,6 +46,14 @@ $this->title = 'YSS ADMINISTRATOR';
                           }
                           ], */
                         'code',
+//                        [
+//                          'label'=>'Product Code',
+//                            'format'=>'html',
+//                            'value' => function($dataProvider) {
+//                                $url = ['product/view', 'id' => $dataProvider->product_id];
+//                                return Html::a('<button type="button" class="btn btn-i">'.$dataProvider->code.'</button>', $url, ['title' => 'Go']);
+//                            }
+//                        ],
                         //'model_id',
                         [
                             'attribute' => 'model_id',
@@ -96,6 +104,10 @@ $this->title = 'YSS ADMINISTRATOR';
                          'on_hose',
                          'free_piston',
                          'dtg',
+                         'new',
+                         'hot',
+                         'promotion',
+                         'best_seller',
                         // 'create_by',
                         // 'update_by',
                         // 'date_create',
