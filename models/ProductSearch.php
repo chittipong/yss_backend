@@ -18,7 +18,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['product_id', 'brand_id', 'model_id', 'abeflag', 'hyd', 'emu', 'res', 'closeflag'], 'integer'],
+            [['product_id', 'brand_id', 'model_id', 'abeflag', 'hyd', 'emu', 'res','vehicle_type', 'closeflag'], 'integer'],
             [['product_group', 'product_type', 'code', 'type', 'top', 'bot', 'image', 'contenttype', 'image_name', 'Thumbnails', 'spring', 'length', 'piston', 'shaft', 'preload', 'rebound', 'compression', 'length_adjuster', 'hydraulic', 'emulsion', 'piggy_back', 'on_hose', 'free_piston', 'dtg', 'create_by', 'update_by', 'date_create', 'date_update', 'price', 'discount'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class ProductSearch extends Product
             'product_id' => $this->product_id,
             'brand_id' => $this->brand_id,
             'model_id' => $this->model_id,
+            'vehicle_type'=>$this->vehicle_type,
             'abeflag' => $this->abeflag,
             'hyd' => $this->hyd,
             'emu' => $this->emu,
@@ -70,6 +71,7 @@ class ProductSearch extends Product
 
         $query->andFilterWhere(['like', 'product_group', $this->product_group])
             ->andFilterWhere(['like', 'product_type', $this->product_type])
+            ->andFilterWhere(['like', 'vehicle_type', $this->vehicle_type])
             ->andFilterWhere(['like', 'code', $this->code])
             ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'top', $this->top])

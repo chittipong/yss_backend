@@ -92,6 +92,7 @@ class NewsDetailController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+    
     public function actionCreate($id=null)
     {
         $model = new NewsDetail();
@@ -137,7 +138,55 @@ class NewsDetailController extends Controller
                 'model' => $model,
             ]);
         }
-    }
+    }//end***
+    
+    //Insert By Ajax===============================
+    public function actionCreate2($id=null)
+    {
+        $model = new NewsDetail();
+        $dateNow= date("Y-m-d h:i:s");                                          //Set date create
+        
+        if(!empty($id)){
+            $model->news_id=$id;
+        }
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file=  UploadedFile::getInstance($model, 'file');
+            $upload='';
+
+            //UPLOAD SETUP-----------------
+            if($model->file){
+                $newName=date("Ymdhis");                                      //Generate filename from Date time
+                //$newName=$model->code;                                          //Set image name same Product code
+                $model->file->name=$newName.'.'.$model->file->extension;        //Set filename
+            
+                $imgPath=$model->newsDetailDir;
+                $model->pic=$model->file->name;                  
+                $upload=1;
+            }
+
+           // echo "File name is: ".$model->pic; exit();
+            
+            //SAVE DATA TO DATABASE---------------
+             if($model->save()){
+                //UPLOAD FILE---
+                 if($upload){
+                    $model->file->saveAs($model->newsDetailDir.$model->pic);
+                }
+                
+                //SET DISPLAY MESSAGE ----------
+                Yii::$app->getSession()->setFlash('alert',['body'=>'บันทึกข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+                
+                //REDIRECT------
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+            
+        } else {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+        }
+    }//end***
 
     /**
      * Updates an existing NewsDetail model.

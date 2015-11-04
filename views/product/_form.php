@@ -43,6 +43,8 @@ use yii\helpers\Url;
 
                         <?php // $form->field($model, 'product_type')->textInput(['maxlength' => true]) ?>
                         <?= $form->field($model, 'product_type')->dropDownList($model->getPtypeList()) ?>
+                        
+                        <?= $form->field($model, 'vehicle_type')->dropDownList($model->getVehicleList()) ?>
 
                         <?php // $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
                         <?= $form->field($model, 'type')->dropDownList($model->getTypeList()) ?>

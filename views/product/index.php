@@ -69,6 +69,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value'=>'ptype.type',
                         'filter'=> ArrayHelper::map(app\models\ProductType::find()->all(),'type','detail'),
                      ],
+                     //'vehicle.name',
+                    [
+                        'attribute'=>'vehicle_type',
+                        'value'=>'vehicle.name',
+                        'filter'=> ArrayHelper::map(app\models\Vehicle::find()->all(),'id','name'),
+                     ],
                      'abeflag',
                      'hyd',
                      'emu',

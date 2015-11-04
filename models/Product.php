@@ -81,7 +81,7 @@ class Product extends ActiveRecord
     {
         return [
             [['brand_id', 'model_id', 'product_group', 'product_type', 'code', 'type', 'length', 'piston', 'shaft', 'length_adjuster', 'hydraulic', 'emulsion', 'piggy_back', 'on_hose', 'free_piston', 'dtg'], 'required'],
-            [['brand_id', 'model_id', 'abeflag', 'closeflag'], 'integer'],
+            [['brand_id', 'model_id', 'abeflag', 'closeflag','vehicle_type'], 'integer'],
             [['image'], 'string'],
             [['date_create', 'date_update'], 'safe'],
             [['product_group', 'product_type','new','hot','promotion','best_seller','enable'], 'string', 'max' => 1],
@@ -112,6 +112,7 @@ class Product extends ActiveRecord
             'model_id' => 'โมเดล',
             'product_group' => 'Product Group',
             'product_type' => 'Product Type',
+            'vehicle_type'=>'Vehicle Type',
             'abeflag' => 'Abeflag',
             'hyd' => 'Hyd',
             'emu' => 'Emu',
@@ -208,6 +209,10 @@ class Product extends ActiveRecord
         return $this->hasOne(ProductType::className(), ['type' => 'product_type']);
     }
     
+    public function getVehicle(){
+        return $this->hasOne(Vehicle::className(),['id'=>'vehicle_type']);
+    }
+    
     public function getOption(){
         return $this->hasOne(Option::className(), ['option_name'=>'preload']);
     }
@@ -246,6 +251,12 @@ class Product extends ActiveRecord
     public function getPistonList(){
         $list= Piston::find()->orderBy('id')->all();
         return ArrayHelper::map($list,'size','title');
+    }
+    
+    //List Vehicle Type-----------------
+    public function getVehicleList(){
+        $list=  Vehicle::find()->orderBy('id')->all();
+        return ArrayHelper::map($list,'id','name');
     }
     
     //List Option-----------------------

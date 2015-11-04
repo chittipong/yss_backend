@@ -175,7 +175,9 @@ class NewsController extends Controller
                 'model' => $model,
             ]);
         }
-    }
+    }//end***
+    
+    
 
     /**
      * Updates an existing News model.
@@ -340,6 +342,7 @@ class NewsController extends Controller
      * @param integer $id
      * @return mixed
      */
+    
     public function actionDelete($id=null)
     {        
         $model=new News();

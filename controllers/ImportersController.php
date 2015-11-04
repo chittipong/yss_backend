@@ -239,11 +239,38 @@ class ImportersController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-   
-    }
+    
+//   public function actionDelete($id=null)
+//    {        
+//        $model=new Importers();
+//        $dir=$model->importerDir;                           
+//        
+//        //DELETE PIC IN FLODER------
+//        $this->deleteImageNoMsg($id,$dir,'pic');                            //Delete pic in floder
+//
+//        //SET DISPLAY MESSAGE ----------
+//        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+//        
+//        //REDIRECT PAGE-----------------
+//        return $this->redirect(['index']);
+//    }
 
+    public function actionDelete($id=null)
+    {
+        $model=new Importers();
+        $dir=$model->importerDir; 
+        
+        //DELETE PIC IN FLODER------
+        $this->deleteImageNoMsg($id, $dir, 'pic');
+        
+        //DELETE DATA-------------
+        $this->findModel($id)->delete();
+        
+       // SET DISPLAY MESSAGE ----------
+        Yii::$app->getSession()->setFlash('alert',['body'=>'ลบข้อมูลเรียบร้อย','options'=>['class'=>'alert-success']]);
+        
+        return $this->redirect(['index']);
+    }
     /**
      * Finds the Importers model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

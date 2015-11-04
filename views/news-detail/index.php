@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <!-- Button Call modal-->
         <?=
-        Html::button(Yii::t('app', 'Create News Detail'), ['value' => Url::to('index.php?r=news-detail/create'),
+        Html::button(Yii::t('app', 'Create News Detail'), ['value' => Url::to('index.php?r=news-detail/create2'),
             'class' => 'btn btn-success', 'id' => 'newsdetailCreate-btn'])
         ?>
 
