@@ -3,7 +3,7 @@
 -- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-11-04 17:57:50
+-- Date/time:                    2015-11-05 17:57:07
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -7140,7 +7140,7 @@ CREATE TABLE IF NOT EXISTS `yss_piston` (
   `remark` varchar(50) DEFAULT NULL COMMENT 'หมายเหตุ',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_piston: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_piston` DISABLE KEYS */;
@@ -7150,7 +7150,10 @@ INSERT INTO `yss_piston` (`id`, `size`, `title`, `remark`) VALUES
 	(3, 30, '30 mm.', 'เส้นผ่าศูนกลาง 30 มิลลิเมตร'),
 	(4, 36, '36 mm.', 'เส้นผ่าศูนกลาง 36 มิลลิเมตร'),
 	(5, 45, '45 mm.', 'เส้นผ่าศูนกลาง 45 มิลลิเมตร'),
-	(6, 50, '50 mm.', 'เส้นผ่าศูนกลาง 50 มิลลิเมตร');
+	(6, 50, '50 mm.', 'เส้นผ่าศูนกลาง 50 มิลลิเมตร'),
+	(7, 18, '18 mm.', 'เส้นผ่าศูนย์กลาง 18 มิลลิเมตร'),
+	(8, 60, '60 mm.', 'เส้นผ่าศูนย์กลาง 60 มิลลิเมตร'),
+	(9, 75, '75 mm.', 'เส้นผ่าศูนย์กลาง 75 มิลลิเมตร');
 /*!40000 ALTER TABLE `yss_piston` ENABLE KEYS */;
 
 
@@ -7211,7 +7214,7 @@ CREATE TABLE IF NOT EXISTS `yss_product` (
 -- Dumping data for table db_yss_new.yss_product: 2,963 rows
 /*!40000 ALTER TABLE `yss_product` DISABLE KEYS */;
 INSERT INTO `yss_product` (`product_id`, `brand_id`, `model_id`, `product_group`, `product_type`, `vehicle_type`, `abeflag`, `hyd`, `emu`, `res`, `code`, `type`, `top`, `bot`, `image`, `contenttype`, `image_name`, `Thumbnails`, `closeflag`, `spring`, `length`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjuster`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `create_by`, `update_by`, `date_create`, `date_update`, `price`, `discount`, `new`, `hot`, `promotion`, `best_seller`, `enable`) VALUES
-	(1, 1, 1, 'R', 'X', NULL, 0, 0, 0, 0, 'RX362-340TRW-28', 'TS', '10x20', '10x20', 'RX362-340TRW-28.png', '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', '-', 'W', '-', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, '2015-10-22 11:54:30', '5000', '4500', NULL, NULL, NULL, NULL, NULL),
+	(1, 1, 1, 'R', 'X', NULL, 0, 0, 0, 0, 'RX362-340TRW-28', 'TS', '10x20', '10x20', 'RX362-340TRW-28.png', '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', 'Y', 'W', '-', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, '2015-10-22 11:54:30', '5000', '4500', NULL, NULL, NULL, NULL, NULL),
 	(2, 1, 1, '', '', NULL, 0, 0, 0, 0, 'RZ362-340TR-28', 'T', '10x20', '10x20', 'RZ362-340TR-28.png', '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', 'Y', '-', '-', '-', 'Y', '-', '-', '-', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(3, 2, 2, '', '', NULL, 1, 0, 0, 0, 'ME302-310T-15', 'M', '10x22 H+20', '10x19 ', 'ME302-310T-15.png', '', '', '', 0, '46-60-90-145', '310', '30', '12', 'T', '-', '-', '-', '-', 'Y', '-', '-', '-', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(4, 2, 2, '', '', NULL, 1, 0, 0, 0, 'MZ362-310TRL-15', 'M', '10x22 H+20', '10x19 ', 'MZ362-310TRL-15.png', '', '', '', 0, '46-60-90-145', '310', '36', '12', 'T', 'Y', '-', 'Y', '-', 'Y', '-', '-', '-', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -13291,7 +13294,7 @@ CREATE TABLE IF NOT EXISTS `yss_shaft` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `size` (`size`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table db_yss_new.yss_shaft: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_shaft` DISABLE KEYS */;
@@ -13301,7 +13304,9 @@ INSERT INTO `yss_shaft` (`id`, `size`, `title`, `remark`) VALUES
 	(3, 12, '12 mm.', 'เส้นผ่าศูนกลาง 12 มิลลิเมตร'),
 	(4, 16, '16 mm.', 'เส้นผ่าศูนกลาง 16 มิลลิเมตร'),
 	(5, 20, '20 mm.', 'เส้นผ่าศูนกลาง 20 มิลลิเมตร (รถยนต์)'),
-	(6, 22, '22 mm.', 'เส้นผ่าศูนกลาง 22 มิลลิเมตร (รถยนต์)');
+	(6, 22, '22 mm.', 'เส้นผ่าศูนกลาง 22 มิลลิเมตร (รถยนต์)'),
+	(7, 14, '14 mm.', 'เส้นผ่าศูนย์กลาง 14 มิลลิเมตร'),
+	(8, 25, '25 mm.', 'เส้นผ่าศูนย์กลาง 25 มิลลิเมตร');
 /*!40000 ALTER TABLE `yss_shaft` ENABLE KEYS */;
 
 
@@ -13395,7 +13400,7 @@ CREATE TABLE IF NOT EXISTS `yss_word` (
   KEY `specific_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_word: ~32 rows (approximately)
+-- Dumping data for table db_yss_new.yss_word: ~31 rows (approximately)
 /*!40000 ALTER TABLE `yss_word` DISABLE KEYS */;
 INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'quick_search', 'ค้นหาด่วน', 'Quick Search', '', '', '', '', '', ''),
