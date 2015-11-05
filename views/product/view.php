@@ -66,11 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'title',
                         'detail',
                         'lang',
-                        'hot',
-                        'new',
-                        'best_seller',
-                        'promotion',
-                        'enable',
+                        //'hot',
+                        //'new',
+                        //'best_seller',
+                        //'promotion',
+                        //'enable',
                         
                         [
                             'format'=>'html',

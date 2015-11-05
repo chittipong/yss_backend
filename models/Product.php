@@ -243,13 +243,13 @@ class Product extends ActiveRecord
     
     //List Shaft------------------------
     public function getShaftList(){
-        $list=  Shaft::find()->orderBy('id')->all();
+        $list=  Shaft::find()->orderBy('size')->all();
         return ArrayHelper::map($list,'size','title');
     }
     
     //List Piston-----------------------
     public function getPistonList(){
-        $list= Piston::find()->orderBy('id')->all();
+        $list= Piston::find()->orderBy('size')->all();
         return ArrayHelper::map($list,'size','title');
     }
     
