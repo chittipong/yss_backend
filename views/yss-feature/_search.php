@@ -19,9 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'feature') ?>
 
-    <?= $form->field($model, 'detail') ?>
+    <?= $form->field($model, 'title') ?>
 
-    <?= $form->field($model, 'remark') ?>
+    <?= $form->field($model, 'description_th') ?>
+
+    <?= $form->field($model, 'description_en') ?>
+
+    <?php // echo $form->field($model, 'remark') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

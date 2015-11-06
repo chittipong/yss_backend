@@ -9,7 +9,9 @@ use Yii;
  *
  * @property integer $id
  * @property string $feature
- * @property string $detail
+ * @property string $title
+ * @property string $description_th
+ * @property string $description_en
  * @property string $remark
  */
 class YssFeature extends \yii\db\ActiveRecord
@@ -28,7 +30,9 @@ class YssFeature extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['feature', 'detail', 'remark'], 'string', 'max' => 50]
+            [['description_th', 'description_en', 'remark'], 'string'],
+            [['feature'], 'string', 'max' => 50],
+            [['title'], 'string', 'max' => 100]
         ];
     }
 
@@ -40,7 +44,9 @@ class YssFeature extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'รหัส'),
             'feature' => Yii::t('app', 'ฟีเจอร์'),
-            'detail' => Yii::t('app', 'รายละเอียด'),
+            'title' => Yii::t('app', 'ไตเติล'),
+            'description_th' => Yii::t('app', 'รายละเอียด (ไทย)'),
+            'description_en' => Yii::t('app', 'รายละเอียด (อังกฤษ)'),
             'remark' => Yii::t('app', 'หมายเหตุ'),
         ];
     }

@@ -19,7 +19,7 @@ class YssFeatureSearch extends YssFeature
     {
         return [
             [['id'], 'integer'],
-            [['feature', 'detail', 'remark'], 'safe'],
+            [['feature', 'title', 'description_th', 'description_en', 'remark'], 'safe'],
         ];
     }
 
@@ -60,7 +60,9 @@ class YssFeatureSearch extends YssFeature
         ]);
 
         $query->andFilterWhere(['like', 'feature', $this->feature])
-            ->andFilterWhere(['like', 'detail', $this->detail])
+            ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description_th', $this->description_th])
+            ->andFilterWhere(['like', 'description_en', $this->description_en])
             ->andFilterWhere(['like', 'remark', $this->remark]);
 
         return $dataProvider;

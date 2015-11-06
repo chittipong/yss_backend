@@ -105,7 +105,7 @@ AppAsset::register($this);
                                 ['label' => 'Model', 'url' => ['/yss-model/index']],
                                 ['label' => 'Piston', 'url' => ['/piston/index']],
                                 ['label' => 'Shaft', 'url' => ['/shaft/index']],
-                                ['label' => 'Preload Option', 'url' => ['/preload-option/index']],
+                                ['label' => 'Feature', 'url' => ['/yss-feature/index']],
                                 ['label' => 'Importers Category', 'url' => ['/importer-cat/index']],
                                 ['label' => 'Vehicle Type', 'url' => ['/vehicle/index']],
                                 ['label' => 'Contact Info', 'url' => ['/contact/index']],

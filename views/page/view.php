@@ -54,11 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'position',
             'layout',
             'title',
-            'detail',
+            'detail:html',
             // 'pic',
             'sort_order',
             // 'date_create',
-            // 'date_update',
+            // 'date_update
 
             //['class' => 'yii\grid\ActionColumn'],
         ],

@@ -14,9 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'feature')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'detail')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description_th')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'description_en')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'remark')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
