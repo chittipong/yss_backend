@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PreloadOption;
-use app\models\PreloadOptionSearch;
+use app\models\YssFeature;
+use app\models\YssFeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PreloadOptionController implements the CRUD actions for PreloadOption model.
+ * YssFeatureController implements the CRUD actions for YssFeature model.
  */
-class PreloadOptionController extends Controller
+class YssFeatureController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Lists all PreloadOption models.
+     * Lists all YssFeature models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PreloadOptionSearch();
+        $searchModel = new YssFeatureSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Displays a single PreloadOption model.
+     * Displays a single YssFeature model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Creates a new PreloadOption model.
+     * Creates a new YssFeature model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PreloadOption();
+        $model = new YssFeature();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Updates an existing PreloadOption model.
+     * Updates an existing YssFeature model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Deletes an existing PreloadOption model.
+     * Deletes an existing YssFeature model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class PreloadOptionController extends Controller
     }
 
     /**
-     * Finds the PreloadOption model based on its primary key value.
+     * Finds the YssFeature model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return PreloadOption the loaded model
+     * @return YssFeature the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PreloadOption::findOne($id)) !== null) {
+        if (($model = YssFeature::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

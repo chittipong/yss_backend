@@ -12,7 +12,7 @@ use Yii;
  * @property string $detail
  * @property string $remark
  */
-class PreloadOption extends \yii\db\ActiveRecord
+class YssFeature extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

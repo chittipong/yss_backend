@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PreloadOption;
+use app\models\YssFeature;
 
 /**
- * PreloadOptionSearch represents the model behind the search form about `app\models\PreloadOption`.
+ * YssFeatureSearch represents the model behind the search form about `app\models\YssFeature`.
  */
-class PreloadOptionSearch extends PreloadOption
+class YssFeatureSearch extends YssFeature
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class PreloadOptionSearch extends PreloadOption
      */
     public function search($params)
     {
-        $query = PreloadOption::find();
+        $query = YssFeature::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

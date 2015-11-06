@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PreloadOptionSearch */
+/* @var $model app\models\YssFeatureSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="preload-option-search">
+<div class="yss-feature-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

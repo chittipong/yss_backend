@@ -3,14 +3,14 @@
 -- Server version:               5.6.26 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-11-05 17:57:07
+-- Date/time:                    2015-11-06 17:48:08
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
--- Dumping structure for table db_yss_new.application_list
+-- Dumping structure for table yss_new_db.application_list
 CREATE TABLE IF NOT EXISTS `application_list` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `brand` int(5) DEFAULT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `application_list` (
   KEY `brand` (`brand`)
 ) ENGINE=InnoDB AUTO_INCREMENT=878 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.application_list: ~875 rows (approximately)
+-- Dumping data for table yss_new_db.application_list: ~875 rows (approximately)
 /*!40000 ALTER TABLE `application_list` DISABLE KEYS */;
 INSERT INTO `application_list` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
 	(3, 1, 0, 'SAIETTA-R (ELECTRIC BIKE)', '', '', '2013', 'TS', 'RX362-340TRW-28', '-', '340', '10x20', '10x20', '46-30-50-220', 36, 12, 'T', 'Y', 'W', '', '', '', '', 'Y', '', '', 1, 'RX362-340TRW-28.png', NULL, NULL),
@@ -928,7 +928,7 @@ INSERT INTO `application_list` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, 
 /*!40000 ALTER TABLE `application_list` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.applist_test
+-- Dumping structure for table yss_new_db.applist_test
 CREATE TABLE IF NOT EXISTS `applist_test` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `brand` varchar(50) DEFAULT NULL,
@@ -965,7 +965,7 @@ CREATE TABLE IF NOT EXISTS `applist_test` (
   KEY `brand` (`brand`)
 ) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.applist_test: ~353 rows (approximately)
+-- Dumping data for table yss_new_db.applist_test: ~353 rows (approximately)
 /*!40000 ALTER TABLE `applist_test` DISABLE KEYS */;
 INSERT INTO `applist_test` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `year`, `type`, `product_code`, `abe_shock`, `length`, `top`, `bottom`, `spring`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjust`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `vehicle_type`, `pic`, `date_create`, `date_update`) VALUES
 	(41, '59', 0, 'QUAD     (FRONT)', '', '', '2009', 'TS', 'FZ366-410TR-01', '', 410, '10x20', '10x20', '46-25-45-280', 36, 16, 'T', 'Y', '', '', '', 'Y', '', '', '', '', '2', NULL, NULL, NULL),
@@ -1324,7 +1324,7 @@ INSERT INTO `applist_test` (`id`, `brand`, `cc`, `model`, `ref_no`, `abe1`, `yea
 /*!40000 ALTER TABLE `applist_test` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.download
+-- Dumping structure for table yss_new_db.download
 CREATE TABLE IF NOT EXISTS `download` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `download_cat_id` int(11) DEFAULT NULL,
@@ -1343,7 +1343,7 @@ CREATE TABLE IF NOT EXISTS `download` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.download: 60 rows
+-- Dumping data for table yss_new_db.download: 60 rows
 /*!40000 ALTER TABLE `download` DISABLE KEYS */;
 INSERT INTO `download` (`id`, `download_cat_id`, `product_id`, `title`, `detail`, `file_folder`, `file_name`, `file_size`, `status`, `lang`, `author`, `date_create`, `date_update`) VALUES
 	(1, 1, 0, 'Y.S.S BMW CLR-600S', NULL, 'download', 'testrun.pdf', '1334396', 'enable', 'EN', NULL, NULL, NULL),
@@ -1409,7 +1409,7 @@ INSERT INTO `download` (`id`, `download_cat_id`, `product_id`, `title`, `detail`
 /*!40000 ALTER TABLE `download` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.download_category
+-- Dumping structure for table yss_new_db.download_category
 CREATE TABLE IF NOT EXISTS `download_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -1419,7 +1419,7 @@ CREATE TABLE IF NOT EXISTS `download_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.download_category: 11 rows
+-- Dumping data for table yss_new_db.download_category: 11 rows
 /*!40000 ALTER TABLE `download_category` DISABLE KEYS */;
 INSERT INTO `download_category` (`id`, `name`, `status`, `lang`, `sort_order`) VALUES
 	(1, 'FLYER', 'D', 'EN', 11),
@@ -1436,7 +1436,7 @@ INSERT INTO `download_category` (`id`, `name`, `status`, `lang`, `sort_order`) V
 /*!40000 ALTER TABLE `download_category` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.importers
+-- Dumping structure for table yss_new_db.importers
 CREATE TABLE IF NOT EXISTS `importers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `import_cat_id` int(11) DEFAULT NULL,
@@ -1449,7 +1449,7 @@ CREATE TABLE IF NOT EXISTS `importers` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.importers: 76 rows
+-- Dumping data for table yss_new_db.importers: 76 rows
 /*!40000 ALTER TABLE `importers` DISABLE KEYS */;
 INSERT INTO `importers` (`id`, `import_cat_id`, `title`, `pic`, `detail`, `status`, `sort_order`, `lang`) VALUES
 	(1, 1, 'SOLE DISTRIBUTOR', '20151104030710.png', '<div><div><b>HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></b></div><div>SANWA MOTORCYCLE COMPANY<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>G/F, NO.9 JUNCTION ROAD,<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>KOWLOON CITY, KLN, HONG KONG<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>TEL. 852-2336-6880<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>FAX. 852-2338-3904<span class="Apple-tab-span" style="white-space:pre">	</span></div><div>E-MAIL: sanwa8@netvigator.com</div><div><br></div></div>', 'enable', 1, 'EN'),
@@ -1531,7 +1531,7 @@ INSERT INTO `importers` (`id`, `import_cat_id`, `title`, `pic`, `detail`, `statu
 /*!40000 ALTER TABLE `importers` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.importers_category
+-- Dumping structure for table yss_new_db.importers_category
 CREATE TABLE IF NOT EXISTS `importers_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(250) DEFAULT NULL,
@@ -1541,7 +1541,7 @@ CREATE TABLE IF NOT EXISTS `importers_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.importers_category: 13 rows
+-- Dumping data for table yss_new_db.importers_category: 13 rows
 /*!40000 ALTER TABLE `importers_category` DISABLE KEYS */;
 INSERT INTO `importers_category` (`id`, `title`, `sort_order`, `status`, `lang`) VALUES
 	(1, 'ASIA', 1, 'enable', 'EN'),
@@ -1560,7 +1560,7 @@ INSERT INTO `importers_category` (`id`, `title`, `sort_order`, `status`, `lang`)
 /*!40000 ALTER TABLE `importers_category` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.product_gallery
+-- Dumping structure for table yss_new_db.product_gallery
 CREATE TABLE IF NOT EXISTS `product_gallery` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `product_id` int(10) DEFAULT NULL COMMENT 'รหัสสินค้า',
@@ -1573,12 +1573,12 @@ CREATE TABLE IF NOT EXISTS `product_gallery` (
   CONSTRAINT `fk_product_pic_yss_product1` FOREIGN KEY (`product_id`) REFERENCES `yss_product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.product_gallery: ~0 rows (approximately)
+-- Dumping data for table yss_new_db.product_gallery: ~0 rows (approximately)
 /*!40000 ALTER TABLE `product_gallery` DISABLE KEYS */;
 /*!40000 ALTER TABLE `product_gallery` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.test
+-- Dumping structure for table yss_new_db.test
 CREATE TABLE IF NOT EXISTS `test` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -1590,7 +1590,7 @@ CREATE TABLE IF NOT EXISTS `test` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.test: ~13 rows (approximately)
+-- Dumping data for table yss_new_db.test: ~13 rows (approximately)
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
 INSERT INTO `test` (`id`, `name`, `uname`, `tel`, `email`, `pic`) VALUES
 	(1, 'chittipong', 'chittipong', '0818754444', 'jittipong_m@hotmail.com', ''),
@@ -1609,7 +1609,7 @@ INSERT INTO `test` (`id`, `name`, `uname`, `tel`, `email`, `pic`) VALUES
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.user
+-- Dumping structure for table yss_new_db.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1629,7 +1629,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table db_yss_new.user: ~4 rows (approximately)
+-- Dumping data for table yss_new_db.user: ~4 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `fname`, `lname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `roles`, `created_at`, `updated_at`) VALUES
 	(1, 'admin', 'chittipong', 'mongpranit', 'zaED_Yu5iXIT2EssXFDjHWytobDMBg7T', '$2y$13$6n6Oajm7pvQPX6UKFBE2KOkjSrnMqguQolbUxAnSAC88k0cewa63y', NULL, 'admin@hotmail.com', 10, 10, 1444461071, 1445670305),
@@ -1639,7 +1639,7 @@ INSERT INTO `user` (`id`, `username`, `fname`, `lname`, `auth_key`, `password_ha
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.users
+-- Dumping structure for table yss_new_db.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `name` varchar(45) DEFAULT NULL COMMENT 'ชื่อ',
@@ -1656,12 +1656,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.users: ~0 rows (approximately)
+-- Dumping data for table yss_new_db.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_award
+-- Dumping structure for table yss_new_db.yss_award
 CREATE TABLE IF NOT EXISTS `yss_award` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `title_th` varchar(100) DEFAULT NULL COMMENT 'Title (ไทย)',
@@ -1688,7 +1688,7 @@ CREATE TABLE IF NOT EXISTS `yss_award` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_award: ~10 rows (approximately)
+-- Dumping data for table yss_new_db.yss_award: ~10 rows (approximately)
 /*!40000 ALTER TABLE `yss_award` DISABLE KEYS */;
 INSERT INTO `yss_award` (`id`, `title_th`, `title_en`, `title_l3`, `title_l4`, `title_l5`, `title_l6`, `title_l7`, `title_l8`, `detail_th`, `detail_en`, `detail_l3`, `detail_l4`, `detail_l5`, `detail_l6`, `detail_l7`, `detail_l8`, `pic`, `sort_order`, `date_create`, `date_update`) VALUES
 	(1, 'True Vision', 'True Vision', '', '', '', '', '', '', 'TRUE VISIONS BOBBY HUNTER SUPER ONE RACE 2015\r\n4th Class B \r\nAsia Pick – Up Commonrail Open', 'TRUE VISIONS BOBBY HUNTER SUPER ONE RACE 2015\r\n4th Class B \r\nAsia Pick – Up Commonrail Open', '', '', '', '', '', '', '20151028053621.jpg', 1, '2015-10-28 05:34:32', '2015-10-28 05:36:21'),
@@ -1704,7 +1704,7 @@ INSERT INTO `yss_award` (`id`, `title_th`, `title_en`, `title_l3`, `title_l4`, `
 /*!40000 ALTER TABLE `yss_award` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_brand
+-- Dumping structure for table yss_new_db.yss_brand
 CREATE TABLE IF NOT EXISTS `yss_brand` (
   `brand_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `brand` varchar(50) NOT NULL COMMENT 'ชื่อแบรนด์',
@@ -1717,7 +1717,7 @@ CREATE TABLE IF NOT EXISTS `yss_brand` (
   FULLTEXT KEY `brand` (`brand`)
 ) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_brand: 90 rows
+-- Dumping data for table yss_new_db.yss_brand: 90 rows
 /*!40000 ALTER TABLE `yss_brand` DISABLE KEYS */;
 INSERT INTO `yss_brand` (`brand_id`, `brand`, `logo`, `popular`, `brand_list`, `sort_order`) VALUES
 	(1, 'AGILITY', 'AGILITY.jpg', '', '', 0),
@@ -1813,7 +1813,7 @@ INSERT INTO `yss_brand` (`brand_id`, `brand`, `logo`, `popular`, `brand_list`, `
 /*!40000 ALTER TABLE `yss_brand` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_cc
+-- Dumping structure for table yss_new_db.yss_cc
 CREATE TABLE IF NOT EXISTS `yss_cc` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `cc` int(10) DEFAULT NULL,
@@ -1821,7 +1821,7 @@ CREATE TABLE IF NOT EXISTS `yss_cc` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_cc: ~21 rows (approximately)
+-- Dumping data for table yss_new_db.yss_cc: ~21 rows (approximately)
 /*!40000 ALTER TABLE `yss_cc` DISABLE KEYS */;
 INSERT INTO `yss_cc` (`id`, `cc`) VALUES
 	(1, 0),
@@ -1848,7 +1848,7 @@ INSERT INTO `yss_cc` (`id`, `cc`) VALUES
 /*!40000 ALTER TABLE `yss_cc` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_config
+-- Dumping structure for table yss_new_db.yss_config
 CREATE TABLE IF NOT EXISTS `yss_config` (
   `id` int(2) NOT NULL DEFAULT '0',
   `company_th` varchar(50) DEFAULT NULL,
@@ -1882,14 +1882,14 @@ CREATE TABLE IF NOT EXISTS `yss_config` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_config: ~0 rows (approximately)
+-- Dumping data for table yss_new_db.yss_config: ~0 rows (approximately)
 /*!40000 ALTER TABLE `yss_config` DISABLE KEYS */;
 INSERT INTO `yss_config` (`id`, `company_th`, `company_en`, `tel1`, `tel2`, `tel3`, `fax1`, `fax2`, `default_mail`, `admin_mail`, `support_mail`, `sale_mail`, `contact_mail`, `info_mail`, `address_th`, `address_en`, `district_th`, `district_en`, `province_th`, `province_en`, `zipcode`, `country_th`, `country_en`, `work_hour_th`, `work_hour_en`, `date_create`, `date_update`, `update_by`) VALUES
 	(1, 'บริษัท วาย.เอส.เอส (ประเทศไทย) จำกัด', 'Y.S.S (THAILAND) Company Limited.', '+662-706-3700', '+662-763-8600', '', '+662-763- 8899', '', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', '88 / 88 ม.9 ซอยพิกุลทอง ถ.เทพารักษ์ บางปลา ', '88 / 88 Moo.9 Soi Phikulthong Thepharak Rd. Bangpr', 'บางพลี', 'Bangphli ', 'สมุทรปราการ', 'Samutprakarn', 10540, 'ประเทศไทย', 'THAILAND', 'จันทร์ - ศุกร์ : 8.00 น. - 18.00 น.', 'Mon - Fri: 8AM - 6 PM', NULL, NULL, '');
 /*!40000 ALTER TABLE `yss_config` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_contact
+-- Dumping structure for table yss_new_db.yss_contact
 CREATE TABLE IF NOT EXISTS `yss_contact` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `specific_name` varchar(50) DEFAULT NULL COMMENT 'Specific Name',
@@ -1914,7 +1914,7 @@ CREATE TABLE IF NOT EXISTS `yss_contact` (
   KEY `specific_name` (`specific_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_contact: ~2 rows (approximately)
+-- Dumping data for table yss_new_db.yss_contact: ~2 rows (approximately)
 /*!40000 ALTER TABLE `yss_contact` DISABLE KEYS */;
 INSERT INTO `yss_contact` (`id`, `specific_name`, `title`, `address`, `district`, `province`, `zipcode`, `phone1`, `phone2`, `phone3`, `fax1`, `fax2`, `fax3`, `default_mail`, `support_mail`, `sale_mail`, `description`, `lang`) VALUES
 	(1, 'yss_contact', 'Y.S.S (THAILAND) Company Limited.', '88 / 88 Moo.9 Soi Phikulthong Thepharak Rd.\r\nBangp', 'Bangphli', 'Samutprakarn', 10540, '+662-706-3700', '+662-763-8600', '', '+662-763- 8899', '', '', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', '<div class="right_side">\r\n                            <h3>How to arrive at our showroom</h3>\r\n                            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus eegx vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet. Curabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.</p>\r\n                            <p>Curabitur vulprutate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu lorem ipsum dolor sit amet.</p>\r\n                        </div>', 'EN'),
@@ -1922,7 +1922,7 @@ INSERT INTO `yss_contact` (`id`, `specific_name`, `title`, `address`, `district`
 /*!40000 ALTER TABLE `yss_contact` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_content
+-- Dumping structure for table yss_new_db.yss_content
 CREATE TABLE IF NOT EXISTS `yss_content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `specific_name` varchar(50) NOT NULL,
@@ -1941,7 +1941,7 @@ CREATE TABLE IF NOT EXISTS `yss_content` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_content: ~28 rows (approximately)
+-- Dumping data for table yss_new_db.yss_content: ~32 rows (approximately)
 /*!40000 ALTER TABLE `yss_content` DISABLE KEYS */;
 INSERT INTO `yss_content` (`id`, `specific_name`, `page`, `position`, `layout`, `title`, `detail`, `pic`, `pic_title`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
 	(4, '0', 4, 'section1', 'RIGHT_PIC', 'YSS สู่ความเชื่อมั่นทีมงาน R&D', '<p>YSS ผู้ผลิตและพัฒนาโช้คอัพรถยนต์และรถมอเตอร์ไซค์มากว่า 30 ปี โดยใช้เทคโนโลยีและอุปกรณ์ที่ทันสมัย มีการพัฒนาและปรับปรุงผลิตภัณฑ์อย่างต่อเนื่อง ทำให้ในทุกขั้นตอนของการผลิตมีคุณภาพสูง พร้อมทั้งมีทีมงาน R&D มากประสบการณ์จากยุโรปที่พัฒนาโช้คอัพเพื่อใช้ในการแข่งขันในรายการระดับโลกมาอย่างมากมาย คอยมุ่งมั่นพัฒนาสินค้า และบุคลากรของเราอย่างต่อเนื่อง ทำให้สินค้าทุกชิ้นมีคุณภาพทัดเทียมยุโรป รวมถึงขั้นตอนการนำโช้คอัพไปทดสอบประสิทธิภาพการใช้งาน การติดตั้ง ความทนทานและความปลอดภัยทีม R&D ใส่ใจในทุกขั้นตอนทำให้คุณภาพสินค้าของ</p>\r\n\r\n<p>YSS ได้รับการรับรองมาตรฐานสินค้า จากสถาบัน Kraftfahrt-Bundesamt (KBA)- Federal Motor Transport Authority จากประเทศเยอรมัน ซึ่งเป็นแบรนด์เดียวในเอเซียที่ผ่านการรับรองนี้ และผ่านการทดสอบมาตรฐานสินค้า ABE จากประเทศเยอรมัน นอกจากนี้ สินค้าของ YSS ผ่านมาตรฐานอุตสาหกรรมยานยนต์มากมาย เช่น  QS9000, ISO/TS16949, ISO9001 จาก TUV RHEILAND รวมถึงเทคโนโลยที่คิดค้นขึ้นเองอย่าง VVSC,VBSC อีกด้วย</p>', '20151028075433.jpg', 'We have always thought that we are producing a shock absorber to myself and my family', 'TH', 1, '2015-10-28 07:54:33', '2015-10-30 07:10:29'),
@@ -1979,7 +1979,7 @@ INSERT INTO `yss_content` (`id`, `specific_name`, `page`, `position`, `layout`, 
 /*!40000 ALTER TABLE `yss_content` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_download
+-- Dumping structure for table yss_new_db.yss_download
 CREATE TABLE IF NOT EXISTS `yss_download` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `product_id` int(10) DEFAULT NULL COMMENT 'รหัสสินค้า',
@@ -1996,37 +1996,40 @@ CREATE TABLE IF NOT EXISTS `yss_download` (
   CONSTRAINT `fk_yss_download_yss_product1` FOREIGN KEY (`product_id`) REFERENCES `yss_product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='สำหรับเก็บข้อมูลพวกไฟล์ Download ';
 
--- Dumping data for table db_yss_new.yss_download: ~0 rows (approximately)
+-- Dumping data for table yss_new_db.yss_download: ~0 rows (approximately)
 /*!40000 ALTER TABLE `yss_download` DISABLE KEYS */;
 /*!40000 ALTER TABLE `yss_download` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_feature
+-- Dumping structure for table yss_new_db.yss_feature
 CREATE TABLE IF NOT EXISTS `yss_feature` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `feature` varchar(50) DEFAULT NULL COMMENT 'ฟีเจอร์',
-  `detail` varchar(50) DEFAULT NULL COMMENT 'รายละเอียด',
-  `remark` varchar(50) DEFAULT NULL COMMENT 'หมายเหตุ',
+  `title` varchar(100) DEFAULT NULL COMMENT 'ไตเติล',
+  `description_th` text COMMENT 'รายละเอียด (ไทย)',
+  `description_en` text COMMENT 'รายละเอียด (อังกฤษ)',
+  `remark` text COMMENT 'หมายเหตุ',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `feature` (`feature`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_feature: ~8 rows (approximately)
+-- Dumping data for table yss_new_db.yss_feature: ~8 rows (approximately)
 /*!40000 ALTER TABLE `yss_feature` DISABLE KEYS */;
-INSERT INTO `yss_feature` (`id`, `feature`, `detail`, `remark`) VALUES
-	(1, 'P', 'STEP SPRING PRELOAD', 'ปรับความแข็งอ่อนของสปริงแบบขั้นบันได ปรับได้ 5-7 ร'),
-	(2, 'T', 'THREAD SPRING PRELOAD', 'ปรับแบบเกลียว มีความละเอียดสูง 1 รอบจะลดหรือเพิ่ม '),
-	(3, 'H', 'HYDRAULIC SPRING  PRELOAD', 'ปรับแบบไฮดรอลิก ไม่มีสาย'),
-	(4, 'H1', 'HYDRAULIC SPRING PRELOAD CABLE', 'ปรับแบบไฮดรอลิก มีสาย'),
-	(5, 'R', 'REBOUND ADJUSTABLE', 'ปรับการคืนตัวของโช้ค (Rebound) มีทั้งหมด 80 คลิก'),
-	(6, 'C', 'COMPRESSION ADJUSTABLE', 'ปรับระดับการยุบตัวมี 2 แบบคือ 3 ระดับและ 30 ระดับ'),
-	(7, 'W', 'HIGH-LOW SPEED', 'มีปุ่มปรับระดับ 2 ปุ่มมีความละเอียดในการปรับสูง'),
-	(8, 'L', 'LENGTH ADJUSTERABLE', 'ปรับสูงต่ำ');
+INSERT INTO `yss_feature` (`id`, `feature`, `title`, `description_th`, `description_en`, `remark`) VALUES
+	(1, 'P', 'STEP SPRING PRELOAD', 'ปรับความแข็งอ่อนของสปริงแบบขั้นบันได ปรับได้ 5-7 ระดับ', NULL, NULL),
+	(2, 'T', 'THREAD SPRING PRELOAD', 'ปรับความแข็งของสปริงแบบเกรียว  โดยจะกลึงเกลียวไว้ที่กระบอกโช้คอัพ แล้วสวมตัวปรับลัษณะรูปแหวนหมุนไปตามเกลียวจนกดตัวสปริง แล้วขันน๊อตกันคลาย ซึ่งเป็นน๊อตตัวเล็กหมุนสกรูเข้าจากด้านข้างโดยตรงเพื่อไม่ให้แหวนคลายตัว', NULL, NULL),
+	(3, 'H', 'HYDRAULIC SPRING  PRELOAD', 'ปรับความแข็งของสปริงแบบไฮดรอลิก จะใช้ชุดตัวปรับไฮโดรลิคไว้ที่กระบอก ปรับสปริงโดยหมุนแกนปรับไปทาง + สปริงจะแข็งขึ้น ถ้าหมุนแกนปรับไปทาง – สปริงจะนุ่มลง', NULL, NULL),
+	(4, 'H1', 'HYDRAULIC SPRING PRELOAD CABLE', 'ปรับความแข็งของสปริงแบบไฮดรอลิกแบบมีสาย ตัวปรับสปริงไฮโดรลิค แบบมีสายจะใช้ชุดตัวปรับไฮโดรลิคไว้ที่กระบอก ปรับสปริงโดยหมุนแกนปรับไปทาง + สปริงจะแข็งขึ้น ถ้าหมุนแกนปรับไปทาง – สปริงจะนุ่มลง ข้อดีคือ สามารถนำชุดสายไฮโดรลิคไปไว้ในตำแหน่งที่สะดวกต่อการปรับ โดยไม่ต้องลงมาปรับที่ตัวโช้คอัพ', NULL, NULL),
+	(5, 'R', 'REBOUND ADJUSTABLE', 'เป็นตัวช่วยควบคุมการคืนตัวของโช้คอัพ ให้เร็วหรือช้าได้ตามความต้องการ ออกแบบให้มีตัวปุ่มปรับเข็มควบคุมปริมาณน้ำมันผ่านรูแกน Free Bleed และที่ปุ่มปรับ Rebound ออกแบบให้รู้สึกถึงการปรับได้เวลาหมุนปรับ โดยสามารถปรับได้ 30-60 ระดับ ', NULL, NULL),
+	(6, 'C', 'COMPRESSION ADJUSTABLE', 'ปรับระดับการยุบตัวมี 2 แบบคือ 3 ระดับและ 30 ระดับ', NULL, NULL),
+	(7, 'W', 'HIGH-LOW SPEED', 'ปรับช่วงยุบของโช้คแบบ ไฮ-โล สปีด เป็นชุดสุดยอดของการปรับ Compression ที่พัฒนามาจาก Low Speed โดยออกแบบให้มีทางน้ำมันไหลผ่านไปยังปุ่มควบคุมที่เป็นชุดวาล์วที่จดจำการทำงานเมื่อมีแรงดันน้ำมันสูงเกินที่ Low Speed จะรับได้ในจังหวะกดกระแทกอย่างรุนแรง ไม่ทำให้เกิด Hydraulic Lock', NULL, NULL),
+	(8, 'L', 'LENGTH ADJUSTERABLE', 'ปรับเพิ่มความยาวของโช้คเพิ่มได้อีก 10 มิลลิเมตร ตัวปรับความยาว เป็นตัวที่ช่วยเพิ่มความยาวของโช้คอัพให้มากขึ้น โดยสามารถปรับได้ 2 แบบ คือแบบปรับเพิ่ม 10 มิลลิเมตร หรือแบบปรับความยาวเพิ่มหรือลดได้ 5 มิลลิเมตร ปรับโดยการหมุนเกลียวเข้าหรือออก และล็อคให้แน่นด้วยน๊อต', NULL, NULL),
+	(9, 'V', 'VBSC HIGH-LOW SPEED COMPRESSION AND OIL BALANCE ADJUSTABLE', 'ด้วยระบบการทำงานสองประสานระหว่าง Hi-Low Speed และ Valve Balance ช่วยลดแรงกดกระแทกขณะเข้าโค้งทุกรูปแบบ โค้งสั้น โค้งยาว และโค้งรูปตัว S ทำให้รถไม่เสียการทรงตัว', NULL, NULL);
 /*!40000 ALTER TABLE `yss_feature` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_itemmodel
+-- Dumping structure for table yss_new_db.yss_itemmodel
 CREATE TABLE IF NOT EXISTS `yss_itemmodel` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ITEMMODEL` varchar(255) NOT NULL,
@@ -2067,7 +2070,7 @@ CREATE TABLE IF NOT EXISTS `yss_itemmodel` (
   PRIMARY KEY (`ID`,`ITEMMODEL`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1518 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_itemmodel: 1,517 rows
+-- Dumping data for table yss_new_db.yss_itemmodel: 1,517 rows
 /*!40000 ALTER TABLE `yss_itemmodel` DISABLE KEYS */;
 INSERT INTO `yss_itemmodel` (`ID`, `ITEMMODEL`, `NAME`, `SP_TOP`, `SP_BOTTOM`, `SP_SPRING`, `SP_ANGLE`, `SP_STROKE`, `SP_DAMPER`, `ITEM_ABE`, `CURRENCYCODE`, `DATAAREAID`, `RECVERSION`, `RECID`, `PRICE`, `MARK`, `REMARK`, `SP_PISTON`, `SP_SHAFT`, `SP_PRELOAD`, `SP_REBOUND`, `SP_COMPRESSION`, `SP_LENGTH_ADJUST`, `SP_HYDRAULIC`, `SP_EMULSION`, `SP_PIGGY_BACK`, `SP_ON_HOSE`, `SP_FREE_PISTION`, `SP_DTG`, `SP_LENGTH`, `F1`, `F2`, `F3`, `F4`, `GROUPSHOCK`, `TYPESHOCK`) VALUES
 	(1, 'FG366-460TRC-01AB', NULL, '10x30', '10x30', '46-20-40-280', '0', '0', NULL, '0', NULL, 'wor', 1, '5637155145', 0.00, 0, NULL, 36, 16, 'T', 'Y', 'C', NULL, NULL, NULL, 'Y', NULL, NULL, NULL, '460', 'T', 'R', 'C', NULL, 1, 1),
@@ -3590,7 +3593,7 @@ INSERT INTO `yss_itemmodel` (`ID`, `ITEMMODEL`, `NAME`, `SP_TOP`, `SP_BOTTOM`, `
 /*!40000 ALTER TABLE `yss_itemmodel` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_lang
+-- Dumping structure for table yss_new_db.yss_lang
 CREATE TABLE IF NOT EXISTS `yss_lang` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `abb` varchar(10) DEFAULT NULL COMMENT 'ตัวย่อ',
@@ -3603,7 +3606,7 @@ CREATE TABLE IF NOT EXISTS `yss_lang` (
   KEY `abb` (`abb`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_lang: ~2 rows (approximately)
+-- Dumping data for table yss_new_db.yss_lang: ~2 rows (approximately)
 /*!40000 ALTER TABLE `yss_lang` DISABLE KEYS */;
 INSERT INTO `yss_lang` (`id`, `abb`, `lang_name`, `remark`, `default`, `sort_order`) VALUES
 	(1, 'TH', 'Thai', NULL, 'N', 1),
@@ -3611,7 +3614,7 @@ INSERT INTO `yss_lang` (`id`, `abb`, `lang_name`, `remark`, `default`, `sort_ord
 /*!40000 ALTER TABLE `yss_lang` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_menu
+-- Dumping structure for table yss_new_db.yss_menu
 CREATE TABLE IF NOT EXISTS `yss_menu` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `specific_name` varchar(50) DEFAULT NULL COMMENT 'ชื่อภาษาอังกฤษเท่านั้น',
@@ -3627,7 +3630,7 @@ CREATE TABLE IF NOT EXISTS `yss_menu` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_menu: ~21 rows (approximately)
+-- Dumping data for table yss_new_db.yss_menu: ~21 rows (approximately)
 /*!40000 ALTER TABLE `yss_menu` DISABLE KEYS */;
 INSERT INTO `yss_menu` (`id`, `specific_name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'index', 'หน้าแรก', 'Index', '', '', '', '', '', ''),
@@ -3654,7 +3657,7 @@ INSERT INTO `yss_menu` (`id`, `specific_name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6
 /*!40000 ALTER TABLE `yss_menu` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_model
+-- Dumping structure for table yss_new_db.yss_model
 CREATE TABLE IF NOT EXISTS `yss_model` (
   `model_id` int(5) NOT NULL COMMENT 'รหัส',
   `brand_id` int(5) NOT NULL COMMENT 'แบรนด์',
@@ -3678,7 +3681,7 @@ CREATE TABLE IF NOT EXISTS `yss_model` (
   FULLTEXT KEY `cc` (`cc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_model: 1,627 rows
+-- Dumping data for table yss_new_db.yss_model: 1,627 rows
 /*!40000 ALTER TABLE `yss_model` DISABLE KEYS */;
 INSERT INTO `yss_model` (`model_id`, `brand_id`, `model`, `abeflag`, `year`, `start`, `end`, `len`, `cc`, `Manafacturer_Code`, `abe`, `closeflag`, `imgpath`) VALUES
 	(1, 1, 'SAIETTA-R (ELECTRIC BIKE)', 0, '12>', '2012', '-', '', '', '', '-', 0, ''),
@@ -5311,7 +5314,7 @@ INSERT INTO `yss_model` (`model_id`, `brand_id`, `model`, `abeflag`, `year`, `st
 /*!40000 ALTER TABLE `yss_model` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_model_moto
+-- Dumping structure for table yss_new_db.yss_model_moto
 CREATE TABLE IF NOT EXISTS `yss_model_moto` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `DATAAREAID` varchar(255) DEFAULT NULL,
@@ -5330,7 +5333,7 @@ CREATE TABLE IF NOT EXISTS `yss_model_moto` (
   PRIMARY KEY (`ID`,`RECID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3926 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_model_moto: 1,570 rows
+-- Dumping data for table yss_new_db.yss_model_moto: 1,570 rows
 /*!40000 ALTER TABLE `yss_model_moto` DISABLE KEYS */;
 INSERT INTO `yss_model_moto` (`ID`, `DATAAREAID`, `RECVERSION`, `RECID`, `BRANDID`, `MODELID`, `DESCRIPTION`, `CC`, `YEARMODEL`, `ABE_MODEL`, `CATEGORY`, `MANUFACT_CODE`, `START_YEARMODEL`, `END_YEARMODEL`) VALUES
 	(2356, 'wor', 1, 5637158158, 'YAMAHA', 'XT 600', 'YAMAHA (XT 600)', '600', NULL, '0', 0, '5Y3', '1984', 'Above'),
@@ -6906,7 +6909,7 @@ INSERT INTO `yss_model_moto` (`ID`, `DATAAREAID`, `RECVERSION`, `RECID`, `BRANDI
 /*!40000 ALTER TABLE `yss_model_moto` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_news
+-- Dumping structure for table yss_new_db.yss_news
 CREATE TABLE IF NOT EXISTS `yss_news` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `pic` varchar(45) DEFAULT NULL COMMENT 'ภาพหลัก',
@@ -6918,7 +6921,7 @@ CREATE TABLE IF NOT EXISTS `yss_news` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news: ~5 rows (approximately)
+-- Dumping data for table yss_new_db.yss_news: ~4 rows (approximately)
 /*!40000 ALTER TABLE `yss_news` DISABLE KEYS */;
 INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `date_update`, `type`) VALUES
 	(15, '20151027055758.jpg', NULL, 1, '2015-10-27 05:57:58', '2015-10-27 06:03:29', 'NEWS'),
@@ -6928,7 +6931,7 @@ INSERT INTO `yss_news` (`id`, `pic`, `author`, `sort_order`, `date_create`, `dat
 /*!40000 ALTER TABLE `yss_news` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_news_detail
+-- Dumping structure for table yss_new_db.yss_news_detail
 CREATE TABLE IF NOT EXISTS `yss_news_detail` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `news_id` int(10) NOT NULL COMMENT 'รหัสข่าว',
@@ -6944,7 +6947,7 @@ CREATE TABLE IF NOT EXISTS `yss_news_detail` (
   CONSTRAINT `fk_yss_news_detail_yss_news1` FOREIGN KEY (`news_id`) REFERENCES `yss_news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_news_detail: ~6 rows (approximately)
+-- Dumping data for table yss_new_db.yss_news_detail: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_news_detail` DISABLE KEYS */;
 INSERT INTO `yss_news_detail` (`id`, `news_id`, `title`, `detail`, `main`, `pic`, `sort_order`, `lang`) VALUES
 	(21, 15, 'YSS racing Bull Docker TAGOS KAWASAKI Ninja 250 คว้าชัยเหนือคู่แข่ง', 'กับรายการ MOTEGI OPEN 7 HOURS Endurance Road Race 2015 ณ ประเทศญี่ปุ่น งานแข่งขันสุดโหด 7 ชั่วโมง รอบสนาม Motegi Twin Ring ทีมแข่งสัญชาติญี่ปุ่น สังกัด YSS racing Bull Docker TAGOS KAWASAKI Ninja 250 (โช้คอัพ MX 366 ? 320 TRWL) ขับโดย Mr. Tatsuya Koitabashi / Mr. Toshihiro Nakazawa / Mr. Gaku Fujii / Mr. Masahiro Kawata 4 นักแข่งผลัดกันลงทำเวลา จนสามารถทำจำนวนรอบได้สูงสุด 172 รอบ ภายใน 7 ชั่วโมง (ระยะทาง 825 กิโลเมตร) พิสูจน์สมรรถนะการยึดเกาะถนน และความทนทาน คว้าชัยเหนือคู่แข่งกว่า 73 คัน ได้สำเร็จ ซึ่งถือเป็นการคว้าชัยรายการ Endurance 2 รายการติดต่อกันของโช้คอัพไทยในประเทศญี่ปุ่น', 'Y', NULL, NULL, NULL),
@@ -6956,7 +6959,7 @@ INSERT INTO `yss_news_detail` (`id`, `news_id`, `title`, `detail`, `main`, `pic`
 /*!40000 ALTER TABLE `yss_news_detail` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_option
+-- Dumping structure for table yss_new_db.yss_option
 CREATE TABLE IF NOT EXISTS `yss_option` (
   `id` varchar(2) NOT NULL,
   `option_name` varchar(2) DEFAULT NULL,
@@ -6966,7 +6969,7 @@ CREATE TABLE IF NOT EXISTS `yss_option` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_option: ~4 rows (approximately)
+-- Dumping data for table yss_new_db.yss_option: ~4 rows (approximately)
 /*!40000 ALTER TABLE `yss_option` DISABLE KEYS */;
 INSERT INTO `yss_option` (`id`, `option_name`, `detail`, `sort_order`) VALUES
 	('H', 'H ', 'H : แบบ Hydraulic ไม่มีสาย', 3),
@@ -6976,7 +6979,7 @@ INSERT INTO `yss_option` (`id`, `option_name`, `detail`, `sort_order`) VALUES
 /*!40000 ALTER TABLE `yss_option` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_page
+-- Dumping structure for table yss_new_db.yss_page
 CREATE TABLE IF NOT EXISTS `yss_page` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `name` varchar(50) NOT NULL COMMENT 'Page ID',
@@ -6986,7 +6989,7 @@ CREATE TABLE IF NOT EXISTS `yss_page` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_page: ~21 rows (approximately)
+-- Dumping data for table yss_new_db.yss_page: ~22 rows (approximately)
 /*!40000 ALTER TABLE `yss_page` DISABLE KEYS */;
 INSERT INTO `yss_page` (`id`, `name`, `title`, `sort_order`) VALUES
 	(1, 'index', 'Home', 1),
@@ -7014,7 +7017,7 @@ INSERT INTO `yss_page` (`id`, `name`, `title`, `sort_order`) VALUES
 /*!40000 ALTER TABLE `yss_page` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_page2
+-- Dumping structure for table yss_new_db.yss_page2
 CREATE TABLE IF NOT EXISTS `yss_page2` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `specific_name` varchar(50) DEFAULT NULL COMMENT 'ชื่อ Page ภาษาอังกฤษเท่านั้น',
@@ -7026,7 +7029,7 @@ CREATE TABLE IF NOT EXISTS `yss_page2` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_page2: ~40 rows (approximately)
+-- Dumping data for table yss_new_db.yss_page2: ~40 rows (approximately)
 /*!40000 ALTER TABLE `yss_page2` DISABLE KEYS */;
 INSERT INTO `yss_page2` (`id`, `specific_name`, `title`, `description`, `keyword`, `lang`) VALUES
 	(1, 'index', 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
@@ -7072,7 +7075,7 @@ INSERT INTO `yss_page2` (`id`, `specific_name`, `title`, `description`, `keyword
 /*!40000 ALTER TABLE `yss_page2` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_page_metatag
+-- Dumping structure for table yss_new_db.yss_page_metatag
 CREATE TABLE IF NOT EXISTS `yss_page_metatag` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `page_id` varchar(60) DEFAULT NULL COMMENT 'Page ID',
@@ -7084,7 +7087,7 @@ CREATE TABLE IF NOT EXISTS `yss_page_metatag` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_page_metatag: ~42 rows (approximately)
+-- Dumping data for table yss_new_db.yss_page_metatag: ~42 rows (approximately)
 /*!40000 ALTER TABLE `yss_page_metatag` DISABLE KEYS */;
 INSERT INTO `yss_page_metatag` (`id`, `page_id`, `title`, `description`, `keyword`, `lang`) VALUES
 	(1, 'index', 'Welcome to YSS Thailand', 'yss thailand is the best suspension company', 'Home', 'EN'),
@@ -7132,7 +7135,7 @@ INSERT INTO `yss_page_metatag` (`id`, `page_id`, `title`, `description`, `keywor
 /*!40000 ALTER TABLE `yss_page_metatag` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_piston
+-- Dumping structure for table yss_new_db.yss_piston
 CREATE TABLE IF NOT EXISTS `yss_piston` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `size` int(10) DEFAULT NULL COMMENT 'ขนาด (มิลลิเมตร)',
@@ -7142,7 +7145,7 @@ CREATE TABLE IF NOT EXISTS `yss_piston` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_piston: ~6 rows (approximately)
+-- Dumping data for table yss_new_db.yss_piston: ~9 rows (approximately)
 /*!40000 ALTER TABLE `yss_piston` DISABLE KEYS */;
 INSERT INTO `yss_piston` (`id`, `size`, `title`, `remark`) VALUES
 	(1, 16, '16 mm.', 'เส้นผ่าศูนกลาง 16 มิลลิเมตร'),
@@ -7157,7 +7160,7 @@ INSERT INTO `yss_piston` (`id`, `size`, `title`, `remark`) VALUES
 /*!40000 ALTER TABLE `yss_piston` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product
+-- Dumping structure for table yss_new_db.yss_product
 CREATE TABLE IF NOT EXISTS `yss_product` (
   `product_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า',
   `brand_id` int(5) NOT NULL COMMENT 'แบรนด์',
@@ -7211,7 +7214,7 @@ CREATE TABLE IF NOT EXISTS `yss_product` (
   FULLTEXT KEY `code` (`code`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2968 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product: 2,963 rows
+-- Dumping data for table yss_new_db.yss_product: 2,963 rows
 /*!40000 ALTER TABLE `yss_product` DISABLE KEYS */;
 INSERT INTO `yss_product` (`product_id`, `brand_id`, `model_id`, `product_group`, `product_type`, `vehicle_type`, `abeflag`, `hyd`, `emu`, `res`, `code`, `type`, `top`, `bot`, `image`, `contenttype`, `image_name`, `Thumbnails`, `closeflag`, `spring`, `length`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjuster`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`, `create_by`, `update_by`, `date_create`, `date_update`, `price`, `discount`, `new`, `hot`, `promotion`, `best_seller`, `enable`) VALUES
 	(1, 1, 1, 'R', 'X', NULL, 0, 0, 0, 0, 'RX362-340TRW-28', 'TS', '10x20', '10x20', 'RX362-340TRW-28.png', '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', 'Y', 'W', '-', '-', '-', '-', '-', '-', '-', NULL, NULL, NULL, '2015-10-22 11:54:30', '5000', '4500', NULL, NULL, NULL, NULL, NULL),
@@ -10180,7 +10183,7 @@ INSERT INTO `yss_product` (`product_id`, `brand_id`, `model_id`, `product_group`
 /*!40000 ALTER TABLE `yss_product` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product_detail
+-- Dumping structure for table yss_new_db.yss_product_detail
 CREATE TABLE IF NOT EXISTS `yss_product_detail` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `product_id` int(10) DEFAULT NULL COMMENT 'รหัสสินค้า',
@@ -10197,7 +10200,7 @@ CREATE TABLE IF NOT EXISTS `yss_product_detail` (
   KEY `fk_yss_product_detail_yss_lang_idx` (`lang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_detail: ~12 rows (approximately)
+-- Dumping data for table yss_new_db.yss_product_detail: ~14 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_detail` DISABLE KEYS */;
 INSERT INTO `yss_product_detail` (`id`, `product_id`, `title`, `detail`, `lang`, `keyword`, `main`, `pic`, `sort_order`) VALUES
 	(7, 2963, 'xxxxxxx xxxxxxx xxxxxxx', 'test ', 'TH', '', 'N', NULL, NULL),
@@ -10217,7 +10220,7 @@ INSERT INTO `yss_product_detail` (`id`, `product_id`, `title`, `detail`, `lang`,
 /*!40000 ALTER TABLE `yss_product_detail` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product_group
+-- Dumping structure for table yss_new_db.yss_product_group
 CREATE TABLE IF NOT EXISTS `yss_product_group` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `group` varchar(10) DEFAULT NULL COMMENT 'ชื่อ',
@@ -10228,7 +10231,7 @@ CREATE TABLE IF NOT EXISTS `yss_product_group` (
   KEY `group` (`group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_group: ~9 rows (approximately)
+-- Dumping data for table yss_new_db.yss_product_group: ~9 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_group` DISABLE KEYS */;
 INSERT INTO `yss_product_group` (`id`, `group`, `detail`, `remark`) VALUES
 	(1, 'F', 'FRONT TWIN SHOCK', 'โช้คคู่ด้านหน้า'),
@@ -10243,7 +10246,7 @@ INSERT INTO `yss_product_group` (`id`, `group`, `detail`, `remark`) VALUES
 /*!40000 ALTER TABLE `yss_product_group` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product_old
+-- Dumping structure for table yss_new_db.yss_product_old
 CREATE TABLE IF NOT EXISTS `yss_product_old` (
   `product_id` int(5) NOT NULL AUTO_INCREMENT,
   `brand_id` int(5) NOT NULL,
@@ -10280,7 +10283,7 @@ CREATE TABLE IF NOT EXISTS `yss_product_old` (
   FULLTEXT KEY `code` (`code`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2958 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_old: 2,957 rows
+-- Dumping data for table yss_new_db.yss_product_old: 2,957 rows
 /*!40000 ALTER TABLE `yss_product_old` DISABLE KEYS */;
 INSERT INTO `yss_product_old` (`product_id`, `brand_id`, `model_id`, `abeflag`, `hyd`, `emu`, `res`, `code`, `type`, `top`, `bot`, `image`, `contenttype`, `image_name`, `Thumbnails`, `closeflag`, `spring`, `length`, `piston`, `shaft`, `preload`, `rebound`, `compression`, `length_adjuster`, `hydraulic`, `emulsion`, `piggy_back`, `on_hose`, `free_piston`, `dtg`) VALUES
 	(1, 1, 1, 0, 0, 0, 0, 'RX362-340TRW-28', 'T', '10x20', '10x20', _binary 0x30783039, '', '', '', 0, '46-30-50-220', '340', '36', '12', 'T', 'Y', 'H-L', '-', '-', '-', '-', 'Y', '-', '-'),
@@ -13243,7 +13246,7 @@ INSERT INTO `yss_product_old` (`product_id`, `brand_id`, `model_id`, `abeflag`, 
 /*!40000 ALTER TABLE `yss_product_old` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product_review
+-- Dumping structure for table yss_new_db.yss_product_review
 CREATE TABLE IF NOT EXISTS `yss_product_review` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `product_id` int(10) DEFAULT NULL,
@@ -13255,12 +13258,12 @@ CREATE TABLE IF NOT EXISTS `yss_product_review` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_review: ~0 rows (approximately)
+-- Dumping data for table yss_new_db.yss_product_review: ~0 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_review` DISABLE KEYS */;
 /*!40000 ALTER TABLE `yss_product_review` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_product_type
+-- Dumping structure for table yss_new_db.yss_product_type
 CREATE TABLE IF NOT EXISTS `yss_product_type` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `type` varchar(10) DEFAULT NULL COMMENT 'Type',
@@ -13271,7 +13274,7 @@ CREATE TABLE IF NOT EXISTS `yss_product_type` (
   KEY `type` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_product_type: ~8 rows (approximately)
+-- Dumping data for table yss_new_db.yss_product_type: ~8 rows (approximately)
 /*!40000 ALTER TABLE `yss_product_type` DISABLE KEYS */;
 INSERT INTO `yss_product_type` (`id`, `type`, `detail`, `remark`) VALUES
 	(1, 'S', 'SINGLE TUBE HYDRAULIC SHOCK', NULL),
@@ -13285,7 +13288,7 @@ INSERT INTO `yss_product_type` (`id`, `type`, `detail`, `remark`) VALUES
 /*!40000 ALTER TABLE `yss_product_type` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_shaft
+-- Dumping structure for table yss_new_db.yss_shaft
 CREATE TABLE IF NOT EXISTS `yss_shaft` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `size` int(10) DEFAULT NULL COMMENT 'ขนาด (มิลลิเมตร)',
@@ -13296,7 +13299,7 @@ CREATE TABLE IF NOT EXISTS `yss_shaft` (
   KEY `size` (`size`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_shaft: ~6 rows (approximately)
+-- Dumping data for table yss_new_db.yss_shaft: ~8 rows (approximately)
 /*!40000 ALTER TABLE `yss_shaft` DISABLE KEYS */;
 INSERT INTO `yss_shaft` (`id`, `size`, `title`, `remark`) VALUES
 	(1, 8, '8 mm.', 'เส้นผ่าศูนกลาง 8 มิลลิเมตร'),
@@ -13310,7 +13313,7 @@ INSERT INTO `yss_shaft` (`id`, `size`, `title`, `remark`) VALUES
 /*!40000 ALTER TABLE `yss_shaft` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_slide
+-- Dumping structure for table yss_new_db.yss_slide
 CREATE TABLE IF NOT EXISTS `yss_slide` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `slide_name` varchar(50) NOT NULL COMMENT 'ชื่อสไลด์ (ภาษาอังกฤษเท่านั้น)',
@@ -13327,7 +13330,7 @@ CREATE TABLE IF NOT EXISTS `yss_slide` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_slide: ~6 rows (approximately)
+-- Dumping data for table yss_new_db.yss_slide: ~6 rows (approximately)
 /*!40000 ALTER TABLE `yss_slide` DISABLE KEYS */;
 INSERT INTO `yss_slide` (`id`, `slide_name`, `page`, `pic`, `header`, `title`, `link`, `lang`, `sort_order`, `date_create`, `date_update`) VALUES
 	(2, 'main', 'index', '20151028030203.jpg', 'YSS SUSPENSION', '<span>Trusted by champions. Many champion user</span>', 'introduction.php', 'TH', 1, '2015-10-28 03:02:03', '2015-10-28 03:43:19'),
@@ -13339,7 +13342,7 @@ INSERT INTO `yss_slide` (`id`, `slide_name`, `page`, `pic`, `header`, `title`, `
 /*!40000 ALTER TABLE `yss_slide` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_type_shock
+-- Dumping structure for table yss_new_db.yss_type_shock
 CREATE TABLE IF NOT EXISTS `yss_type_shock` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัส',
   `NO` int(11) DEFAULT NULL,
@@ -13347,7 +13350,7 @@ CREATE TABLE IF NOT EXISTS `yss_type_shock` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_type_shock: 10 rows
+-- Dumping data for table yss_new_db.yss_type_shock: 10 rows
 /*!40000 ALTER TABLE `yss_type_shock` DISABLE KEYS */;
 INSERT INTO `yss_type_shock` (`ID`, `NO`, `NAME`) VALUES
 	(1, 0, 'MS'),
@@ -13363,7 +13366,7 @@ INSERT INTO `yss_type_shock` (`ID`, `NO`, `NAME`) VALUES
 /*!40000 ALTER TABLE `yss_type_shock` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_vehicle
+-- Dumping structure for table yss_new_db.yss_vehicle
 CREATE TABLE IF NOT EXISTS `yss_vehicle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -13372,7 +13375,7 @@ CREATE TABLE IF NOT EXISTS `yss_vehicle` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_vehicle: 5 rows
+-- Dumping data for table yss_new_db.yss_vehicle: 5 rows
 /*!40000 ALTER TABLE `yss_vehicle` DISABLE KEYS */;
 INSERT INTO `yss_vehicle` (`id`, `name`, `remark`) VALUES
 	(1, 'MOTORCYCLE', NULL),
@@ -13383,7 +13386,7 @@ INSERT INTO `yss_vehicle` (`id`, `name`, `remark`) VALUES
 /*!40000 ALTER TABLE `yss_vehicle` ENABLE KEYS */;
 
 
--- Dumping structure for table db_yss_new.yss_word
+-- Dumping structure for table yss_new_db.yss_word
 CREATE TABLE IF NOT EXISTS `yss_word` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -13400,7 +13403,7 @@ CREATE TABLE IF NOT EXISTS `yss_word` (
   KEY `specific_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_word: ~31 rows (approximately)
+-- Dumping data for table yss_new_db.yss_word: ~34 rows (approximately)
 /*!40000 ALTER TABLE `yss_word` DISABLE KEYS */;
 INSERT INTO `yss_word` (`id`, `name`, `TH`, `EN`, `L3`, `L4`, `L5`, `L6`, `L7`, `L8`) VALUES
 	(1, 'quick_search', 'ค้นหาด่วน', 'Quick Search', '', '', '', '', '', ''),
