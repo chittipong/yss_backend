@@ -95,6 +95,7 @@ AppAsset::register($this);
                         ['label' => 'Download', 'url' => ['/download/index']],
                         ['label' => 'Importers', 'url' => ['/importers/index']],
                         //['label' => 'Contact', 'url' => ['/site/contact']],
+                        ['label' => 'Jobs', 'url' => ['/jobs/index']],
                         [
                             'label' => 'Config',
                             'items' => [

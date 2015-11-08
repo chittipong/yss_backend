@@ -327,6 +327,13 @@ $(function () {
                     .load($(this).attr('value'));
         });  
         
+        //Brand Create Modal-------------------
+        $('#jobsCreate-btn').click(function(){
+            $('#modal').modal('show')
+                    .find('#modalContent')
+                    .load($(this).attr('value'));
+        });  
+        
 
     //Test Modal----------------------
         $('#modalButton-test').click(function(){
