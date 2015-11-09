@@ -3,7 +3,7 @@
 -- Server version:               5.6.25 - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2015-11-09 01:15:40
+-- Date/time:                    2015-11-10 00:53:31
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -1607,7 +1607,7 @@ CREATE TABLE IF NOT EXISTS `military_status` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.military_status: ~2 rows (approximately)
+-- Dumping data for table db_yss_new.military_status: ~3 rows (approximately)
 /*!40000 ALTER TABLE `military_status` DISABLE KEYS */;
 INSERT INTO `military_status` (`id`, `title_th`, `title_en`) VALUES
 	(1, 'ผ่านการเกณฑ์ทหารแล้ว', 'Completed'),
@@ -1938,7 +1938,7 @@ CREATE TABLE IF NOT EXISTS `yss_config` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_yss_new.yss_config: ~0 rows (approximately)
+-- Dumping data for table db_yss_new.yss_config: ~1 rows (approximately)
 /*!40000 ALTER TABLE `yss_config` DISABLE KEYS */;
 INSERT INTO `yss_config` (`id`, `company_th`, `company_en`, `tel1`, `tel2`, `tel3`, `fax1`, `fax2`, `default_mail`, `admin_mail`, `support_mail`, `sale_mail`, `contact_mail`, `info_mail`, `address_th`, `address_en`, `district_th`, `district_en`, `province_th`, `province_en`, `zipcode`, `country_th`, `country_en`, `work_hour_th`, `work_hour_en`, `date_create`, `date_update`, `update_by`) VALUES
 	(1, 'บริษัท วาย.เอส.เอส (ประเทศไทย) จำกัด', 'Y.S.S (THAILAND) Company Limited.', '+662-706-3700', '+662-763-8600', '', '+662-763- 8899', '', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', 'marketing@yss.co.th', '88 / 88 ม.9 ซอยพิกุลทอง ถ.เทพารักษ์ บางปลา ', '88 / 88 Moo.9 Soi Phikulthong Thepharak Rd. Bangpr', 'บางพลี', 'Bangphli ', 'สมุทรปราการ', 'Samutprakarn', 10540, 'ประเทศไทย', 'THAILAND', 'จันทร์ - ศุกร์ : 8.00 น. - 18.00 น.', 'Mon - Fri: 8AM - 6 PM', NULL, NULL, '');
